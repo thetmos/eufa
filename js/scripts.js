@@ -501,6 +501,17 @@ $(function () {
         $('#tv_hover_popup').remove();
     });
 
+    $('.game_print_comment').hover(function () {
+        $('<div>').attr('id', 'tv_hover_popup').addClass('tv_hover_container').css({
+            top: $(this).offset().top - 48,
+            left: $(this).offset().left + 30
+        }).append(
+			$('<div>').html($(this).children().html())
+		).appendTo('body');
+    }, function () {
+        $('#tv_hover_popup').remove();
+    });
+
 
     /* results events */
     $('.view_more_active').toggle(function () {

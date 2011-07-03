@@ -94,9 +94,12 @@
                 <ItemTemplate>
             <div id="<%# Eval("Id")%>" class="game <%# IIf(Eval("Comments") <> "" orelse Eval("IsLive") <> "0", "game_live", "")%>" >
             <div class="game_main">
-                <%# IIf(Eval("PrintComment") <> "", "<span>" + Eval("PrintComment") + "</span><br />", "")%>
-                <span class="time"><%# CType(Eval("GameDate"), Date).ToString("t")%></span>
-                <span class="team"><div><%# CType(Eval("Player1"), WebReference.Player).Name%>  - <%# CType(Eval("Player2"), WebReference.Player).Name%> </div><%# IIf(Eval("IsLive")="1", "<img src=""images/WillLiveMark.gif"" class=""isliveimg"" title=""Будет Live-прием"">", "")%><%# IIf(Eval("Comments") <> "", "<div class=""game_on_tv""><span>" + Eval("Comments") + "</span></div>", "")%></span>                
+                
+                <span class="time <%# IIf(Eval("IsLive")="1", "dateyellow"" title=""Будет Live-прием", "")%>"><%# CType(Eval("GameDate"), Date).ToString("t")%></span>
+                
+                <span class="team"><%# CType(Eval("Player1"), WebReference.Player).Name%>  - <%# CType(Eval("Player2"), WebReference.Player).Name%></span>                
+                <%# IIf(Eval("PrintComment") <> "", "<div class=""game_print_comment""><span>" + Eval("PrintComment") + "</span></div>", "<div class=""empty_comment"">&nbsp;</div>")%>
+                <%# IIf(Eval("Comments") <> "", "<div class=""game_on_tv""><span>" + Eval("Comments") + "</span></div>", "<div class=""empty_comment"">&nbsp;</div>")%>
                             <asp:ListView ID="lvGamelist" runat="server" ItemPlaceholderID="gamelistiplaceholder" DataSource='<%# Eval("EventsMain") %>'>
                                 <LayoutTemplate>
                                     <span id="gamelistiplaceholder" runat="server"></span>
