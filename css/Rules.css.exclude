@@ -1,0 +1,54 @@
+body
+{
+	padding: 20px;
+	font-size: 10pt;
+	background-color:#ffffdc;
+	color: #000000;
+	scrollbar-face-color: ThreeDFace !important;
+	scrollbar-shadow-color: ThreeDDarkShadow !important;
+	scrollbar-highlight-color: ThreeDHighlight !important;
+	scrollbar-3dlight-color: ThreeDLightShadow !important;
+	scrollbar-darkshadow-color: ThreeDDarkShadow !important;
+	scrollbar-track-color: transparent !important;
+	scrollbar-arrow-color: ButtonText !important;
+}
+table
+{
+	BORDER-WIDTH: 0px;
+	background-color:lightgrey;
+	cell-spacing:1px;
+	cell-padding:0px;
+}
+TD
+{
+	background-color:white;
+	BORDER-WIDTH: 0px;
+	padding:1px;
+}
+a
+{
+	font-weight: bold;
+	text-decoration: none;
+	color:#0000cc;
+}
+a:hover
+{
+	text-decoration: underline;
+	color:#0000cc;
+}
+.header
+{
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 12pt;
+	color:#000000;
+}
+.structed
+{
+	font-weight:bold;
+}
+.dotted
+{
+	font-weight: normal;
+	list-style-type:inherit;
+}

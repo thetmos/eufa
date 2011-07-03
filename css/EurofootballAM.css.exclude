@@ -1,0 +1,136 @@
+BODY
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+TD
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+H2
+{
+    FONT-WEIGHT: normal;
+}
+
+.Input
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.Input_Img
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.Button
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.Button-disabled
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.Button-ScreenOnly
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.PageTitle
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+    FONT-SIZE: 14px;
+    FONT-WEIGHT: normal;
+}
+.Table
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.TableHeader
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.TableRow1
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.TableRow2
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.TableRowSelected
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.TableHeaderSport
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+
+.PrintTable
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.PrintTableHeader
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.PrintTableRow1
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.PrintTableRow2
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.SportForBet
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.ChampionshipForBet
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.GameForBet1
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.GameForBet2
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+}
+.ColorHeader
+{
+    FONT-SIZE: 12px;
+    FONT-WEIGHT: normal;
+}
+.Alert
+{
+    FONT-SIZE: 13px;
+    FONT-WEIGHT: normal;
+}
+.NewsTitle
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+    FONT-SIZE: 14px;
+    FONT-WEIGHT: normal;
+    PADDING-LEFT: 60px;
+    color: white;
+    text-decoration: none;
+}
+.NewsTitle A
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+	color:white;
+	text-decoration: none;
+}
+.NewsAbstract
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+    FONT-SIZE: 13px;
+    FONT-WEIGHT: normal;
+    PADDING-LEFT: 60px;
+    text-decoration: none;
+    padding-top: 5px;
+    color:white;
+.NewsAbstract A
+{
+    FONT-FAMILY: Sylfaen, Arial Unicode MS, tahoma,verdana, courier new, courier, sans-serif;
+	color:white;
+	text-decoration: none;
+}

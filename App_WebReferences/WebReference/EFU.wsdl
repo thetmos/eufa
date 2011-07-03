@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.efubet.com/Service/2011/1.0/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.efubet.com/Service/2011/1.0/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.efubet.com/Service/2011/1.0/">
+      <s:element name="GetVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Connect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Lang" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConnectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConnectResult" type="tns:ResponseUserEnv" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseUserEnv">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserEnv" type="tns:UserEnv" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserEnv">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BaseBias" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="BaseCurrency" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CancelBetAgentTime" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="CancelBetUserTime" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentUser" type="tns:User" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dictionary" type="tns:Dictionary" />
+          <s:element minOccurs="1" maxOccurs="1" name="LiveBetMaxWaitConfirmTime" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NonLiveBetMaxWaitConfirmTime" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LangCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Role" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeBias" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sex" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Birthday" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankDepartment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankBenefitiary" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EDram" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebMoney" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Logon" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CheckWord" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Dictionary">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Countries" type="tns:ArrayOfDictEntry" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currencies" type="tns:ArrayOfDictEntry" />
+          <s:element minOccurs="0" maxOccurs="1" name="Languages" type="tns:ArrayOfDictEntry" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultNames" type="tns:ArrayOfDictEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDictEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DictEntry" nillable="true" type="tns:DictEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DictEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DoLogon">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Logon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoLogonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoLogonResult" type="tns:ResponseUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseUser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DoLogoff">
+        <s:complexType />
+      </s:element>
+      <s:element name="DoLogoffResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DoLogoffResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadFullLine">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadFullLineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadFullLineResult" type="tns:ResponseLine" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseLine">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LineDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sports" type="tns:ArrayOfSport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Sport" nillable="true" type="tns:Sport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Sport">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Championships" type="tns:ArrayOfChampionship" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfChampionship">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Championship" nillable="true" type="tns:Championship" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Championship">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Games" type="tns:ArrayOfGame" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CommentDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGame">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Game" nillable="true" type="tns:Game" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Game">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LineNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GameDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Player1" type="tns:Player" />
+          <s:element minOccurs="0" maxOccurs="1" name="Player2" type="tns:Player" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LiveComment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrintComment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Flags" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Events" type="tns:ArrayOfEvent" />
+          <s:element minOccurs="0" maxOccurs="1" name="Results" type="tns:ArrayOfResult" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodNr" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodStopTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Player">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Event" nillable="true" type="tns:Event" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Event">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Allowance" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Score1" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Score2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodNr" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Odd" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsLive" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Result" nillable="true" type="tns:Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodNr" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Score1" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Score2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Score3" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadGame">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadGameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadGameResult" type="tns:ResponseGame" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseGame">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseCode">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Game" type="tns:Game" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResponseCode">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadEventResult" type="tns:ResponseEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseEvent">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseCode">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Event" type="tns:Event" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="RegisterUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterUserResult" type="tns:ResponseCode" />
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChangeUserResult" type="tns:ResponseCode" />
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadUserBets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Statuses" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Mode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadUserBetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadUserBetsResult" type="tns:ResponseUserBets" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseUserBets">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseCode">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Bets" type="tns:ArrayOfUserBet" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfUserBet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserBet" nillable="true" type="tns:UserBet" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserBet">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Allowance" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Score1" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Score2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodNr" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Odd" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NrWinEvents" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BetSum" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="BetCurrency" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLive" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Details" type="tns:ArrayOfUserBet" />
+          <s:element minOccurs="1" maxOccurs="1" name="GameId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GameDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="GameComment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Player1Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Player2Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ChampionshipName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SportName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrencyRates">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCurrencyRatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrencyRatesResult" type="tns:ResponseCurrencyRates" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseCurrencyRates">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseCode">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Rates" type="tns:ArrayOfCurrency" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCurrency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Currency" nillable="true" type="tns:Currency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Currency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsUsed" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rate" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadResults">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Statuses" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SportIds" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="Mode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadResultsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadResultsResult" type="tns:ResponseLine" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeSimpleBet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Event" type="tns:Event" />
+            <s:element minOccurs="1" maxOccurs="1" name="BetSum" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="BetCurrency" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeSimpleBetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MakeSimpleBetResult" type="tns:ResponseMakeBet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseMakeBet">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseCode">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UserBet" type="tns:UserBet" />
+              <s:element minOccurs="1" maxOccurs="1" name="Flags" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Limit" type="s:float" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReqId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="MakeComboBet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Events" type="tns:ArrayOfEvent" />
+            <s:element minOccurs="1" maxOccurs="1" name="NrWinEvents" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="BetSum" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="BetCurrency" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeComboBetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MakeComboBetResult" type="tns:ResponseMakeBet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckBetRequestStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReqId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckBetRequestStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckBetRequestStatusResult" type="tns:ResponseBetRequestStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseBetRequestStatus">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseCode">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetBetRestriction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GameId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="NrEvents" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="NrWinEvents" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="BetCurrency" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBetRestrictionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBetRestrictionResult" type="tns:ResponseBetRestiction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseBetRestiction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseCode">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaxGain" type="s:float" />
+              <s:element minOccurs="1" maxOccurs="1" name="MinBet" type="s:float" />
+              <s:element minOccurs="1" maxOccurs="1" name="MaxBet" type="s:float" />
+              <s:element minOccurs="1" maxOccurs="1" name="Flags" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CheckEFUCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PartNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SeqNo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckEFUCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckEFUCardResult" type="tns:ResponseCode" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateEFUCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PartNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SeqNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PIN" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateEFUCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActivateEFUCardResult" type="tns:ResponseAddMoney" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseAddMoney">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseCode">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="AddSum" type="s:float" />
+              <s:element minOccurs="0" maxOccurs="1" name="AddCurerncy" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:float" />
+              <s:element minOccurs="0" maxOccurs="1" name="Curerncy" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ReadAccountHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="OpCodes" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadAccountHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadAccountHistoryResult" type="tns:ResponseAccountHistory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseAccountHistory">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseCode">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Records" type="tns:ArrayOfAHRecord" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfAHRecord">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AHRecord" nillable="true" type="tns:AHRecord" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AHRecord">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OpDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="OpCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OpSum" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rate" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReqId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BetId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankDepartment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankBenefitiary" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientComment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdminComment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddSendPayRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PaySystem" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PaySum" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="PayCurrency" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSendPayRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddSendPayRequestResult" type="tns:ResponseSendPayRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseSendPayRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseCode">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConnectSoapIn">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="ConnectSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoLogonSoapIn">
+    <wsdl:part name="parameters" element="tns:DoLogon" />
+  </wsdl:message>
+  <wsdl:message name="DoLogonSoapOut">
+    <wsdl:part name="parameters" element="tns:DoLogonResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoLogoffSoapIn">
+    <wsdl:part name="parameters" element="tns:DoLogoff" />
+  </wsdl:message>
+  <wsdl:message name="DoLogoffSoapOut">
+    <wsdl:part name="parameters" element="tns:DoLogoffResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadFullLineSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadFullLine" />
+  </wsdl:message>
+  <wsdl:message name="ReadFullLineSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadFullLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadGameSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadGame" />
+  </wsdl:message>
+  <wsdl:message name="ReadGameSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadEventSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadEvent" />
+  </wsdl:message>
+  <wsdl:message name="ReadEventSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterUserSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterUser" />
+  </wsdl:message>
+  <wsdl:message name="RegisterUserSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeUser" />
+  </wsdl:message>
+  <wsdl:message name="ChangeUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadUserBetsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadUserBets" />
+  </wsdl:message>
+  <wsdl:message name="ReadUserBetsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadUserBetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyRatesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrencyRates" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyRatesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrencyRatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadResultsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadResults" />
+  </wsdl:message>
+  <wsdl:message name="ReadResultsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeSimpleBetSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeSimpleBet" />
+  </wsdl:message>
+  <wsdl:message name="MakeSimpleBetSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeSimpleBetResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeComboBetSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeComboBet" />
+  </wsdl:message>
+  <wsdl:message name="MakeComboBetSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeComboBetResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckBetRequestStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckBetRequestStatus" />
+  </wsdl:message>
+  <wsdl:message name="CheckBetRequestStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckBetRequestStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBetRestrictionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBetRestriction" />
+  </wsdl:message>
+  <wsdl:message name="GetBetRestrictionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBetRestrictionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckEFUCardSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckEFUCard" />
+  </wsdl:message>
+  <wsdl:message name="CheckEFUCardSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckEFUCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActivateEFUCardSoapIn">
+    <wsdl:part name="parameters" element="tns:ActivateEFUCard" />
+  </wsdl:message>
+  <wsdl:message name="ActivateEFUCardSoapOut">
+    <wsdl:part name="parameters" element="tns:ActivateEFUCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadAccountHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:ReadAccountHistory" />
+  </wsdl:message>
+  <wsdl:message name="ReadAccountHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:ReadAccountHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSendPayRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSendPayRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddSendPayRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSendPayRequestResponse" />
+  </wsdl:message>
+  <wsdl:portType name="EFUSoap">
+    <wsdl:operation name="GetVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns current software version</wsdl:documentation>
+      <wsdl:input message="tns:GetVersionSoapIn" />
+      <wsdl:output message="tns:GetVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Initialize session</wsdl:documentation>
+      <wsdl:input message="tns:ConnectSoapIn" />
+      <wsdl:output message="tns:ConnectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoLogon">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Logon</wsdl:documentation>
+      <wsdl:input message="tns:DoLogonSoapIn" />
+      <wsdl:output message="tns:DoLogonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoLogoff">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">End session</wsdl:documentation>
+      <wsdl:input message="tns:DoLogoffSoapIn" />
+      <wsdl:output message="tns:DoLogoffSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadFullLine">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read Complete Line</wsdl:documentation>
+      <wsdl:input message="tns:ReadFullLineSoapIn" />
+      <wsdl:output message="tns:ReadFullLineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadGame">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read Game</wsdl:documentation>
+      <wsdl:input message="tns:ReadGameSoapIn" />
+      <wsdl:output message="tns:ReadGameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read Event</wsdl:documentation>
+      <wsdl:input message="tns:ReadEventSoapIn" />
+      <wsdl:output message="tns:ReadEventSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Register New User</wsdl:documentation>
+      <wsdl:input message="tns:RegisterUserSoapIn" />
+      <wsdl:output message="tns:RegisterUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Change User Profile</wsdl:documentation>
+      <wsdl:input message="tns:ChangeUserSoapIn" />
+      <wsdl:output message="tns:ChangeUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadUserBets">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read User Bets</wsdl:documentation>
+      <wsdl:input message="tns:ReadUserBetsSoapIn" />
+      <wsdl:output message="tns:ReadUserBetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyRates">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Currency Rates</wsdl:documentation>
+      <wsdl:input message="tns:GetCurrencyRatesSoapIn" />
+      <wsdl:output message="tns:GetCurrencyRatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadResults">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read Game Results</wsdl:documentation>
+      <wsdl:input message="tns:ReadResultsSoapIn" />
+      <wsdl:output message="tns:ReadResultsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeSimpleBet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Make Simple Bet</wsdl:documentation>
+      <wsdl:input message="tns:MakeSimpleBetSoapIn" />
+      <wsdl:output message="tns:MakeSimpleBetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeComboBet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Make Combination Bet</wsdl:documentation>
+      <wsdl:input message="tns:MakeComboBetSoapIn" />
+      <wsdl:output message="tns:MakeComboBetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckBetRequestStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Bet Request Status</wsdl:documentation>
+      <wsdl:input message="tns:CheckBetRequestStatusSoapIn" />
+      <wsdl:output message="tns:CheckBetRequestStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBetRestriction">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get user bet restictions</wsdl:documentation>
+      <wsdl:input message="tns:GetBetRestrictionSoapIn" />
+      <wsdl:output message="tns:GetBetRestrictionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckEFUCard">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Eurofootball payment card</wsdl:documentation>
+      <wsdl:input message="tns:CheckEFUCardSoapIn" />
+      <wsdl:output message="tns:CheckEFUCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivateEFUCard">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Activate Eurofootball payment card</wsdl:documentation>
+      <wsdl:input message="tns:ActivateEFUCardSoapIn" />
+      <wsdl:output message="tns:ActivateEFUCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadAccountHistory">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read user account history</wsdl:documentation>
+      <wsdl:input message="tns:ReadAccountHistorySoapIn" />
+      <wsdl:output message="tns:ReadAccountHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSendPayRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add Request To Send Money Through Online Payment System</wsdl:documentation>
+      <wsdl:input message="tns:AddSendPayRequestSoapIn" />
+      <wsdl:output message="tns:AddSendPayRequestSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EFUSoap" type="tns:EFUSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/Connect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLogon">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/DoLogon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLogoff">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/DoLogoff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadFullLine">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadFullLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadGame">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEvent">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/RegisterUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUser">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ChangeUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadUserBets">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadUserBets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyRates">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/GetCurrencyRates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResults">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadResults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeSimpleBet">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/MakeSimpleBet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeComboBet">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/MakeComboBet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckBetRequestStatus">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/CheckBetRequestStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBetRestriction">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/GetBetRestriction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEFUCard">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/CheckEFUCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateEFUCard">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ActivateEFUCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAccountHistory">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadAccountHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSendPayRequest">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/AddSendPayRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EFUSoap12" type="tns:EFUSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVersion">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/GetVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/Connect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLogon">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/DoLogon" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLogoff">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/DoLogoff" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadFullLine">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadFullLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadGame">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEvent">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadEvent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/RegisterUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeUser">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ChangeUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadUserBets">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadUserBets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyRates">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/GetCurrencyRates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadResults">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadResults" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeSimpleBet">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/MakeSimpleBet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeComboBet">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/MakeComboBet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckBetRequestStatus">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/CheckBetRequestStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBetRestriction">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/GetBetRestriction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckEFUCard">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/CheckEFUCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateEFUCard">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ActivateEFUCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadAccountHistory">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadAccountHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSendPayRequest">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/AddSendPayRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EFU">
+    <wsdl:port name="EFUSoap" binding="tns:EFUSoap">
+      <soap:address location="http://91.208.149.36/EFUService/EFU.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EFUSoap12" binding="tns:EFUSoap12">
+      <soap12:address location="http://91.208.149.36/EFUService/EFU.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

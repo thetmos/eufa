@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<sport code="31">
+		<main>
+            <group>
+                <bet TypeCode="6"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="7"  RU="TM" AM="TM" EN="TM" allowance="" total="" score1="" score2="" periodnr="" enabled="false"/>
+            </group>
+            <group>
+                <bet TypeCode="4"  RU="1X" AM="1X" EN="1X" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>                
+                <bet TypeCode="2"  RU="X2" AM="X2" EN="X2" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="18"  RU="12" AM="12" EN="12" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+            </group>
+            <group>
+                <bet TypeCode="2"  RU="П2" AM="p2" EN="W2" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="1" RU="П1" AM="P1" EN="W1" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="3"  RU="X" AM="X" EN="X" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+            </group>
+            <group>
+				<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+			</group>
+			<group  titles="1">
+				<bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+				<bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+			</group>
+		</main>
+		<additional>
+			<part RU="СТАТИСТИКА" AM="" EN="">		
+				<section RU="Голы" AM="111" EN="goals">
+					<group RU="1-й гол (минута)" AM="0111" EN="1-st goal (minute)">
+						<bet TypeCode="" allowance="" total="" score1="" score2="" periodnr=""/>
+					</group>		
+				</section>
+				<section RU="Счет" AM="333" EN="score">
+					<group RU="название" AM="" EN="">
+						<bet TypeCode="" allowance="" total="" score1="" score2="" periodnr=""/>
+						<bet TypeCode="" allowance="" total="" score1="" score2="" periodnr=""/>
+					</group>	
+					<group RU="название" AM="" EN="">
+						<bet TypeCode="" allowance="" total="" score1="" score2="" periodnr=""/>
+						<bet TypeCode="" allowance="" total="" score1="" score2="" periodnr=""/>
+					</group>				
+				</section>
+			</part>			
+		</additional>
+	</sport>
+
+
+	<sport code="1">
+		<main>
+            <group>
+                <bet TypeCode="1" RU="В1" AM="P1" EN="W1" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="3" RU="X" AM="X" EN="X" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="2" RU="В2" AM="p2" EN="W2" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+            </group>
+            <group>
+                <bet TypeCode="4"  RU="1X" AM="1X" EN="1X" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="18" RU="12" AM="12" EN="12" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="5"  RU="2Х" AM="X2" EN="X2" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+            </group>
+            <group>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+            </group>
+            <group  titles="1">
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+            </group>
+            <group>
+                <bet TypeCode="7"  RU="T" AM="T" EN="T" allowance="" total="" score1="" score2="" periodnr="" enabled="false"/>
+                <bet TypeCode="6"  RU="TB" AM="TB" EN="TB" allowance="" total="1" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="7"  RU="TM" AM="TM" EN="TM" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+            </group>
+		</main>
+		<additional>
+		<part RU="Основные события" AM="" EN="">
+			<section RU="Дополнительные форы" AM="" EN="">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>
+			<section RU="Дополнительные тоталы" AM="" EN="goals">
+				<group RU="р1" AM="" EN="">
+					<bet TypeCode="6"  RU="TB" AM="TB" EN="TB" allowance="" total="1" score1="" score2="" periodnr=""/>
+					<bet TypeCode="7"  RU="TB" AM="TB" EN="TB" allowance="" total="1" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="р2" AM="" EN="">
+					<bet TypeCode="603"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="604"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="р3" AM="" EN="">
+					<bet TypeCode="605"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="606"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="р4" AM="" EN="">
+					<bet TypeCode="607"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="608"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="р5" AM="" EN="">
+					<bet TypeCode="641"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="642"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="р5" AM="" EN="">
+					<bet TypeCode="663"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="664"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="р1" AM="" EN="">
+					<bet TypeCode="16"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="17"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>
+			<section RU="Сколько голов забъет команда 1" AM="" EN="goals">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="9"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="10"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>
+			<section RU="Сколько голов забъет команда 2" AM="" EN="goals">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="12"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="13"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>
+			<section RU="Какая из команд пройдет в следующий круг" AM="" EN="goals">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="381"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="382"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>
+			<section RU="Забъют ли команды гол" AM="" EN="goals">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="30"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="65"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="31"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="66"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="32"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="67"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="618"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="619"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="634"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="635"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="601"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="602"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>
+			<section RU="Какая из команд забъет 1-й гол" AM="" EN="goals">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="33"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="88"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="34"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>					
+				</group>
+			</section>
+			<section RU="Время 1-го гола" AM="" EN="goals">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="37"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="37"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="37"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="383"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>
+			<section RU="Время 2-го гола" AM="" EN="goals">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="68"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="68"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="68"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="89"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>
+			<section RU="Время последнего гола" AM="" EN="goals">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="38"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="38"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="38"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="90"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>
+			<section RU="Какая из команд забъет последний гол" AM="" EN="goals">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="35"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="36"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="91"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>
+			<section RU="Победа команды 1" AM="333" EN="score">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="609" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="610" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>	
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="611" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="612" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="613" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="614" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="615" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="616" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="621" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="622" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>			
+			<section RU="Исход матча и угловые" AM="333" EN="score">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="647" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="648" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>	
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="671" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="672" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="657" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="658" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>			
+			<section RU="Исход матча и пенальти/удаления" AM="333" EN="score">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="649" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="673" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>	
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="659" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="674" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="650" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="675" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="660" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="676" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>			
+			<section RU="Победа команды 2" AM="333" EN="score">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="625" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="626" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>	
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="627" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="628" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="629" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="630" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="631" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="632" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="637" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="638" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>			
+			<section RU="Какая из команд начнет игру с центра поля" AM="333" EN="score">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="78" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="79" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>			
+			<section RU="Пенальти" AM="333" EN="score">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="40" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="63" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>			
+			<section RU="Удаления" AM="333" EN="score">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="83" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="84" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="41" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="64" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>			
+			<section RU="Тайм-матч" AM="333" EN="score">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="51" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="52" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="53" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="54" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="55" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="56" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="57" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="58" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="59" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>			
+			<section RU="Точный счет матча" AM="333" EN="score">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="15" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="15" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="15" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="15" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="15" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="15" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="15" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="15" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="15" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="19" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>			
+		</part>
+		<part RU="СТАТИСТИКА" AM="" EN="">
+			<section RU="Угловые: Исходы" AM="" EN="">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="231" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="233" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="232" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>
+			</section>
+			<section RU="Угловые: Исходы с учетом форы" AM="" EN="">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="246" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="247" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>
+			<section RU="Угловые: Тотал" AM="" EN="">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="236" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="237" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>
+			<section RU="Угловые: Сколько угловых реализует команда 1" AM="" EN="">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="239" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="240" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>
+			<section RU="Угловые: Сколько угловых реализует команда 2" AM="" EN="">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="242" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="243" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>
+			<section RU="Угловые: 1-й угловой" AM="" EN="">
+				<group RU="название" AM="" EN="">
+					<bet TypeCode="75" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="76" allowance="" total="" score1="" score2="" periodnr=""/>
+					<bet TypeCode="77" allowance="" total="" score1="" score2="" periodnr=""/>
+				</group>				
+			</section>			
+		</part>
+		</additional>
+	</sport>
+
+	<!-- ?? ????????? -->
+	<sport code="-1">
+        <main>
+            <group>
+                <bet TypeCode="1" RU="П1" AM="P1" EN="W1" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="3"  RU="X" AM="X" EN="X" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="2"  RU="П2" AM="p2" EN="W2" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+            </group>
+            <group>
+                <bet TypeCode="4"  RU="1X" AM="1X" EN="1X" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="18"  RU="12" AM="12" EN="12" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="2"  RU="X2" AM="X2" EN="X2" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+            </group>
+            <group>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="86"  RU="Ф1" AM="F1" EN="F1" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>           
+            </group>
+            <group  titles="1">
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="87"  RU="Ф2" AM="_f2" EN="F2" allowance="1" total="" score1="" score2="" periodnr="" enabled="true"/>            
+            </group>
+            <group>
+                <bet TypeCode="6"  RU="T" AM="T" EN="T" allowance="" total="" score1="" score2="" periodnr="" enabled="false"/>
+                <bet TypeCode="6"  RU="TB" AM="TB" EN="TB" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+                <bet TypeCode="7"  RU="TM" AM="TM" EN="TM" allowance="" total="" score1="" score2="" periodnr="" enabled="true"/>
+            </group>
+        </main>
+
+		<additional>
+			<part RU="1" AM="" EN="">
+				<section RU="Голы" AM="111" EN="goals">
+					<group RU="1-й гол (минута)" AM="0111" EN="1-st goal (minute)">
+						<bet TypeCode="" allowance="" total="" score1="" score2="" periodnr=""/>
+					</group>
+				</section>
+				<section RU="Счет" AM="333" EN="score">
+					<group RU="название" AM="" EN="">
+						<bet TypeCode="" allowance="" total="" score1="" score2="" periodnr=""/>
+						<bet TypeCode="" allowance="" total="" score1="" score2="" periodnr=""/>
+					</group>
+					<group RU="название" AM="" EN="">
+						<bet TypeCode="" allowance="" total="" score1="" score2="" periodnr=""/>
+						<bet TypeCode="" allowance="" total="" score1="" score2="" periodnr=""/>
+					</group>
+				</section>
+			</part>
+		</additional>
+	</sport>
+</root>

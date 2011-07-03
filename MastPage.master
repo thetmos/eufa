@@ -1,0 +1,522 @@
+﻿<%@ Master Language="VB" CodeFile="MastPage.master.vb" Inherits="MastPage"%>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Еврофутбол</title>
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.alerts.css" />
+<%-- 
+<asp:ContentPlaceHolder ID="CPMasterLinks" runat="server" Visible="false" >
+<link rel="stylesheet" type="text/css" href="css/Rules.css" />
+<link rel="stylesheet" type="text/css" href="css/Eurofootball.css">
+</asp:ContentPlaceHolder>
+--%>
+
+<script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.ui.draggable.js"></script>
+<script type="text/javascript" src="js/jquery.alerts.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+</head>
+
+<body>
+<form id="form1" runat="server">
+<ajaxToolkit:ToolkitScriptManager runat="Server" EnableScriptGlobalization="true"
+		EnableScriptLocalization="true" ID="ScriptManager1" />
+<div id="page_wrapper">
+<div id="layer_bg" class="layer_fixed "><div class="layer_image"></div></div>
+	<div id="header">
+
+		<div id="header_top">
+			<h1><a href="default.aspx">Еврофутбол</a></h1>
+			<div id="login_registration">
+				<asp:MultiView ID="mvuserlogon" runat="server" ActiveViewIndex="0">
+					<asp:View runat="server" ID="reg_form">
+						<div class="register_box">
+							<h2>В первый раз?</h2>
+							<a href="registration.aspx">Регистрация</a>
+						</div>
+
+						<div class="login_box">
+							<h2>Уже играю</h2>
+							<form action="account.aspx">
+							<ul>
+								<li class="input_fields">
+									<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Имя:</label> <%--<input class="textfield" type="text" />--%><asp:TextBox ID="txtlogon" CssClass="textfield"
+										runat="server"></asp:TextBox>
+									<label>Пароль:</label> <%--<input class="textfield" type="password" />--%><asp:TextBox ID="txtpassword" CssClass="textfield"
+										runat="server" TextMode="Password"></asp:TextBox>
+
+								</li>
+								<li><%--<input class="login_button" type="submit" value="вход" />--%><asp:Button ID="btnlogon" CssClass="login_button"
+										runat="server" Text="вход" /></li>
+								<li><a class="forgot_pass" href="#">забыли пароль?</a></li>
+							</ul>
+							</form>
+						</div>                        
+					</asp:View>
+					<asp:View runat="server" ID="registered">
+						<div class="my_account">
+							<h2>Добро пожаловать! <span><%--Арсен Мерабян--%><asp:Label ID="lblfirstname" runat="server" Text=""></asp:Label>&nbsp;<asp:Label
+									ID="lbllastname" runat="server" Text=""></asp:Label></span></h2>
+							<div class="my_account_links">
+								<a class="account_link" href="account_details.aspx">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Мой счет</a>
+
+								<%--<a class="add_money_link" href="addmoney.aspx">Пополнить счет</a>
+								<a class="remove_money_link" href="withdraw.aspx">Снять деньги</a>--%>
+							</div>
+						</div>
+				
+						<div class="logout_box">
+							<h2>Выйти</h2>
+							<%--<a class="logout_link" href="default.aspx">выход</a>--%>
+							<asp:Button ID="btnlogout" CssClass="login_button"
+										runat="server" Text="выход" />
+
+						</div>                      
+					</asp:View>
+				</asp:MultiView>
+			</div>
+		</div>
+
+		<div id="header_bottom">
+			<ul class="top_menu">
+				<li runat="server" id="lidefault"><a href="default.aspx">Ставки</a></li>
+				<li class="live" runat="server" id="lilivebetting"><a href="live.aspx"><strong>LIVE</strong> ставки</a></li>
+				<li runat="server" id="liresults"><a href="results.aspx">Результаты</a></li>
+				<li runat="server" id="lirules"><a href="rules.aspx">Правила</a></li>
+
+				<li runat="server" id="lihelp"><a href="help.aspx">Помощь</a></li>
+			</ul>
+			<ul class="language_bar">
+				<li class="selected"><a href="#">РУС</a></li>
+				<li><a href="#">HAJ</a></li>
+				<li><a href="#">ENG</a></li>
+			</ul>
+
+		</div>
+	</div>
+		<div id="top_actions_bar">
+			<asp:MultiView ID="mvtop_actions_bar" runat="server" ActiveViewIndex="0">
+				<asp:View runat="server" ID="events">
+					<div class="events_header_container">
+						
+					</div>                    
+				</asp:View>
+				<asp:View runat="server" ID="balance">
+					<div class="top_current_balance">
+						<span>Ваш текущий баланс</span> <strong><%--125,000.00 AMD--%><asp:Label ID="lblmoney_sum" runat="server" Text=""></asp:Label> <asp:Label
+								ID="lblmoney_currency" runat="server" Text=""></asp:Label></strong>
+					</div>                    
+				</asp:View>
+			</asp:MultiView>
+
+		<div class="top_events_filter">
+			
+		</div>
+
+		<div class="coupon_container">
+			<div class="coupon_header_container">
+				<h2>В купоне <span id="coupon_counter" style="display:inline;">0</span> событий<%--Купон--%></h2>                
+			</div>
+			<div id="coupon_content_container" class="coupon_content_container">
+				<img id="coupon_content_bg" class="coupon_content_bg" src="images/coupon_content_background.png" />
+				<div id="coupon_content" class="coupon_content">
+					<%--bvt --%>
+					<form method="post" action="default.aspx">                
+					<%-- /bvt --%>
+						<ul>
+							<%--<li id="coupon_item_normal" class="selected">Ординар</li>--%>
+							<li id="coupon_item_express" class="selected">Экспресс</li>
+							<li id="coupon_item_system" style="cursor:default;">Система</li>
+						</ul>
+						<div id="coupon_item_normal_content" class="coupon_item_content">
+							<!--
+							<div class="item">
+								<span class="remove"></span>
+								<label><input class="checkbox" type="checkbox" /> Милан - Интер Милан</label>
+								<div class="selection">Быбор: <strong>Локомотив Москва</strong> <span>2.90</span></div>
+							</div>
+							<div class="item">
+								<span class="remove"></span>
+								<label><input class="checkbox" type="checkbox" /> Милан - Интер Милан</label>
+								<div class="selection">Быбор: <strong>Локомотив Москва</strong> <span>2.90</span></div>
+							</div>
+							-->
+						</div>
+						<%--<div id="coupon_item_express_content" class="coupon_item_content">
+						
+						</div>
+						<div id="coupon_item_system_content" class="coupon_item_content">
+						
+						</div>--%>
+
+	<%--					<div class="coupon_actions">
+							<label>Сумма ставки <input class="textfield" type="text" value="0.00" /></label>
+							<div class="possible_winning">Возможный выигрыш <span>0.00 EUR</span></div>
+							<input class="next_button" type="submit" value="Далее" />
+						</div>--%>
+						<div class="coupon_actions">
+                            <div class="system_additional" id="system_additional">
+                                <%--<label>Событий должно выиграть <input class="textfield" id="winEventsCounter" name="winEventsCounter" type="text" value="0" /></label>--%>
+                                <label><input type="radio" id="bbb"><div class="div_coupon_counter"></div></label>
+                            </div>
+							<div class="sum"><label style="margin-top: 5px;">Сумма ставки <input class="textfield" name="betSum" id="betSum" type="text" value="0.00" /></label></div>
+							<div class="possible_winning">Возможный выигрыш <span>0.00 EUR</span></div>                        
+							<input type="hidden" name="bet_submit" value="1" />
+							<input class="next_button" id="next_button" type="button" value="Далее" />                                                    
+						</div>
+					<%--bvt --%>
+					</form>
+					<%-- /bvt --%>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div id="main_content" runat="server">
+		
+			<asp:MultiView ID="mvleft_actions" runat="server" ActiveViewIndex="0">
+				<asp:View runat="server" ID="default">
+                <div id="left_actions">
+					<%--<ul id="sports_list"></ul>--%>
+					<ul id="sports_list">
+						<li>
+							<a id="allEventsToSHow" href="#">Все события (<asp:Label ID="lblcountGames" runat="server" Text=""></asp:Label>)</a>
+						<%--<asp:ListView ID="lvallevents" runat="server" ItemPlaceholderID="Sports_leftActionsIplaceholder">
+							<LayoutTemplate>
+								<span id="Sports_leftActionsIplaceholder" runat="server"></span>
+							</LayoutTemplate>
+							<ItemTemplate>            	                        		                        
+								<div class="sub_actions">
+									<asp:ListView ID="lvAEchampscountries" runat="server" ItemPlaceholderID="AEchampscountriesiplaceholder" DataSource='<%#Eval("CountriesDict") %>' >
+										<LayoutTemplate>
+											<span id="AEchampscountriesiplaceholder" runat="server"></span>
+										</LayoutTemplate>
+										<ItemTemplate>
+											<div class="region">
+												<h4><%# Eval("Key")%> (<%# CType(Eval("Value"), List(Of WebReference.Championship)).Count.ToString()%>)</h4>
+												<ul>
+													<asp:ListView ID="lvAEChampionhips" runat="server" ItemPlaceholderID="AEchampionhipsiplaceholder" DataSource='<%# Eval("Value") %>'>
+														<LayoutTemplate>
+															<span id="AEchampionhipsiplaceholder" runat="server"></span>
+														</LayoutTemplate>
+														<ItemTemplate>
+														</ItemTemplate>
+													</asp:ListView>                                                    
+												</ul>
+											</div>
+										</ItemTemplate>
+									</asp:ListView>	
+								</div>						                			                          
+							</ItemTemplate>
+						</asp:ListView>--%>  
+							</li>
+						<asp:ListView ID="lvSports_leftActions" runat="server" ItemPlaceholderID="Sports_leftActionsIplaceholder">
+							<LayoutTemplate>
+								<span id="Sports_leftActionsIplaceholder" runat="server"></span>
+							</LayoutTemplate>
+							<ItemTemplate>            
+							<li id="<%# Eval("Id")%>">
+								<a href="#"><%# Eval("Name")%></a>
+								<div class="sub_actions">
+								<asp:ListView ID="lvchampscountries" runat="server" ItemPlaceholderID="champscountriesiplaceholder" DataSource='<%#Eval("CountriesDict") %>' >
+									<LayoutTemplate>
+										<span id="champscountriesiplaceholder" runat="server"></span>
+									</LayoutTemplate>
+									<ItemTemplate>
+										<div class="region">
+											<h4><%# IIf(Eval("Key") <> "DONTVIEW", Eval("Key"), "")%> <%# IIf(Eval("Key") <> "DONTVIEW", "(" + CType(Eval("Value"), List(Of WebReference.Championship)).Count.ToString() + ")", "")%></h4>
+											<ul>
+												<asp:ListView ID="lvChampionhips" runat="server" ItemPlaceholderID="championhipsiplaceholder" DataSource='<%# Eval("Value") %>'>
+													<LayoutTemplate>
+														<span id="championhipsiplaceholder" runat="server"></span>
+													</LayoutTemplate>
+													<ItemTemplate>
+														<%--<li><input id="<%# Eval("Id")%>_chkbx" type="checkbox"> <label id="<%# Eval("Id")%>" for="<%# Eval("Id")%>_chkbx"><%# Eval("Name")%></label></li>--%>
+														<li><input type="checkbox" class="chkbxleftact" id="<%# Eval("Id")%>"/><label id="<%# Eval("Id")%>"><%# Eval("Name")%></label></li>
+													</ItemTemplate>
+												</asp:ListView>                                                    
+											</ul>
+										</div>
+									</ItemTemplate>
+								</asp:ListView>					                
+								</div>
+							</li>   
+							</ItemTemplate>
+						</asp:ListView>  		               
+					</ul>            
+					<%--<input id="0_chkbx" type="checkbox"> <label id="Label1" for=0_chkbx">000</label>
+					<label id="0"><input type="checkbox">aaa0</label>
+					<label><input type="checkbox">aaa1</label>  --%>  			       
+					<%--<input id="update_bets_list" class="update_button" type="button" value="Обновить" />--%>
+					 <%--<label id="2"><input type="checkbox">aaa2</label>
+					 <label><input type="checkbox">aaa3</label>--%>
+				</div>					   
+				</asp:View>                
+				<asp:View runat="server" ID="my_account">
+                <div id="left_actions">
+					<div class="my_account">
+
+						<h2>Мой Профиль</h2>
+						<ul>
+							<li runat="server" id="limyaccount"><a class="account_link" href="account_details.aspx">Мой счет</a>
+								<ul>
+									<li runat="server" id="limyacc"><a class="account_link" href="account_details.aspx">Мои данные</a></li>
+									<li runat="server" id="liacchist"><a class="account_link" href="account_history.aspx">История счета</a></li>
+									<li runat="server" id="lirathist"><a class="account_link" href="rates_history.aspx">История ставок</a></li>
+								</ul>
+							</li>
+							<li><a class="account_link" href="addmoney.aspx">Пополнить счет</a></li>
+							<li><a class="account_link" href="withdraw.aspx">Снять деньги</a></li>
+							<li><a class="account_link" href="payments.aspx">Выплаты</a></li>
+							<li><a class="account_link" href="payment_cards.aspx">Карты оплаты</a></li>
+						</ul>
+
+					</div>
+                </div>
+				</asp:View>
+
+				<asp:View runat="server" ID="results">
+                <div id="left_actions">
+					<div class="results_top_filter">
+						<h3>Дата</h3>
+
+						<div class="date_filter" id="date_filterId">
+							<asp:TextBox ID="date_filter_input" CssClass="dateFilterInput" runat="server" readonly="True"></asp:TextBox><%--<input runat="server" id="date_filter_input" type="text" value="" readonly="readonly" />--%>
+							<%--<asp:TextBox ID="divdateFilterInput" CssClass="divdateFilterInput" runat="server"></asp:TextBox>--%>
+							<%--<div id="divdateFilterInput" name="" class="divdateFilterInput" runat="server"></div>--%>
+							<input type="hidden" id="divdateFilterInput" class="divdateFilterInput" name="divdateFilterInput" value=""/>
+						</div>                                                                      
+						<ajaxToolkit:CalendarExtender ID="CalendarExtender1" OnClientDateSelectionChanged="insertDateIndiv" runat="server" TargetControlID="date_filter_input" Format="dd.MM.yyyy">
+						</ajaxToolkit:CalendarExtender>
+						<h3>Поиск</h3>
+						<div class="search_filter">
+							<input class="textfield" type="text" /><asp:Button ID="btnsearch" CssClass="search_button" runat="server" Text="OK" /><%--<input class="search_button" type="submit" value="OK" />--%>
+						</div>
+					</div>
+			
+					<ul id="sports_list">
+						<%--<li><a href="#">Все события (1346)</a></li>
+
+						<li><a href="#">Баскетбол</a></li>
+						<li><a href="#">Бейсбол</a></li>
+						<li><a href="#">Бильярд. Снукер</a></li>
+						<li><a href="#">Бокс</a></li>
+						<li><a href="#">Водное поло</a></li>
+						<li><a href="#">Волейбол</a></li>
+
+						<li><a href="#">Гандбол</a></li>
+						<li><a href="#">Пляжный футбол</a></li>
+						<li><a href="#">Регби</a></li>
+						<li><a href="#">Теннис</a></li>
+						<li class="selected"><a href="#">Футбол</a>
+							<div class="sub_actions">
+
+								<div class="region">
+									<h4>International</h4>
+									<ul>
+										<li><input id="italy_series_a" type="checkbox" /> <label for="italy_series_a">Италия  Серия А</label></li>
+										<li><input id="club_friendlies_10" type="checkbox" /> <label for="club_friendlies_10">Club Friendlies (10)</label></li>
+									</ul>
+
+								</div>
+								<div class="region">
+									<h4>Argentina</h4>
+									<ul>
+										<li><input id="primera_division_22" type="checkbox" /> <label for="primera_division_22">Primera Division (22)</label></li>
+									</ul>
+								</div>
+
+								<div class="region">
+									<h4>Brazil</h4>
+									<ul>
+										<li><input id="brasileiro_a_190" type="checkbox" /> <label for="brasileiro_a_190">Brasileiro A (190)</label></li>
+										<li><input id="brasileiro_b_60" type="checkbox" /> <label for="brasileiro_b_60">Brasileiro B (60)</label></li>
+									</ul>
+
+								</div>
+							</div>
+						</li>
+						<li><a href="#">Хоккей на траве</a></li>
+						<li><a href="#">Шахматы</a></li>--%>
+						<li>
+						<a id="allEventsToSHow" href="#">Все события (<asp:Label ID="lblcountGames1" runat="server" Text=""></asp:Label>)</a>
+						<%--<asp:ListView ID="lvallevents1" runat="server" ItemPlaceholderID="Sports_leftActionsIplaceholder">
+							<LayoutTemplate>
+								<span id="Sports_leftActionsIplaceholder" runat="server"></span>
+							</LayoutTemplate>
+							<ItemTemplate>            	                        		                        
+								<div class="sub_actions">
+									<asp:ListView ID="lvAEchampscountries" runat="server" ItemPlaceholderID="AEchampscountriesiplaceholder" DataSource='<%#Eval("CountriesDict") %>' >
+										<LayoutTemplate>
+											<span id="AEchampscountriesiplaceholder" runat="server"></span>
+										</LayoutTemplate>
+										<ItemTemplate>
+											<div class="region">
+												<h4><%# Eval("Key")%> (<%# CType(Eval("Value"), List(Of WebReference.Championship)).Count.ToString()%>)</h4>
+												<ul>
+													<asp:ListView ID="lvAEChampionhips" runat="server" ItemPlaceholderID="AEchampionhipsiplaceholder" DataSource='<%# Eval("Value") %>'>
+														<LayoutTemplate>
+															<span id="AEchampionhipsiplaceholder" runat="server"></span>
+														</LayoutTemplate>
+														<ItemTemplate>
+															<li><input id="<%# Eval("Id")%>" type="checkbox"> <label id="<%# Eval("Id")%>" <%--for="<%# Eval("Id")%>"><%# Eval("Name")%></label></li>															
+														</ItemTemplate>
+													</asp:ListView>                                                    
+												</ul>
+											</div>
+										</ItemTemplate>
+									</asp:ListView>	
+								</div>						                			                          
+							</ItemTemplate>
+						</asp:ListView>  --%>
+							</li> 
+						<asp:ListView ID="lvSports_leftActions1" runat="server" ItemPlaceholderID="Sports_leftActionsIplaceholder">
+							<LayoutTemplate>
+								<span id="Sports_leftActionsIplaceholder" runat="server"></span>
+							</LayoutTemplate>
+							<ItemTemplate>            
+							<li id="<%# Eval("Id")%>">
+								<a href="#"><%# Eval("Name")%></a>
+								<div class="sub_actions">
+								<asp:ListView ID="lvchampscountries" runat="server" ItemPlaceholderID="champscountriesiplaceholder" DataSource='<%#Eval("CountriesDict") %>' >
+									<LayoutTemplate>
+										<span id="champscountriesiplaceholder" runat="server"></span>
+									</LayoutTemplate>
+									<ItemTemplate>
+										<div class="region">
+											<h4><%# Eval("Key")%> (<%# CType(Eval("Value"), List(Of WebReference.Championship)).Count.ToString()%>)</h4>
+											<ul>
+												<asp:ListView ID="lvChampionhips" runat="server" ItemPlaceholderID="championhipsiplaceholder" DataSource='<%# Eval("Value") %>'>
+													<LayoutTemplate>
+														<span id="championhipsiplaceholder" runat="server"></span>
+													</LayoutTemplate>
+													<ItemTemplate>
+														<%--<li><input id="" type="checkbox"> <label id="<%# Eval("Id")%>" for=""><%# Eval("Name")%></label></li>	--%>														
+                                                        <li><label id="<%# Eval("Id")%>"><input type="checkbox"><%# Eval("Name")%></label></li>
+													</ItemTemplate>
+												</asp:ListView>                                                    
+											</ul>
+										</div>
+									</ItemTemplate>
+								</asp:ListView>					                
+								</div>
+							</li>   
+							</ItemTemplate>
+						</asp:ListView>
+					</ul>
+					<%--<input class="update_button" type="submit" value="Обновить" />--%>      
+					<asp:Button ID="btnupdate" CssClass="update_button" runat="server" Text="Обновить" />            
+                </div>  
+				</asp:View>
+
+                <asp:View runat="server" ID="live" >
+                <div id="left_actions" class="menu">
+                    <ul id="liveleft">
+                        <asp:ListView ID="lvLiveSports" runat="server" ItemPlaceholderID="LiveSportsiplaceholder" >
+							<LayoutTemplate>
+								<span id="LiveSportsiplaceholder" runat="server"></span>
+							</LayoutTemplate>
+							<ItemTemplate>
+								<li id="<%# Eval("SportId")%>" class="active">
+                                    <a href="#"><%# Eval("Sport")%></a>
+                                    <div class="wrap">                                        
+                                        <asp:ListView ID="lvlivegames" runat="server" ItemPlaceholderID="livegamesiplaceholder" DataSource='<%# Eval("Games") %>'>
+											<LayoutTemplate>
+												<span id="livegamesiplaceholder" runat="server"></span>
+											</LayoutTemplate>
+											<ItemTemplate>
+                                                <div class="futurem" id="<%# Eval("GameId") %>">
+												    <div class="header"><%# Eval("Sportname")%> <span>Today <%# CDate(Eval("Gamedate")).ToString("hh:mm")%></span></div>
+							                        <div class="content">
+								                        <div class="series-title"><%# Eval("Player1")%> - <%# Eval("Player2")%></div>
+								                        <div class="series-single"><%# Eval("Champname")%>, <%# Eval("Country")%></div>
+								                        <div class="footer">ПТ: 0-1 <span>0-1</span></div>
+							                        </div>
+                                                </div>
+											</ItemTemplate>
+										</asp:ListView>							                						                
+                                    </div>
+                                </li>
+							</ItemTemplate>
+						</asp:ListView>
+				        <%--<li><a href="#">Баскетбол</a></li>
+				        <li >
+					        <a href="#">Футбол</a>
+					        <div class="wrap">
+						        <div class="futurem">
+							        <div class="header">Футбол <span>Today 20:45</span></div>
+							        <div class="content">
+								        <div class="series-title">Ювентус - Интер Милан</div>
+								        <div class="series-single">Серия А, Италия</div>
+								        <div class="footer">ПТ: 0-1 <span>0-1</span></div>
+							        </div>
+						        </div>
+						        <div class="futurem active">
+							        <div class="header">Футбол <span>Today 21:45</span></div>
+							        <div class="content">
+								        <div class="series-title">Интер - Лацио</div>
+								        <div class="series-single">Серия А, Италия</div>
+								        <div class="footer">ПТ: 1-0</div>
+							        </div>
+						        </div>
+						        <div class="futurem">
+							        <div class="header">Футбол <span>Today 20:00</span></div>
+							        <div class="content">
+								        <div class="series-title">Ювентус - Интер Милан</div>
+								        <div class="series-single">Серия А, Италия</div>
+								        <div class="footer">ПТ: 1-1</div>
+							        </div>
+						        </div>
+						        <div class="futurem">
+							        <div class="header">Футбол <span>Today 21:45</span></div>
+							        <div class="content">
+								        <div class="series-title">Интер - Лацио</div>
+								        <div class="series-single">Серия А, Италия</div>
+								        <div class="footer"></div>
+							        </div>
+						        </div>
+					        </div>
+				        </li>
+				        <li><a href="#">Теннис</a></li>
+				        <li><a href="#">Бокс</a></li>--%>
+			        </ul>         
+                </div>       
+                </asp:View>
+			</asp:MultiView>
+
+		
+		<div id="content">
+
+<%--''''''''''''''''''''''''''''''''''''''''
+'Page.Culture.ToString() - язык<br />
+'page.errorpage<br />--%>
+
+			<%--<asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>--%>
+	<%--<form id="form1" runat="server">--%>
+	<%--<div>--%>
+            <asp:Label ID="lblmaststat" runat="server" Text=""></asp:Label>
+		<asp:ContentPlaceHolder ID="ContentPlaceHolderMasterMain" runat="server">
+			
+		</asp:ContentPlaceHolder>
+	<%--</div>--%>
+	<%--</form>--%>
+
+<%--''''''''''''''''''''''''''''''''''''''''--%>
+			
+		</div>
+		<div class="breaker"></div>
+		<div id="content_footer"></div>
+	</div>
+</div>
+<div id="page_footer">
+	<div class="content"></div>
+</div>
+</form>
+</body>
+</html>
+
+

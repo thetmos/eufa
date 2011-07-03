@@ -1,0 +1,2145 @@
+html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+strong, sub, sup, tt, var, legend, fieldset {
+	margin: 0;
+	padding: 0;
+}
+img, fieldset {
+	border: 0;
+}
+body, select, input, textarea {
+	font-family: Tahoma, Arial Unicode;
+	font-size: 11px; 
+}
+body {
+	color: #fff;
+}
+ul, ol {
+	list-style: none;
+}
+a {
+	outline-style: none;
+	color: #fff;
+}
+.breaker {
+	clear: both;
+	overflow: hidden;
+}
+
+body {
+	background: #192a3b url(../images/body_background.png) repeat-x 0 0;
+}
+
+
+#page_wrapper {
+	width: 1105px; 
+	margin: 0 auto;
+}
+#page_footer {
+	height: 97px; 
+	background-color: #0a1522;
+}
+#page_footer .content {
+	width: 1105px; height: 39px;
+	margin: 0 auto;
+	background: url(../images/page_footer_content_bg.png) repeat-x 0 0;
+}
+
+#header {
+	height: 136px;
+}
+#header_top {
+	height: 102px;
+}
+#header_top h1 {
+	float: left; display: inline;
+	width: 288px; height: 67px;
+	margin: 15px 0 0 6px;
+	background: url(../images/eurofootball_logo.png) no-repeat 0 0;
+}
+	#header_top h1 a {
+		display: block;
+		width: 288px; height: 67px;
+		text-indent: -10000px;
+	}
+
+/* login registration */
+#login_registration {
+	float: right; 
+	height: 102px;
+}
+#login_registration .register_box {
+	float: left; 
+	width: 138px;
+}
+	#login_registration .register_box h2 {
+		height: 30px;
+		padding-top: 15px;
+		font-size: 11px; color: #fec92d;
+		background: url(../images/login_reg_down_arrow.gif) no-repeat 20px bottom;
+	}
+	#login_registration .register_box a {
+		display: inline-block;
+		height: 32px;
+		margin-top: 10px;
+		padding-right: 40px;
+		background: url(../images/register_link_arrow.gif) no-repeat right center;
+		font-size: 10px; color: #fff; font-weight: bold;
+		line-height: 32px; text-decoration: none;
+	}
+
+#login_registration .login_box {
+	float: left; 
+	width: 360px;
+}
+	#login_registration .login_box h2 {
+		height: 30px;
+		padding-top: 15px;
+		font-size: 11px; color: #fec92d;
+		background: url(../images/login_reg_down_arrow.gif) no-repeat 20px bottom;
+	}
+	#login_registration .login_box li {
+		float: left;
+		margin-right: 8px;
+	}
+	#login_registration .login_box li.input_fields {
+		width: 180px;
+	}
+	#login_registration .login_box li.input_fields label {
+		display: inline-block;
+		width: 40px;
+		margin: 3px 0;
+		padding-right: 5px;
+		text-align: right; line-height: 17px;
+	}
+	#login_registration .login_box li.input_fields input.textfield {
+		width: 120px;
+		margin: 3px 0;
+		padding: 2px;
+		border-top: 1px solid #7e7b76;
+		border-right: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+		border-left: 1px solid #7e7b76;
+		background: #fff url(../images/login_inputs_bg.gif) repeat-x 0 0;
+	}
+	#login_registration .login_box .login_button {
+		display: block;
+		width: 60px; height: 24px;
+		margin-top: 15px;
+		padding: 0 0 5px 0;
+		border-style: none;
+		background: url(../images/login_button.gif) no-repeat 0 0;
+		font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 22px;
+		cursor: pointer;
+	}
+	#login_registration .login_box a.forgot_pass {
+		display: inline-block;
+		padding-top: 20px;
+		font-weight: bold; font-size: 10px;
+	}
+
+#login_registration .my_account {
+	float: left; 
+	width: 400px;
+}
+	#login_registration .my_account h2 {
+		height: 30px;
+		padding-top: 15px;
+		font-size: 11px; color: #fec92d;
+		background: url(../images/login_reg_down_arrow.gif) no-repeat 20px bottom;
+	}
+		#login_registration .my_account h2 span {
+			color: #fff; font-weight: normal;
+		}
+	
+	#login_registration .my_account .my_account_links {
+		padding-top: 18px;
+	}
+	#login_registration .my_account .account_link {
+		float: left;
+		padding-right: 16px;
+		margin-right: 10px;
+		
+		/*background: url(../images/my_account_link_image.gif) no-repeat right center;*/
+		background: url(../images/my_account_add_money_link.gif) no-repeat right center;
+		width: 117px; height: 25px;
+		
+		color: #cacaca; font-size: 11px; font-weight: bold; text-decoration: none; line-height: 23px;
+	}
+	#login_registration .my_account .add_money_link {
+		float: left;
+		width: 105px; height: 25px;
+		padding-left: 28px;
+		margin-right: 10px;
+		background: url(../images/my_account_add_money_link.gif) no-repeat 0 0;
+		color: #cacaca; font-size: 11px; font-weight: bold; text-decoration: none; line-height: 23px;
+	}
+	#login_registration .my_account .remove_money_link {
+		float: left;
+		width: 95px; height: 25px;
+		padding-left: 28px;
+		background: url(../images/my_account_remove_money_link.gif) no-repeat 0 0;
+		color: #cacaca; font-size: 11px; font-weight: bold; text-decoration: none; line-height: 23px;
+	}
+
+#login_registration .logout_box {
+	float: left; 
+	width: 80px;
+}
+	#login_registration .logout_box h2 {
+		height: 30px;
+		padding-top: 15px; padding-left: 8px;
+		font-size: 11px; color: #fec92d;
+		background: url(../images/login_reg_down_arrow.gif) no-repeat 20px bottom;
+	}
+	#login_registration .logout_box .logout_link {
+		display: block;
+		width: 63px; height: 23px;
+		margin-top: 18px;
+		background: url(../images/my_account_logout_link.gif) no-repeat 0 0;
+		color: #cacaca; font-size: 11px; font-weight: bold; text-decoration: none; line-height: 23px; text-align: center;
+	}
+
+
+
+
+
+#header_bottom {
+	height: 34px;
+	background: url(../images/top_menu_bg.png) repeat-x 0 bottom;
+}
+
+/* language bar */
+#header_bottom ul.language_bar {
+	float: right;
+	height: 34px;
+	background: url(../images/top_menu_right_bg.png) no-repeat right bottom;
+}
+#header_bottom ul.language_bar li {
+	float: left;
+	padding: 10px 5px 0;
+}
+	#header_bottom ul.language_bar li a {
+		display: block;
+		height: 16px;
+		padding: 0 5px;
+		text-decoration: none; font-size: 10px; font-weight: bold;
+		line-height: 16px;
+	}
+	#header_bottom ul.language_bar li.selected a {
+		background: url(../images/language_bar_selected.gif) repeat-x 0 0;
+		border: 1px solid #b3b3b3;
+		color: #000;
+	}
+
+.divdateFilterInput
+{
+display:none;    
+}
+
+/* top menu */
+#header_bottom ul.top_menu {
+	float: left; 
+	height: 34px; padding: 0 25px;
+	background: url(../images/top_menu_left_bg.png) no-repeat 0 bottom;
+}
+#header_bottom ul.top_menu li {
+	float: left; 
+	height: 32px;
+	margin: 0 5px;
+	background: url(../images/top_menu_item_bg.png) repeat-x left bottom;
+}
+#header_bottom ul.top_menu li.selected {
+	background: url(../images/top_menu_selected_item_bg.png) repeat-x left bottom;
+}
+#header_bottom ul.top_menu li a {
+	display: block;
+	height: 32px;
+	padding: 0 30px;
+	font-size: 13px; font-weight: bold; line-height: 36px; color: #000; text-decoration: none;
+}
+#header_bottom ul.top_menu li.live a {
+	padding: 0 15px 0 3px;
+}
+#header_bottom ul.top_menu li.live a strong {
+	position: relative;
+	float: left;
+	width: 59px; height: 32px;
+	background: url(../images/live_icon.gif) no-repeat 0 top;
+	text-indent: -10000px;
+}
+#header_bottom ul.top_menu li.selected a strong {
+	background-position: 0 bottom;
+}
+
+
+
+/* top actions bar */
+#top_actions_bar {
+	height: 37px;
+	background: url(../images/top_actions_bar_bg.gif) repeat-x 0 0;
+	border-bottom: 2px solid #feca31;
+}
+	/* top events */
+	#top_actions_bar .events_header_container {
+		float: left;
+		width: 240px;
+	}
+	#top_actions_bar .events_header_container h2 {
+		width: 95px; height: 18px;
+		margin: 6px; padding: 3px 10px;
+		background: url(../images/events_header_bg.gif) no-repeat 0 0;
+		font-size: 13px; color: #c9c9c9;
+	}
+	#top_actions_bar .top_events_filter {
+		float: left; 
+		width: 432px;
+		padding: 11px 6px;
+	}
+	
+	
+	/* top coupon */
+	#top_actions_bar .coupon_container {
+		position: relative;
+		float: right;
+		width: 264px; height: 24px;
+	}
+		#top_actions_bar .coupon_header_container {
+			margin: 6px 0;
+			background: url(../images/coupon_header_bg.gif) no-repeat 0 0;
+		}
+			#top_actions_bar .coupon_header_container h2 {
+				padding: 3px 10px;
+				font-size: 13px; color: #c9c9c9;
+				background: transparent url(../images/coupon_arrows.gif) no-repeat 240px top;
+				cursor: pointer;
+			}
+			#top_actions_bar .coupon_header_container h2.opened {
+				background-position: 240px bottom;
+			}
+		
+		#top_actions_bar .coupon_content_container {
+			display: none;
+			position: absolute; top: 39px; left: 0; z-index: 10000;
+			width: 264px; 
+			background-color: #feca31;
+		}
+			#top_actions_bar .coupon_content_container img.coupon_content_bg {
+				display: none;
+				position: absolute; top: 0; left: 0;
+			}
+			#top_actions_bar .coupon_content_container .coupon_content {
+				position: relative;
+			}
+				#top_actions_bar .coupon_content_container .coupon_content .coupon_actions {
+					padding: 15px;
+					background-color: #101f2f;
+					border-bottom: 4px solid #feca31;
+					color: #fff;
+				}
+				#top_actions_bar .coupon_content_container .coupon_content .coupon_actions label {
+					display: block;
+					height: 20px;
+					line-height: 18px;
+				}
+				#top_actions_bar .coupon_content_container .coupon_content .coupon_actions .textfield {
+					float: right;
+					width: 60px;
+					padding: 2px;
+					border-top: 1px solid #7e7b76;
+					border-right: 1px solid #fff;
+					border-bottom: 1px solid #fff;
+					border-left: 1px solid #7e7b76;
+					background: #fff url(../images/login_inputs_bg.gif) repeat-x 0 0;
+				}
+				#top_actions_bar .coupon_content_container .coupon_content .coupon_actions .possible_winning {
+					display: block;
+					line-height: 28px;
+					font-weight: bold;
+				}
+					#top_actions_bar .coupon_content_container .possible_winning span {
+						float: right;
+					}
+				#top_actions_bar .coupon_content_container .next_button {
+					display: block;
+					width: 70px; height: 24px;
+					margin: 10px auto 0;
+					padding: 0px 0 5px 0;
+					border-style: none;
+					background: url(../images/coupon_action_button.gif) no-repeat 0 0;
+					font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 24px;
+					cursor: pointer;
+				}
+
+				
+				
+				#top_actions_bar .coupon_content_container .coupon_content ul {
+					height: 25px;
+				}
+					#top_actions_bar .coupon_content_container .coupon_content ul li {
+						float: left;
+						width: 50%; height: 25px;
+						background-color: #4b5662;
+						text-align: center; line-height: 25px; color: #d9d9d9; font-weight: bold;
+						cursor: pointer;
+					}
+					#top_actions_bar .coupon_content_container .coupon_content ul li.selected {
+						background-color: transparent;
+						color: #121212;
+					}
+					#top_actions_bar .coupon_content_container .coupon_content .coupon_item_content {
+						min-height: 100px;
+					}
+					#top_actions_bar .coupon_content_container .coupon_content #coupon_item_express_content,
+					#top_actions_bar .coupon_content_container .coupon_content #coupon_item_system_content {
+						display: none;
+					}
+					#top_actions_bar .coupon_content_container .coupon_content .item_blank {
+						padding: 20px 10px;
+						color: #222222;
+					}
+					#top_actions_bar .coupon_content_container .coupon_content .item {
+						position: relative;
+						padding: 10px;
+						border-bottom: 2px solid #4c4c4c;
+						color: #222222;
+					}
+						#top_actions_bar .coupon_content_container .coupon_content .item .remove {
+							position: absolute; top: 5px; right: 5px;
+							width: 11px; height: 11px;
+							background: transparent url(../images/coupon_item_remove_icon.gif) no-repeat 0 0;
+							cursor: pointer;
+						}
+						#top_actions_bar .coupon_content_container .coupon_content .item input.checkbox {
+							vertical-align: top;
+						}
+						#top_actions_bar .coupon_content_container .coupon_content .item label {
+							line-height: 18px;
+							cursor: pointer;
+						}
+						#top_actions_bar .coupon_content_container .coupon_content .item div.selection {
+							padding-left: 24px;
+						}
+							#top_actions_bar .coupon_content .item div.selection span {
+								float: right;
+							}
+	/* top current balance */
+	#top_actions_bar .top_current_balance {
+		float: left;
+		width: 240px;
+		padding: 12px 0 0 20px;
+	}
+		#top_actions_bar .top_current_balance span {
+			padding-right: 10px;
+			background: url(../images/top_current_balance_arrow.gif) no-repeat right center;
+			font-weight: normal; line-height: 20px;
+		}
+
+					
+
+
+#main_content {
+	background-image: url(../images/main_content_bg.gif);
+	background-repeat: repeat-y;
+	background-position: 0 0;
+}
+
+/* my account */
+.my_account_container {
+	background-color: #49535d;
+}
+	.my_account_container h2 {
+		height: 32px;
+		padding: 0 16px;
+		background-color: #1f272e;
+		color: #fff; font-size: 12px; line-height: 32px;
+	}
+	.my_account_container .my_account_content {
+		padding: 4px;
+		margin-bottom: 50px;
+	}
+	.my_account_container .my_details_item {
+		margin-bottom: 1px;
+		padding: 5px;
+		background-color: #29333d;
+	}
+	
+	
+		.my_account_container .my_details_item .my_details_title,
+		.my_account_container .my_details_item .my_details_desc {
+			float: left;
+			width: 130px;
+			padding: 0 10px;
+			color: #fec92d; text-align: right; line-height: 16px;
+		}
+		.my_account_container .my_details_item .my_details_desc {
+			color: #fff; text-align: left;
+		}
+		.my_account_container .my_details_item .my_details_desc input.textfield {
+			width: 140px;
+			padding: 1px 2px;
+			border: 1px solid #7e7b76;
+			border-color: #7e7b76 #efeeeb #efeeeb #7e7b76;
+			background-color: #f0f0f0;
+		}
+	
+	.my_account_container .my_details_actions {
+		padding: 10px;
+		background-color: #132231;
+		text-align: center;
+	}
+		.my_account_container .my_details_actions .my_details_button {
+			display: inline-block;
+			width: 134px; height: 26px;
+			margin: 0 10px;
+			padding: 0px 0 5px 0;
+			border-style: none;
+			background: url(../images/my_account_details_button.gif) no-repeat 0 0;
+			font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 24px;
+			cursor: pointer;
+		}
+	
+	/* withdraw money */
+	.my_account_container .withdraw_item {
+		
+	}
+		.my_account_container .withdraw_item .withdraw_item_details {
+			margin-bottom: 1px;
+			padding: 10px;
+			background-color: #29333d;
+		}
+		.my_account_container .withdraw_item_details_content {
+			display: none;
+			margin-bottom: 1px;
+		}
+		
+		
+		.my_account_container .withdraw_item .withdraw_icon,
+		.my_account_container .withdraw_item .withdraw_name,
+		.my_account_container .withdraw_item .withdraw_address,
+		.my_account_container .withdraw_item .withdraw_action {
+			float: left;
+			width: 180px; 
+		}
+		.my_account_container .withdraw_item .withdraw_name {
+			width: 200px;
+			font-weight: bold;
+		}
+		.my_account_container .withdraw_item .withdraw_address {
+			width: 230px; 
+		}
+			.my_account_container .withdraw_item .withdraw_address .withdraw_question_mark {
+				display: block;
+				padding-left: 28px;
+				background: url(../images/withdraw_address_question_icon.gif) no-repeat 0 center;
+			}
+			.my_account_container .withdraw_item .withdraw_address .withdraw_question_mark a {
+				padding-right: 15px;
+				background: url(../images/withdraw_address_arrow.gif) no-repeat right center;
+				text-decoration: none;
+			}
+		
+		.my_account_container .withdraw_item .withdraw_action {
+			width: 120px;
+		}
+			.my_account_container .withdraw_action .withdraw_action_button {
+				display: block;
+				width: 108px; height: 32px;
+				margin: 0 auto;
+				padding: 0px 0 5px 0;
+				border-style: none;
+				background: url(../images/withdraw_money_action.gif) no-repeat 0 0;
+				font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 24px;
+				cursor: pointer;
+			}
+	
+		.my_account_container .withdraw_item .withdraw_eurofootball {
+			padding: 20px 10px;
+		}
+			.my_account_container .withdraw_eurofootball .withdraw_name,
+			.my_account_container .withdraw_eurofootball .withdraw_address {
+				line-height: 36px;
+			}
+			.my_account_container .withdraw_eurofootball .withdraw_action {
+				margin: 2px 0;
+			}
+		
+		.my_account_container .withdraw_edram {
+			padding: 20px 10px;
+		}
+			.my_account_container .withdraw_edram .withdraw_name,
+			.my_account_container .withdraw_edram .withdraw_address {
+				line-height: 49px;
+			}
+			.my_account_container .withdraw_edram .withdraw_action {
+				margin: 8px 0;
+			}
+		
+		.my_account_container .withdraw_webmoney {
+			padding: 20px 10px;
+		}
+			.my_account_container .withdraw_webmoney .withdraw_name,
+			.my_account_container .withdraw_webmoney .withdraw_address {
+				line-height: 49px;
+			}
+			.my_account_container .withdraw_webmoney .withdraw_action {
+				margin: 8px 0;
+			}
+		
+		.my_account_container .withdraw_banktransfer {
+			padding: 20px 10px;
+		}
+			.my_account_container .withdraw_banktransfer .withdraw_name,
+			.my_account_container .withdraw_banktransfer .withdraw_address {
+				line-height: 59px;
+			}
+			.my_account_container .withdraw_banktransfer .withdraw_action {
+				margin: 13px 0;
+			}
+
+
+		.my_account_container .withdraw_item_details_content .detail_item {
+			margin-bottom: 1px;
+			padding: 3px 150px;
+			background-color: #353e47;
+		}
+			.my_account_container .withdraw_item_details_content .detail_item .title {
+				float: left; width: 100px;
+				font-weight: bold; line-height: 22px;
+			}
+			.my_account_container .withdraw_item_details_content .detail_item .detail {
+				float: left; width: 316px;
+				line-height: 22px;
+			}
+				.my_account_container .withdraw_item_details_content .detail_item .detail input.textfield {
+					margin-top: 2px;
+					border: 1px solid #7e7b76;
+					border-color: #7e7b76 #efeeeb #efeeeb #7e7b76;
+				}
+				.my_account_container .withdraw_item_details_content .detail_item .detail select {
+				}
+				
+		.my_account_container .withdraw_details_action_button {
+			display: inline-block;
+			width: 103px; height: 23px;
+			padding: 0px 0 5px 0;
+			/*margin-left: 100px;*/
+			margin: 0 10px;
+			border-style: none;
+			background: url(../images/addmoney_details_action_button.gif) no-repeat 0 0;
+			font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 24px;
+			cursor: pointer;
+			vertical-align: top;
+		}
+
+
+
+		
+		
+	
+	/* add money */
+	.my_account_container .addmoney_item {
+		
+	}
+		.my_account_container .addmoney_item .addmoney_item_details {
+			border-bottom: 1px solid #454f59;
+			padding: 20px 10px;
+			background-color: #29333d;
+		}
+		.my_account_container .addmoney_item .addmoney_item_details_content {
+			display: none;
+		}
+		
+			.my_account_container .addmoney_item .addmoney_icon,
+			.my_account_container .addmoney_item .addmoney_name,
+			.my_account_container .addmoney_item .addmoney_address,
+			.my_account_container .addmoney_item .addmoney_action {
+				float: left;
+				width: 180px; 
+			}
+			.my_account_container .addmoney_item .addmoney_name {
+				width: 200px;
+				font-weight: bold;
+			}
+			.my_account_container .addmoney_item .addmoney_address {
+				width: 230px; 
+			}
+			.my_account_container .addmoney_item .addmoney_action {
+				width: 120px;
+			}
+				.my_account_container .addmoney_item .addmoney_action_button {
+					display: block;
+					width: 108px; height: 32px;
+					margin: 0 auto;
+					padding: 0px 0 5px 0;
+					border-style: none;
+					background: url(../images/withdraw_money_action.gif) no-repeat 0 0;
+					font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 24px;
+					cursor: pointer;
+				}
+			
+			.my_account_container .addmoney_eurofootball .addmoney_name,
+			.my_account_container .addmoney_eurofootball .addmoney_address {
+				line-height: 59px;
+			}
+			.my_account_container .addmoney_eurofootball .addmoney_action {
+				margin: 13px 0;
+			}
+			
+			.my_account_container .addmoney_edram .addmoney_name,
+			.my_account_container .addmoney_edram .addmoney_address {
+				line-height: 49px;
+			}
+			.my_account_container .addmoney_edram .addmoney_action {
+				margin: 8px 0;
+			}
+			
+			.my_account_container .addmoney_varca .addmoney_name,
+			.my_account_container .addmoney_varca .addmoney_address {
+				line-height: 59px;
+			}
+			.my_account_container .addmoney_varca .addmoney_action {
+				margin: 13px 0;
+			}
+			
+			.my_account_container .addmoney_webmoney .addmoney_name,
+			.my_account_container .addmoney_webmoney .addmoney_address {
+				line-height: 59px;
+			}
+			.my_account_container .addmoney_webmoney .addmoney_action {
+				margin: 13px 0;
+			}
+			
+			.my_account_container .addmoney_mastercard .addmoney_name,
+			.my_account_container .addmoney_mastercard .addmoney_address {
+				line-height: 58px;
+			}
+			.my_account_container .addmoney_mastercard .addmoney_action {
+				margin: 13px 0;
+			}
+			
+			.my_account_container .addmoney_banktransfer .addmoney_name,
+			.my_account_container .addmoney_banktransfer .addmoney_address {
+				line-height: 59px;
+			}
+			.my_account_container .addmoney_banktransfer .addmoney_action {
+				margin: 13px 0;
+			}
+		
+		.my_account_container .addmoney_item .addmoney_item_details_content {
+		}
+			.my_account_container .addmoney_item_details_content .detail_header {
+				margin-bottom: 1px;
+				padding: 10px;
+				background-color: #353e47;
+				font-weight: bold; text-align: center; 
+			}
+			.my_account_container .addmoney_item_details_content .detail_item {
+				margin-bottom: 1px;
+				padding: 5px 150px;
+				background-color: #353e47;
+			}
+				.my_account_container .detail_item .title {
+					float: left; width: 140px;
+					font-weight: bold; line-height: 22px;
+				}
+				.my_account_container .detail_item .detail {
+					float: left; width: 316px;
+					line-height: 22px;
+				}
+					.my_account_container .detail_item .detail input.textfield {
+						margin-top: 2px;
+						border: 1px solid #7e7b76;
+						border-color: #7e7b76 #efeeeb #efeeeb #7e7b76;
+					}
+					.my_account_container .detail_item .detail select {
+					}
+					.my_account_container .addmoney_item .addmoney_details_action_button,
+					.my_account_container .addmoney_item .addmoney_details_action_button2 {
+						display: inline-block;
+						width: 103px; height: 23px;
+						padding: 0px 0 5px 0;
+						border-style: none;
+						background: url(../images/addmoney_details_action_button.gif) no-repeat 0 0;
+						font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 24px;
+						cursor: pointer;
+						vertical-align: top;
+					}
+					.my_account_container .addmoney_item .addmoney_details_action_button2 {
+						width: 73px; 
+						margin-right: 10px;
+						background: url(../images/addmoney_details_action_button2.gif) no-repeat 0 0;
+					}
+				
+				.addmoney_eurofootball_details .detail_item .title {
+					width: 70px;
+				}
+					.addmoney_eurofootball_details .detail_item .valid_icon {
+						display: inline-block;
+						width: 23px; height: 23px;
+						margin-left: 10px;
+						background: url(../images/addmoney_details_input_valid.gif) no-repeat 0 0;
+						vertical-align: top;
+					}
+
+	
+	/* account history */
+	.my_account_container .account_history_filter {
+		border-bottom: 1px solid #454f59;
+		padding: 10px 10px;
+		background-color: #29333d;
+	}
+		.my_account_container .account_history_filter span {
+			display: inline-block;
+			width: 35px;
+			padding-right: 5px;
+			text-align: right;
+		}
+		.my_account_container .account_history_filter input.checkbox {
+			margin-left: -3px;
+			margin-right: 20px;
+			vertical-align: middle;
+		}
+		.my_account_container .account_history_filter .filter_action_button {
+			display: inline-block;
+			width: 83px; height: 23px;
+			padding: 0px 0 5px 0;
+			margin-left: 10px;
+			border-style: none;
+			background: url(../images/account_filter_action_button.gif) no-repeat 0 0;
+			font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 21px;
+			cursor: pointer;
+			vertical-align: middle;
+		}
+		.my_account_container .account_history th {
+			height: 22px;
+			padding: 0 10px;
+			border-bottom: 1px solid #434d57;
+			background: url(../images/account_filter_table_header.gif) repeat-x 0 0;
+			text-align: left;
+		}
+		.my_account_container .account_history td {
+			height: 23px;
+			padding: 4px 10px;
+			border-bottom: 1px solid #434d57;
+			background-color: #29333d;
+		}
+		.my_account_container .account_history tr.express {
+			cursor: pointer;
+		}
+		.my_account_container .account_history tr.express td {
+			height: 23px;
+			padding: 0;
+		}
+		.my_account_container .account_history tr.express td td {
+			padding: 4px 10px;
+		}
+		.my_account_container .account_history tr.express table.details {
+			display: none;
+		}
+		.my_account_container .account_history tr.express table.details td {
+			background-color: #353E47;
+		}
+		
+
+
+	/* payments */
+	.my_account_container .account_payments_filter {
+		border-bottom: 1px solid #454f59;
+		padding: 10px 10px;
+		background-color: #29333d;
+	}
+		.my_account_container .account_payments_filter label {
+			display: inline-block;
+			padding: 0 5px 0 20px;
+			text-align: right;
+		}
+		.my_account_container .account_payments_filter input.checkbox {
+			margin-left: -3px;
+			margin-right: 20px;
+			vertical-align: middle;
+		}
+		.my_account_container .account_payments_filter input.textfield {
+			margin-top: 2px;
+			border: 1px solid #7e7b76;
+			border-color: #7e7b76 #efeeeb #efeeeb #7e7b76;
+		}
+		.my_account_container .account_payments_filter .filter_action_button {
+			display: inline-block;
+			width: 83px; height: 23px;
+			padding: 0px 0 5px 0;
+			margin-left: 10px;
+			border-style: none;
+			background: url(../images/account_filter_action_button.gif) no-repeat 0 0;
+			font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 21px;
+			cursor: pointer;
+			vertical-align: middle;
+		}
+	
+	.my_account_container .account_payments .payments_addcomment_button {
+		display: block;
+		width: 83px; height: 23px;
+		padding: 0px 0 5px 0;
+		border-style: none;
+		background: url(../images/account_filter_action_button.gif) no-repeat 0 0;
+		font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 21px;
+		cursor: pointer;
+		vertical-align: middle;
+	}
+	.my_account_container .account_payments textarea.textarea {
+		width: 290px; height: 60px;
+		margin: 5px 0;
+	}
+	.my_account_container .account_payments th {
+		height: 22px;
+		padding: 0 10px;
+		border-bottom: 1px solid #434d57;
+		background: url(../images/account_filter_table_header.gif) repeat-x 0 0;
+		text-align: left;
+	}
+	.my_account_container .account_payments tr {
+		background-color: #29333d;
+	}
+	.my_account_container .account_payments tr.expanded,
+	.my_account_container .account_payments tr.details {
+		background-color: #353e47;
+	}
+	.my_account_container .account_payments tr.details {
+		display: none;
+	}
+	.my_account_container .account_payments td {
+		height: 23px;
+		padding: 4px 10px;
+		border-bottom: 1px solid #434d57;
+	}
+	.my_account_container .account_payments tr.details td {
+		padding: 4px 100px;
+	}
+		.my_account_container .account_payments td img {
+			cursor: pointer;
+		}
+
+
+
+	/* payment cards */
+	.my_account_container .account_payment_cards_filter {
+		border-bottom: 1px solid #454f59;
+		padding: 10px 10px;
+		background-color: #29333d;
+	}
+		.my_account_container .account_payment_cards_filter label {
+			display: inline-block;
+			padding: 0 5px 0 10px;
+			text-align: right;
+		}
+		.my_account_container .account_payment_cards_filter input.checkbox {
+			margin-left: -3px;
+			margin-right: 20px;
+			vertical-align: middle;
+		}
+		.my_account_container .account_payment_cards_filter input.textfield {
+			margin-top: 2px;
+			border: 1px solid #7e7b76;
+			border-color: #7e7b76 #efeeeb #efeeeb #7e7b76;
+		}
+		.my_account_container .account_payment_cards_filter .filter_action_button {
+			display: inline-block;
+			width: 83px; height: 23px;
+			padding: 0px 0 5px 0;
+			margin-left: 10px;
+			border-style: none;
+			background: url(../images/account_filter_action_button.gif) no-repeat 0 0;
+			font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 21px;
+			cursor: pointer;
+			vertical-align: middle;
+		}
+	
+	.my_account_container .account_payment_cards th {
+		height: 22px;
+		padding: 0 10px;
+		border-bottom: 1px solid #434d57;
+		background: url(../images/account_filter_table_header.gif) repeat-x 0 0;
+		text-align: left;
+	}
+	.my_account_container .account_payment_cards tr {
+		background-color: #29333d;
+	}
+	.my_account_container .account_payment_cards td {
+		padding: 4px 10px;
+		border-bottom: 1px solid #434d57;
+	}
+	.my_account_container .account_payment_cards tr td span.status {
+		color: #abf356;
+	}
+	.my_account_container .account_payment_cards tr td span.change {
+		padding-right: 14px;
+		background: url(../images/withdraw_address_arrow.gif) no-repeat right center;
+		cursor: pointer;
+	}
+	.my_account_container .account_payment_cards tr.disabled td span {
+		color: #71808d;
+	}
+	.my_account_container .account_payment_cards tr.disabled td span.status {
+		color: #fe4232;
+	}
+	.my_account_container .account_payment_cards tr.disabled td span.change {
+		background: none;
+		cursor: default;
+	}
+	
+	.my_account_container .account_payment_cards tr.paging td {
+		padding: 10px;
+		background-color: #132231;
+	}
+		.my_account_container .account_payment_cards tr.paging td a {
+			margin-left: 5px;
+		}
+
+
+
+
+/* left actions */
+#left_actions {
+	float: left;
+	width: 210px; height: 100%;/*600px;*/
+	min-height: 600px;
+	padding: 12px;
+	margin: 0 3px;
+	background: #091a29 url(../images/left_actions_bg.gif) repeat-x 0 0;
+}
+	#left_actions ul li {
+		padding: 3px 0;
+	}
+		#left_actions ul li .sub_actions {
+			display: none;
+			padding: 10px 20px 4px;
+		}
+			#left_actions ul li .sub_actions label {
+				cursor: pointer;
+			}
+			#left_actions ul li .sub_actions label.selected {
+				color: #fec826;
+			}
+		#left_actions ul li a {
+			display: block;
+			height: 14px;
+			padding-left: 20px;
+			background: url(../images/left_actions_item_plusminus.gif) no-repeat left top;
+			font-size: 12px; font-weight: bold; color: #fff;
+			text-decoration: none;
+		}
+		#left_actions ul li.selected a {
+			background-position: left bottom;
+		}
+		#left_actions ul li.selected .sub_actions {
+			display: block;
+		}
+	#left_actions .sub_actions h4 {
+		margin: 3px 0;
+		font-size: 11px; font-weight: normal;
+		color: #0dc9ff; 
+	}
+	#left_actions .sub_actions input {
+		margin-left: 0;
+		display: inline-block;
+	}
+	#left_actions .update_button {
+		display: block;
+		width: 100px; height: 26px;
+		margin: 20px auto;
+		padding: 0px 0 5px 0;
+		border-style: none;
+		background: url(../images/left_actions_button.gif) no-repeat 0 0;
+		font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 24px;
+		cursor: pointer;
+	}
+	
+	/* left actions my account */
+	#left_actions .my_account {
+		margin: -11px -13px;
+	}
+		#left_actions .my_account h2 {
+			height: 31px;
+			padding: 0 20px;
+			background: url(../images/left_actions_myaccount_header.gif) repeat-x 0 0;
+			border-left: 1px solid #bebfc0; border-right: 1px solid #bebfc0;
+			color: #000; font-size: 12px; line-height: 30px;
+		}
+		
+		#left_actions .my_account ul li {
+			padding: 0;
+		}
+		#left_actions .my_account li ul {
+			display: none;
+		}
+		#left_actions .my_account li.account_link_expanded ul {
+			display: block;
+		}
+		
+		#left_actions .my_account .account_link {
+			display: block;
+			height: 23px;
+			padding: 0 20px;
+			background: url(../images/left_actions_myaccount_links.gif) repeat-x 0 0;
+			color: #fff; font-size: 11px; font-weight: bold; line-height: 23px; text-decoration: none;
+		}
+		#left_actions .my_account .account_link_selected {
+			color: #feca31; 
+		}
+			
+			#left_actions .my_account li li .account_link {
+				padding: 0 20px 0 40px;
+				background: none;
+				font-weight: normal;
+			}
+			
+#left_actions.menu{
+		padding:12px 0;
+		width:234px;
+	}
+	#left_actions.menu ul li{
+		background: url(../images/left_actions_menu_item.jpg) repeat-x;
+		padding:0 0 0 9px;
+	}
+	#left_actions.menu ul li a{
+		background:url(../images/left_actions_item_plus.jpg) no-repeat;
+		color:#cacaca;
+		font-size:12px;
+		font-family:Tahoma;
+		font-weight:bold;
+		height:22px;
+		line-height:22px;
+	}
+	#left_actions.menu ul li.active{
+		background:none;
+		padding:0;
+	}
+	#left_actions.menu ul li.active a{
+		background:#fece3e url(../images/left_actions_item_minus.jpg) no-repeat 9px 0;
+		color:#000;
+		padding:0 0 0 25px;
+	}
+	#left_actions.menu ul li.active .wrap{
+		padding:14px 0 6px 7px;
+		display:block !important;
+	}
+	
+	#left_actions.menu ul li .wrap
+	{
+	    display:none;
+	}
+	
+	.futurem{
+		margin:0 7px 8px 0;
+		cursor:pointer;
+	}
+	
+	.futurem.active{
+		margin:0 0 8px 0;
+	}
+	
+	.futurem .header{
+		height:19px;
+		padding:0 7px 0 10px;
+		background:#070e13 url(../images/sport_games_header_bg.gif) repeat-x;
+		color:#cdcdcd;
+		font:11px Tahoma;
+		font-weight:bold;
+		line-height:19px;
+	}
+	.futurem.active .header{
+		color:#000;
+		background:#fece3e url(../images/futuremactiveheader.jpg) no-repeat center right;	
+		padding:0 13px 0 10px;
+	}
+
+	.futurem .content{
+		background:#49535d url(../images/matchcontent2.jpg) repeat-x bottom left;
+		color:#cdcdcd;
+		font:11px Tahoma;
+		padding:0 0 0 10px;
+		overflow:hidden;
+	}
+	.futurem.active .content{margin:0 7px 0 0;}
+	
+	.futurem .header span{color:#f0f0f0;float:right;font-weight:normal;}
+	*+html .futurem .header span{margin-top:-19px;}
+	.futurem.active .header span{color:#000;}
+	.futurem .footer{
+		color:#cdcdcd;
+		height:20px;
+		line-height:18px;
+		padding:6px 6px 0 0;
+	}
+	.futurem .footer span{float:right;font-weight:bold;}
+	*+html .futurem .footer span{margin-top:-20px;}
+	
+	.futurem .content .series-title{
+		color:#fec315;
+		font-weight:bold;
+		line-height:2;
+	}			
+		
+
+
+/* content */
+#content {
+	float: left;
+	width: 865px;
+}
+
+	#content .sport {
+		background-color: #49535d;
+		display:none;
+	}
+		#content .sport h2 {
+			height: 35px;
+			padding: 0 17px;
+			background-color: #1f272e;
+			font-size: 13px; line-height: 35px;
+		}
+	#content .sport .date {
+		
+	}
+		#content .sport .date h3 {
+			height: 23px;
+			padding: 0 10px;
+			border-bottom: 1px solid #222427;
+			background: url(../images/sport_date_bg.gif) repeat-x 0 0;
+			font-family: Verdana; font-size: 10px; color: #b8c2c8; font-weight: normal;
+			line-height: 22px;
+			cursor: pointer;
+		}
+		#content .sport .date h3 span {
+			display: block;
+			float: left;
+			width: 9px; height: 23px;
+			margin-right: 10px;
+			background: url(../images/sport_date_arrows.gif) no-repeat left bottom;
+		}
+		#content .sport .date h3.closed span {
+			background-position: left top;
+		}
+	#content .sport .series {
+		padding: 3px 5px;
+	}
+		#content .sport .series h4 {
+			height: 26px;
+			padding: 0 10px;
+			border-top: 1px solid #d3d3d3; border-right: 1px solid #d3d3d3; border-bottom: 1px solid #94999e; border-left: 1px solid #d3d3d3; 
+			background: url(../images/sport_series_bg.gif) repeat-x 0 0;
+			font-family: Verdana; font-size: 11px; color: #000;
+			line-height: 26px;
+		}
+	#content .sport .games {
+		padding: 3px 0;
+	}
+		#content .sport .games .header {
+			height: 23px;
+			padding: 0 2px;
+			margin-bottom: 1px;
+			border: 1px solid #061521; 
+			background: #070e13 url(../images/sport_games_header_bg.gif) repeat-x 0 0;
+			line-height: 20px;
+		}
+			#content .header .blank_left_space {
+				display: block;
+				float: left;
+				width: 259px; height: 23px;
+			}
+			#content .header .rates_group {
+				float: left;
+				margin-right: 3px;
+			}
+			#content .header .rate_f,
+			#content .header .rate {
+				display: inline-block;
+				width: 37px; 
+				margin: 0 2px;
+				margin-left: 1px;
+				color: #fff; line-height: 23px; font-weight: bold;
+				text-align: center;
+			}
+			.onebet_id, .onebet_odd, .onebet_title, .onebet_players, .onebet_gameId
+			{
+			    display:none;
+			    }
+			.rate_onebet{
+			display: inline-block;
+				/*width: 32px; */
+				margin: 0 2px;
+				color: #fff; line-height: 23px; /*font-weight: bold;*/
+				text-align: center;
+				padding: 0px 2px 2px;
+		    }
+		    #cancel_query
+		    {
+		        display:none;
+		    }
+			#content .header .rate_f1,
+			#content .header .rate_f2 {
+				width: 76px;
+				margin: 0 2px !important;
+			}
+			
+		#content .sport .games .game {
+			margin-bottom: 1px;
+			background-color: #132231;
+		}
+		#startMessage
+		{
+		    display:block;
+		}
+		#content .sport .games .game_onebet_opened,
+		#content .sport .games .game_opened {
+			background-color: #49535d;
+		}
+			#content .sport .games .game .game_main {
+				padding: 2px 3px;
+			}
+			#content .sport .games .game_onebet_opened .game_main,
+			#content .sport .games .game_opened .game_main {
+				min-height: 44px;
+				padding: 0 3px;
+			}
+			#content .game .time {
+				display: block;
+				float: left;
+				width: 44px;
+				font-weight: bold; text-align: center;
+				line-height: 20px;
+			}
+			#content .game .team {
+				display: block;
+				float: left;
+				width: 215px;
+				color: #0dc9ff;
+				line-height: 20px;
+			}
+			#content .game_onebet_opened .team,
+			#content .game_opened .team {
+				font-weight: bold;
+			}
+			#content .game .rates_group {
+				float: left;
+				margin-right: 3px;
+				padding-top: 3px;
+			}
+			#content .game .rate_double {
+				float: left;
+				position: relative;
+				width: 34px; height: 16px;
+				/*padding-right: 10px;*/
+				margin: 0 2px;
+				overflow: hidden;
+			}               
+			#content .game .rate_double_opened {
+				overflow: visible;
+			}			
+			#content .game .rate_double_opened span.rate_f,
+			#content .game .rate_double_opened span.rate {
+				 z-index: 10000;
+			}
+			.rate_onebet
+			{
+			    position: relative;
+			}
+				#content .game .rate_double .arrow {
+					position: absolute; top: 0; right: 0;
+					width: 12px; height: 14px;
+					background: #48525c url(../images/double_rate_arrow.gif) no-repeat center center;
+					border-top: 1px solid #676f79;
+					border-right: 1px solid #30363d;
+					border-bottom: 1px solid #191d21;
+					border-left: 1px solid #30363d;
+					cursor: pointer;
+				}
+				#content .game .rate_double .arrow_disabled {
+					position: absolute; top: 0; right: 0;
+					width: 12px; height: 14px;
+					background: #48525c url(../images/double_rate_arrow.gif) no-repeat center center;
+					border-top: 1px solid #676f79;
+					border-right: 1px solid #30363d;
+					border-bottom: 1px solid #191d21;
+					border-left: 1px solid #30363d;
+					/*cursor: pointer;*/
+				}				
+				#content .game .rate_double .rate_f,
+				#content .game .rate_double .rate {
+					width: 36px;
+					margin: 0;
+				}
+				.rate_onebet
+				{
+				    margin: 0;
+				}
+				#content .game .rate_double .rate_selected,
+				#content .game .rate_double .rate_hover {
+					width: 30px;
+				}		
+			#content .game .rate_f, 
+			#content .game .rate {
+				float: left;
+				width: 36px; height: 14px;
+				margin: 0 2px;
+				background-color: #48525c;
+				border-top: 1px solid #676f79;
+				border-right: 1px solid #30363d;
+				border-bottom: 1px solid #191d21;
+				border-left: 1px solid #505962;
+				color: #fff; line-height: 13px;
+				text-align: center;
+				cursor: pointer;
+			}
+			.rate_onebet
+			{
+			    /*float: left;*/
+				/*width: 30px;*/ height: 14px;
+				margin: 0 2px;
+				background-color: #48525c;
+				border-top: 1px solid #676f79;
+				border-right: 1px solid #30363d;
+				border-bottom: 1px solid #191d21;
+				border-left: 1px solid #505962;
+				color: #fff; line-height: 13px;
+				text-align: center;
+				cursor: pointer;
+			}
+			.divtext
+			{
+			    margin: 5px;
+			}
+			.system_additional
+			{
+			    display:none;
+			}
+			.onebet_text{
+			    color:black;
+			    font-weight: bold;
+			}
+			.onebet
+			{
+			    text-align:center;
+			    font-size:15px;
+			    margin-left: 30px;
+			    display:none;
+			}
+				#content .game .rate_disabled {
+				float: left;
+				width: 36px; height: 14px;
+				margin: 0 2px;
+				background-color: #48525c;
+				border-top: 1px solid #676f79;
+				border-right: 1px solid #30363d;
+				border-bottom: 1px solid #191d21;
+				border-left: 1px solid #505962;
+				color: #fff; line-height: 13px;
+				text-align: center;
+				/*cursor: pointer;*/
+			}
+			#content .game .rate_selected,
+			#content .game .rate_hover {
+				width:36px; height: 16px;
+				border: none;
+				background: #ffd457 url(../images/rate_selected.gif) repeat-x 0 bottom;
+				color: #000; line-height: 15px;
+			}
+			.rate_hover_onebet
+			{
+			    /*width:32px;*/ height: 16px;
+				border: none;
+				background: #ffd457 url(../images/rate_selected.gif) repeat-x 0 bottom;
+				color: #000; line-height: 15px;
+			}
+			#content .game .more_rates {
+				float: left;
+				width: 34px; height: 18px;
+				margin-top: 2px;
+				background: url(../images/more_rates_button.gif) no-repeat 0 0;
+				line-height: 18px; font-size: 10px; color: #272727; text-align: center;
+				cursor: pointer;
+			}
+		
+		
+		
+		#content .game .game_more {
+			display: none;
+		}
+		#content .game_opened .game_more {
+			display: block;
+		}
+			#content .game_more .sub_rates_header {	
+				height: 22px;
+				background: #171d24 url(../images/sub_rates_header_arrow.gif) no-repeat 10px top;
+				padding: 0 26px;
+				margin-bottom: 1px;
+				font-size: 11px; color: #fec826; font-weight: bold; line-height: 20px;
+				cursor: pointer;
+			}
+			#content .game_more .subsub_rates_header {	
+				height: 22px;
+				background: #171d24 url(../images/subsub_rates_header_arrow.gif) no-repeat 10px top;
+				padding: 0 42px;
+				margin-bottom: 1px;
+				font-size: 11px; color: #fec826; font-weight: bold; line-height: 20px;
+				cursor: pointer;
+			}
+			#content .game_more .sub_rates_opened {	
+				background-position: 10px bottom;
+			}
+			#content .game_more .sub_rates_list {
+				display: none;
+			}
+			#content .game_more .sub_rates_row {
+				height: 22px;
+				margin-bottom: 1px;
+				background-color: #29333d;
+			}
+			
+			#content .game_more .sub_rates_row_big {
+				/*height: 22px;*/
+				margin-bottom: 1px;
+				background-color: #29333d;
+			}			
+				#content .game_more .sub_rates_row .sub_rates_title {
+					float: left;
+					width: 145px;
+					padding-left: 54px;
+					color: #fec826; line-height: 20px;
+				}
+				#content .game_more .sub_rates_row .rates_group {
+					float: left;
+				}
+					#content .game_more .sub_rates_row .rates_group .sub_rate_label {
+						/*float: left;*/
+						margin-right: 5px;
+					}
+					.rate_onebet,
+					#content .game_more .sub_rates_row .rates_group .rate_f,
+					#content .game_more .sub_rates_row .rates_group .rate {
+						margin-right: 20px;
+					}
+					.div_make_one_bet
+					{
+					    display: none;
+					}
+
+
+/* live */
+#content .game_live .team {
+	width: 215px;
+}
+/*
+#content .game_live .additmainstring
+{
+    width: 58px;
+}
+*/
+.layer_fixed
+{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 500000;
+    overflow: hidden;
+    display: none;
+    position: fixed;
+    background: black;    
+}
+.layer_image
+{
+    width: 100%;
+    height: 100%;
+    background: url(../images/onload.gif) no-repeat center center;
+}
+.layer_dark
+{    
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    display:block !important;    
+}
+
+#content .game_live .game_on_tv {
+	float: left;
+	width: 46px; height: 20px;
+	background: url(../images/game_on_tv.gif) no-repeat center center;
+}
+#content .game_live .game_on_tv span {
+	display: none;
+}
+
+#line
+{
+    height:1px;
+    background-color:#49535D;
+}
+
+.tv_hover_container {
+	position: absolute;
+	height: 60px;
+	padding-left: 18px;
+	background: url(../images/tv_popup_left_bg.png) no-repeat 0 0;
+}
+.tv_hover_container div {
+	height: 50px;
+	padding: 5px 15px;
+	background: url(../images/tv_popup_right_bg.gif) repeat-x 0 0;
+	color: #000; line-height: 16px;
+}
+
+
+/* results */
+#content .sport .results_series .header {
+	height: 23px;
+	margin-bottom: 1px;
+	border: 1px solid #061521; 
+	background: #070e13 url(../images/sport_games_header_bg.gif) repeat-x 0 0;
+	color: #fff;
+}
+	.results_series .header .seria {
+		float: left;
+		width: 460px;
+		padding-left: 12px;
+		line-height: 20px; font-weight: bold;
+	}
+	.results_series .header .score {
+		float: left;
+		width: 54px;
+		line-height: 20px; font-weight: bold; text-align: center;
+	}
+	.results_series .header .first_half {
+		float: left;
+		width: 88px;
+		line-height: 20px; font-weight: bold; text-align: center;
+	}
+	.results_series .header .status {
+		float: left;
+		width: 66px;
+		line-height: 20px; font-weight: bold; text-align: center;
+	}
+	.results_series .header .view_more {
+		float: left;
+		width: 36px; height: 22px;
+		background: url(../images/results_view_more_header_icon.gif) no-repeat center center;
+	}
+	.results_series .header .notes {
+		float: left;
+		width: 36px; height: 22px;
+		background: url(../images/results_notes_header_icon.gif) no-repeat center center;
+	}
+	
+
+#content .sport .results_games {
+	padding: 0;
+}
+#content .sport .results_games .game .game_main {
+	padding: 2px 0 2px 3px;
+}
+#content .results_games .time {
+	font-weight: normal;
+}
+#content .results_games .team {
+	width: 426px;
+	color: #fff; font-weight: bold;
+}
+	
+.results_games .score {
+	float: left;
+	width: 54px;
+	line-height: 20px; text-align: center;
+}
+.results_games .first_half {
+	float: left;
+	width: 88px;
+	line-height: 20px; text-align: center;
+}
+.results_games .status {
+	float: left;
+	width: 66px;
+	line-height: 20px; text-align: center;
+}
+.results_games .view_more_inactive {
+	float: left;
+	width: 36px; height: 22px;
+	background: url(../images/results_view_more_inactive_icon.gif) no-repeat center center;
+}
+.results_games .view_more_active {
+	float: left;
+	width: 36px; height: 22px;
+	background: url(../images/results_view_more_active_icon.gif) no-repeat center center;
+	cursor: pointer;
+}
+.results_games .notes_inactive {
+	float: left;
+	width: 36px; height: 22px;
+	background: url(../images/results_notes_inactive_icon.gif) no-repeat center center;
+}
+.results_games .notes_active {
+	float: left;
+	width: 36px; height: 22px;
+	background: url(../images/results_notes_active_icon.gif) no-repeat center center;
+	cursor: pointer;
+}
+
+#content .sport .results_games .game_expanded {
+	background-color: #49535d;
+}
+
+.results_games .game_main_results {
+	display: none;
+}
+	.results_games .game_main_results .game_main_result {
+		height: 22px;
+		padding: 0 26px;
+		margin-bottom: 1px;
+		background-color: #29333d;
+	}
+	.results_games .game_main_results .result_type {
+		float: left;
+		width: 270px;
+		line-height: 22px;
+		color: #fec92a;
+	}
+	.results_games .game_main_results .result_score {
+		float: left;
+		width: 270px;
+		line-height: 22px;
+		color: #fff;
+	}
+
+.results_top_filter {
+	margin-bottom: 20px;
+}
+	.results_top_filter h3 {
+		padding: 6px 7px;
+		font-size: 11px;
+	}
+	
+	.results_top_filter .date_filter {
+		width: 172px; height: 22px;
+		background: url(../images/results_date_filter.gif) no-repeat 0 0;
+		cursor: pointer;
+	}
+	.results_top_filter .date_filter input {
+		padding: 1px 45px;
+		background: none;
+		border: none;
+		font-size: 14px; color: #000;
+		cursor: pointer;
+	}
+	
+	.results_top_filter .search_filter input.textfield {
+		width: 130px;
+		padding: 4px 5px;
+		margin-right: 5px;
+		border: 1px solid #0e1e2d;
+		background-color: #49535d;
+		color: #fff; font-size: 11px;
+	}
+	.results_top_filter .search_filter .search_button {
+		width: 60px; height: 24px;
+		padding: 0 0 5px 0;
+		border-style: none;
+		background: url(../images/login_button.gif) no-repeat 0 0;
+		font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 22px;
+		vertical-align: top;
+		cursor: pointer;
+	}
+
+
+
+		
+/* content footer */
+#content_footer {
+	height: 60px;
+	background: url(../images/content_footer_bg.gif) repeat-x 0 0;
+}
+.live
+{
+    background:#1e272e;
+    }
+.count{background:#394553 url(../images/tablo.jpg) no-repeat center 6px;}
+
+.count .counter{
+	position:relative;
+	min-height:120px;
+	text-align:center;
+	padding:20px 0 10px 0;
+	color:#1f272e;
+}
+
+.count .counter .series-single, .count .counter .series-date{font:11px Verdana;font-weight:bold;}
+.count .counter .series-title{font:20px Arial;font-weight:bold;}
+.count .counter .series-time{font:14px Verdana;font-weight:bold;color:#d80600;padding:11px 0 0 0;}
+.count .counter .series-period{font:11px Verdana;padding:0 0 10px 0;}
+.count .counter .left,.count .counter .right{font:45px Arial;font-weight:bold;color:#fff;background: url(../images/backcharright.png) no-repeat top right;padding:0 6px 0 0;display:block;height:50px;line-height:44px;overflow:hidden;}
+.count .counter .left div,.count .counter .right div{background:url(../images/backcharleft.png) no-repeat 0 0;padding:0 0 0 6px;}
+.count .counter .left div div,.count .counter .right div div{background:#25282d url(../images/backcharmiddle.png) repeat-x 0 0;padding:0;padding:3px 5px;}
+.count .counter .left{
+	position:absolute;
+	top:60px;
+	right:50%;
+	margin-right:50px;
+}
+.count .counter .right{
+	position:absolute;
+	top:60px;
+	left:50%;
+	margin-left:50px;
+}
+.matches{
+	padding:8px 0 8px 10px;
+	margin-left:-18px;
+	overflow:hidden;
+}
+.match{width:240px;float:left;display:inline-block;margin:0 0 7px 15px;vertical-align:top;}
+.match .header{
+	height:20px;
+	padding:0 0 0 10px;
+	background:#070e13 url(../images/sport_games_header_bg.gif) repeat-x;
+	color:#cdcdcd;
+	font:11px Tahoma;
+	font-weight:bold;
+	line-height:20px;
+}
+
+.match .content{
+	background:#49535d url(../images/matchcontent.jpg) repeat-x bottom left;
+	padding:16px 0 6px 0;
+	overflow:hidden;
+}
+
+.match .content .char{
+	width:33%;
+	text-align:center;
+	float:left;
+	color:#cdcdcd;
+	font:11px Tahoma;
+	font-weight:bold;
+	padding:0 0 10px 0;
+}
+
+.match .content .longchar.active, 
+.match .content .char.active{
+	background:url(../images/corner1.jpg) no-repeat bottom center;
+}
+
+.match .content .char .livebet,
+.match .content .char a{
+	background:url(../images/matchchar.jpg) no-repeat;
+	display:inline-block;
+	width:26px;
+	height:26px;
+	color:#000;
+	font:12px Arial;
+	font-weight:bold;
+	text-align:center;
+	padding:0 0 2px 0;
+	line-height:26px;
+	text-decoration:none;
+}
+.match .content .longchar.active .livebet, .match .content .longchar.active a{background:url(../images/matchcharoval_active.gif) no-repeat;}
+.match .content .longchar.active span{color:#fec721;}
+
+.match .content .char.active .livebet, .match .content .char.active a{background:url(../images/matchcharactive.jpg) no-repeat;}
+.match .content .char.active span{color:#fec721;}
+.match .content .char span{display:block;}
+
+.match .content .arrow{
+	width:34%;
+	float:left;
+	color:#cdcdcd;
+	font:11px Tahoma;
+	font-weight:bold;
+	padding:0 0 10px 15px;
+}
+
+.match .content .arrow a{
+	background:url(../images/matcharrowup.jpg) no-repeat;
+	display:inline-block;
+	width:26px;
+	height:26px;
+	color:#cdcdcd;
+	font:11px Tahoma;
+	text-align:center;
+	padding:0 0 2px 34px;
+	line-height:26px;
+	text-decoration:none;
+}
+.match .content .arrow.up a{background:url(../images/matcharrowup.jpg) no-repeat;}
+.match .content .arrow.down a{background:url(../images/matcharrowdown.jpg) no-repeat top right;padding:0 50px 2px 0;}
+.match .content .arrow.down span{padding:0 0 0 50px;}
+
+.match .content .val{
+	width:18%;
+	text-align:center;
+	float:left;
+	color:#cdcdcd;
+	font:15px Arial;
+	font-weight:bold;
+	line-height:2;
+}
+
+.match .content .longchar{
+	width:33%;
+	text-align:center;
+	float:left;
+	color:#cdcdcd;
+	font:11px Tahoma;
+	font-weight:bold;
+	padding:0 0 10px 0;
+}
+
+.match .content .longchar .livebet,
+.match .content .longchar a{
+	background:url(../images/matchcharoval.jpg) no-repeat;
+	display:inline-block;
+	width:50px;
+	height:26px;
+	color:#000;
+	font:11px Tahoma;
+	font-weight:bold;
+	text-align:center;
+	padding:0 0 2px 0;
+	line-height:26px;
+	text-decoration:none;
+}
+.match .content .longchar span{display:block;}
+.match .content .footer a{
+	float:right;
+	background: url("../images/left_actions_item_plusminus.gif") no-repeat top right;
+	margin:0 7px 0 0;
+	padding:0 16px 0 0;
+	text-decoration:none;
+}
+
+.float-left{float:left;}
+.float-left .match{display:block;float:none;}
+
+
+.match .content .addbet{
+	background:url(../images/backaddbet.jpg) repeat-x;
+	height:72px;
+}
+.match .content .addbet .divform, 
+.match .content .addbet form{
+	padding:12px 0 0 18px;
+}
+.match .content .addbet input.text{
+	background:url(../images/addbetinputtext.jpg) no-repeat;
+	border:none;
+	width:102px;
+	padding:0 12px 0 6px;
+}
+.match .content .addbet input.submit{
+	background: url(../images/addbetbut.jpg) no-repeat;
+	border:none;
+	width:92px;
+	height:23px;
+	line-height:23px;
+	color:#d9d9d9;
+	font-size:11px;
+	font-family:Tahoma;
+	font-weight:bold;
+}
+
+.match .content .addbet .add{
+	background: url(../images/addplus.jpg) no-repeat;
+	display:inline-block;
+	height:23px;
+	line-height:23px;
+	padding:0 9px 0 29px;
+	margin-top:8px;
+	color:#1f272e;
+	font-size:11px;
+	font-family:Tahoma;
+	font-weight:bold;
+	text-decoration:none;
+	border:none;
+	cursor:pointer;
+}
+
+.match .content .addbet .cancel{
+	background: url(../images/cancel.jpg) no-repeat;
+	display:inline-block;
+	height:23px;
+	line-height:23px;
+	padding:0 0 0 29px;
+	margin-top:8px;
+	color:#1f272e;
+	font-size:11px;
+	font-family:Tahoma;
+	font-weight:bold;
+	text-decoration:none;
+	border:none;
+	cursor:pointer;
+}
+
+.match .content .desc{color:#d2d2d2;font-size:10px;font-family:Verdana;padding:0 0 0 12px;line-height:20px;}
+
+.menu
+
+.regdiv b
+{
+    color:yellow;
+    
+}
+
+.onebet_popup{
+	width: 270px;
+	background: #f0c540;
+	display:none;
+	position:absolute;
+	z-index:1000;
+}
+
+.onebet_popup .textfield{
+	margin-left:20px;
+}
+
+.preheader{
+	height: 1px;
+}
+
+.header_onebet{
+	text-align: left;
+	margin-top: 0.5px;
+	width: 262px;
+	height: 23px;
+	padding: 0 2px;
+	color: #CCCCCC;
+	background: #070E13 url(../images/sport_games_header_bg.gif) repeat-x 0 0;
+	line-height: 20px;
+	margin-bottom: -7px;
+	/*font-weight: bold;*/
+	font-size: 11px;
+}
+
+.footer_onebet{	
+	text-align: center;
+	height: 23px;
+	padding: 0 2px;
+	margin-bottom: 1px;
+	color: #CCCCCC;
+	background: #070E13 url(../images/onebet_footer.gif) repeat-x 0 0;
+	line-height: 20px;
+}
+
+.do_button{
+	display: inline-block;
+	width: 95px;
+	height: 24px;
+	margin-top: 15px;
+	padding: 0 0 5px 0;
+	border-style: none;
+	background: url(../images/onebet_do_button.gif) no-repeat 0 0;
+	font-size: 11px;
+	color: #C9C9C9;
+	font-weight: bold;
+	line-height: 22px;
+	cursor: pointer;
+}
+
+.onebet_buttons{
+	font-size:12px;
+	font-weight: bold;
+	color: #061521;
+	margin-left:20px;
+}
+
+.add_button{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+	padding: 0 0 5px 0;
+	border-style: none;
+	background: url(../images/onebet_add_button.gif) no-repeat 0 0;
+	font-size: 11px;
+	color: #C9C9C9;
+	font-weight: bold;
+	line-height: 22px;
+	cursor: pointer;
+}
+
+.cancel_button{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	margin-top: 7px;
+	margin-bottom: 7px;
+	padding: 0 0 5px 0;
+	border-style: none;
+	background: url(../images/onebet_cancel_button.gif) no-repeat 0 0;
+	font-size: 11px;
+	color: #C9C9C9;
+	font-weight: bold;
+	line-height: 22px;
+	cursor: pointer;
+	margin-left: 5px;
+}
+
+#content .live
+{
+    display: none;
+}
+
+#div_mathes_post_status
+{
+    display: none;
+    text-align: center;
+}
+
+.livebet
+{
+    cursor:pointer;    
+}
+
+.buttons
+{
+    font-size: 11px;
+    font-family: Tahoma;
+    font-weight: bold;
+    color: #1F272E;
+    padding: 0 9px 0 29px;
+}
+
+.bettable
+{
+    border:0px;
+    
+}
+.bettable .bettext
+{
+    width:260px;
+    text-align:right;
+}
+.othersbettext
+{
+    width:585px;
+    text-align:right;
+}
+
+.bettable .betbet
+{
+    width:54px;
+}
+
+.isliveimg
+{
+    height: 12px; margin-top: 4px; margin-left: 4px;
+}
+
+.add_word, .cancel_word
+{
+    display:inline-block;
+    cursor:pointer;
+}
+
+.subsub_rates_hidetitle .sub_rates_title
+{
+    display:none !important;   
+}

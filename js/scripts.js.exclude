@@ -1,0 +1,718 @@
+
+/**
+ * Coupon
+ */
+var Coupon = function () {
+    var init = function () {
+        $('.coupon_header_container').click(function () {
+            $(this).children().toggleClass('opened');
+            $('.coupon_content_container').slideToggle(100);
+        });
+
+        /*
+        $('#coupon_content li').click(function () {
+        $(this).siblings().removeClass('selected');
+        $(this).addClass('selected');
+
+        $(this).parents('#coupon_content').children('.coupon_item_content').hide();
+
+        var itemID = $(this).attr('id');
+        $('#' + itemID + '_content').show();
+
+        fixCouponBackground();
+        });
+        */
+        $('#coupon_content li').click(function () {
+            if (this.id == 'coupon_item_system') {
+                var coupon_counter = parseInt($('#coupon_counter').text());
+                if (coupon_counter > 2) {
+                    $(this).siblings().removeClass('selected');
+                    $(this).addClass('selected');
+
+                    $(this).parents('#coupon_content').children('.coupon_item_content').hide();
+
+                    var itemID = $(this).attr('id');
+                    $('#' + itemID + '_content').show();
+
+                    fixCouponBackground();
+                }
+            } else {
+
+                $(this).siblings().removeClass('selected');
+                $(this).addClass('selected');
+
+                $(this).parents('#coupon_content').children('.coupon_item_content').hide();
+
+                var itemID = $(this).attr('id');
+                $('#' + itemID + '_content').show();
+
+                fixCouponBackground();
+            }
+        });
+
+        $('.coupon_item_system').click(function () {
+            var coupon_counter = parseInt($('#coupon_counter').text());
+            if (coupon_counter > 2) {
+                $(this).siblings().removeClass('selected');
+                $(this).addClass('selected');
+
+                $(this).parents('#coupon_content').children('.coupon_item_content').hide();
+
+                var itemID = $(this).attr('id');
+                $('#' + itemID + '_content').show();
+
+                fixCouponBackground();
+            }
+        });
+
+        $('#coupon_item_normal_content .remove').live('click', function () {
+            $(this).parent().fadeOut(100, function () {
+                $(this).remove();
+                fixCouponBackground();
+            });
+        });
+
+        fixCouponBackground();
+    }
+
+    var fixCouponBackground = function () {
+        $('#coupon_content_bg').css({
+            width: $('#coupon_content_container').width(),
+            height: $('#coupon_content_container').height()
+        }).show();
+    }
+
+    /**
+    * Adding selected bet to the coupon
+    * Coupon.AddBet()
+    */
+    var addBet = function (betData) {
+        if (!$('#' + betData.gameId + '_' + betData.id).length) {
+            var $couponItem = $('<div id="' + betData.gameId + '_' + betData.id + '" class="item"></div>').appendTo('#coupon_item_normal_content');
+            var coupon_counter = parseInt($('#coupon_counter').text())+1;
+            $('#coupon_counter').text(coupon_counter);
+            if (coupon_counter > 2) {
+                //$('#coupon_content li').find('.coupon_item_system').css('cursor', 'pointer');
+                $('#coupon_item_system').css('cursor', 'pointer');
+                //$('.coupon_item_system').css('color', 'red');
+            }
+            //alert (coupon_counter);
+            var couponItemHtml = '\
+                <input type="hidden" name="bet()" value="' + betData.id + '">\
+				<span class="remove"></span>\
+				<label><input class="checkbox" type="checkbox" />' + betData.players + '</label>\
+				<div class="selection">Выбор: <strong>' + betData.title + '</strong> <span>' + betData.odd + '</span></div>\
+			';
+            $couponItem.append(couponItemHtml);
+        }
+
+        fixCouponBackground();
+    }
+
+
+    /**
+    * Removing bet from the coupon
+    * Coupon.RemoveBet()
+    */
+    var removeBet = function (gameId, betId) {
+        $('#' + gameId + '_' + betId).remove();
+    }
+
+    return {
+        Init: init,
+        AddBet: addBet,
+        RemoveBet: removeBet
+    }
+} ();
+
+
+
+/**
+ * SportEvents 
+ */
+var SportEvents = function(){
+	var init = function(){
+		$('#left_actions .championships label').live('click', function(){
+			var $championship = $(this).toggleClass('selected');
+			if ($championship.hasClass('selected')) {
+				var championshipId = $championship.attr('id');
+			}
+		});
+		
+        /*
+		$('#left_actions li > a').live('click', function(){
+			var $sport = $(this).parent();
+			var sportId = $sport.attr('id');
+			$sport.toggleClass('selected');
+			if ($sport.hasClass('selected')) {
+				getChampionshipsBySportId(sportId);
+			}
+			return false;
+		});
+        */
+        $('#sports_list li > a').live('click', function () {
+            var $sport = $(this).parent();
+            var sportId = $sport.attr('id');
+            $sport.toggleClass('selected');
+            if ($sport.hasClass('selected')) {
+                getChampionshipsBySportId(sportId);
+            }
+            return false;
+        });
+		
+		$('#update_bets_list').click(function(){
+			//$('#sports_bet_list .series').remove();
+			var $championships = $('#sports_list label.selected');
+			getGamesByChampionships($championships);
+		});
+		
+		getSportsList();
+	}
+	
+	/**
+	 * Getting sports list from xml file
+	 */
+	var getSportsList = function(){
+		$.ajax({
+			url : 'xml/LineXml.xml',
+			type : 'get',
+			dataType : 'xml',
+			cache : false,
+			success : function(XMLdocument){
+				var sports = $(XMLdocument).find('Sport');
+				fillSports(sports);
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown){
+				alert(errorThrown)
+			}
+		});
+	}
+	
+	/**
+	 * Filling sports list 
+	 */
+     /*
+	var fillSports = function(sports){
+		var sportsHtml = '';
+		var sportsBetHtml = '';
+		$.each(sports, function(i, sport){
+			var $sport = $(sport);
+			var sportId = $sport.attr('Id');
+			var sportName = $sport.children('Name').text();
+			
+			sportsHtml += '<li id="'+sportId+'" class="sport"><a href="#">'+sportName+'</a><div class="championships"></div></li>';
+			sportsBetHtml += '<div id="sportBet_'+sportId+'" class="sport"><h2>'+sportName+'</h2></div>';
+		});
+		$('#sports_list').append(sportsHtml);
+		$('#sports_bet_list').append(sportsBetHtml);
+	}
+    */
+	
+	
+	/**
+	 * Getting championships by sport id
+	 */
+	var getChampionshipsBySportId = function(sportId){
+		$.ajax({
+			url : 'xml/LineXml.xml',
+			type : 'get',
+			dataType : 'xml',
+			cache : false,
+			success : function(XMLdocument){
+				var $sport = $(XMLdocument).find('Sport[Id='+sportId+']');
+				var $championships = $sport.find('Championship');
+				var championships = {};
+				
+				$.each($championships, function(i, championship){
+					var $championship = $(championship);
+					
+					var championshipId = $championship.attr('Id');
+					var championshipName = $championship.children('Name').text();
+					
+					var countryCode = $championship.children('Country').attr('Code');
+					var countryName = $championship.children('Country').text();
+					if (!$.trim(countryCode).length) {
+						countryCode = 'EMPTY';
+						countryName = 'Others';
+					}
+					
+					if (typeof championships[countryCode] == 'undefined') {
+						championships[countryCode] = {
+							countryCode : countryCode,
+							countryName : countryName,
+							championshipNames : {}
+						};
+					}
+					
+					championships[countryCode]['championshipNames'][championshipId] = championshipName;
+				});
+				fillSportChampionships(sportId, championships);
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown){
+				alert(errorThrown)
+			}
+		});
+	}
+	
+	
+	/**
+	 * Fill championships to sports 
+	 */
+     /*
+	var fillSportChampionships = function(sportId, championships){
+		var $sport = $('#sports_list li[id='+sportId+']');
+		var $championships = $sport.children('.championships').empty();
+		
+		$.each(championships, function(i, championship){
+			var $championshipRegion = $('<div>').addClass('region').appendTo($championships);
+			
+			$('<h4>').text(championship.countryName).appendTo($championshipRegion);
+			
+			var championshipNamesHtml = '';
+			$.each(championship.championshipNames, function(championshipId, championshipName){
+				championshipNamesHtml += '<li><input id="" type="checkbox" /> <label id="'+championshipId+'" for="">'+championshipName+'</label></li>';
+			});
+			
+			$championshipRegion.append('<ul>'+championshipNamesHtml+'</ul>');
+		});
+	}
+    */
+	
+	/**
+	 * Get games by selected championships
+	 * @param $championships
+	 * @return
+	 */
+	var getGamesByChampionships = function($championships) {
+		$.ajax({
+			url : 'xml/LineXml.xml',
+			type : 'get',
+			dataType : 'xml',
+			cache : false,
+			success : function(XMLdocument){
+				var toBetGames = {};
+				
+				$.each($championships, function(){
+					var $championship = $(this);
+					var championshipId = $championship.attr('id');
+					var sportId = $championship.closest('li.sport').attr('id');
+					var $games = $(XMLdocument).find('Championship[Id='+championshipId+']').find('Game');
+					
+					$.each($games, function(){
+						var $game = $(this);
+						var gameId = $game.attr('Id');
+						var gameDateTime = $game.children('date').text();
+						var gameDateId = gameDateTime.split(' ')[0].replace(/\./g, '');
+						var gameDate = gameDateTime.split(' ')[0];
+						var gameTime = gameDateTime.split(' ')[1];
+						var player1Id = $game.children('Player1').attr('Id');
+						var player1Name = $game.children('Player1').text();
+						var player2Id = $game.children('Player2').attr('Id');
+						var player2Name = $game.children('Player2').text();
+						
+						var $bets = $game.children('bets').children();
+						var gameBets = {};
+						$.each($bets, function(){
+							var $bet = $(this);
+							gameBets[$bet.attr('Type')] = {
+								id : $bet.attr('Id'),
+								odd : $bet.attr('Odd'),
+								title : $bet.text()
+							};
+						});
+						
+						if (typeof toBetGames[sportId] === 'undefined') {
+							toBetGames[sportId] = {};
+						}
+						if (typeof toBetGames[sportId][gameDate] == 'undefined') {
+							toBetGames[sportId][gameDate] = [];
+						}
+						toBetGames[sportId][gameDate].push({
+							gameId : gameId,
+							gameTime : gameTime,
+							player1Id : player1Id,
+							player1Name : player1Name,
+							player2Id : player2Id,
+							player2Name : player2Name,
+							bets : gameBets
+						});
+					});
+				});
+				fillGamesByChampionship(toBetGames);
+			}
+		});
+	}
+	
+	/**
+	 * Fill games data by selected championships
+	 */
+	var fillGamesByChampionship = function(toBetGames) {
+		$.each(toBetGames, function(sportId, dateGames) {
+			var $sportBetContainer = $('#sportBet_'+sportId);
+			
+			$.each(dateGames, function(gameDate, games) {
+				var gameDateId = gameDate.replace(/\./g, '');
+				var $sportBetDateContainer = $('#sportBetDate_' + sportId + '_' + gameDateId);
+				var $sportBetDateGamesContainet = $('#sportBetDateGames_' + sportId + '_' + gameDateId);
+				
+				if (!$sportBetDateContainer.length) {
+					$sportBetDateContainer = $('<div id="sportBetDate_' + sportId + '_' + gameDateId + '" class="date"></div>').appendTo($sportBetContainer);
+					$('<h3><span></span>'+gameDate+'</h3>').appendTo($sportBetDateContainer);
+					var $gameSeriesContainer = $('<div class="series"></div>').appendTo($sportBetDateContainer);
+					$sportBetDateGamesContainet = $('<div id="sportBetDateGames_' + sportId + '_' + gameDateId + '" class="games"></div>').appendTo($gameSeriesContainer);
+					
+					var gamesHeaderHtml = '\
+						<div class="header">\
+							<span class="blank_left_space"></span>\
+							<div class="rates_group">\
+								<span class="rate">П1</span><span class="rate">X</span><span class="rate">П2</span>\
+							</div>\
+							<div class="rates_group">\
+								<span class="rate">1X</span><span class="rate">12</span><span class="rate">X2</span>\
+							</div>\
+							<div class="rates_group">\
+								<span class="rate rate_f1">Ф1</span>\
+							</div>\
+							<div class="rates_group">\
+								<span class="rate rate_f2">Ф2</span>\
+							</div>\
+							<div class="rates_group">\
+								<span class="rate">Т</span>\
+							</div>\
+							<div class="rates_group">\
+								<span class="rate">ТБ</span>\
+							</div>\
+							<div class="rates_group">\
+								<span class="rate">ТМ</span>\
+							</div>\
+						</div>\
+					';
+					$sportBetDateGamesContainet.append(gamesHeaderHtml);
+				}
+				
+				$.each(games, function(i, game) {
+					var $betGameContainer = $('#betGame_' + game.gameId);
+					
+					if (!$betGameContainer.length) {
+						$betGameContainer = $('<div id="betGame_' + game.gameId + '" class="game"></div>').data('data', {
+							id : game.gameId
+						}).appendTo($sportBetDateGamesContainet);
+						
+						var $betGameContent = $('<div class="game_main"></div>').appendTo($betGameContainer);
+						
+						$('<span class="time"></span>').text(game.gameTime).appendTo($betGameContent);
+						$('<span class="team"></span>').text(game.player1Name + ' - ' + game.player2Name).appendTo($betGameContent);
+						
+						var gameRatesHtml = '\
+							<div class="rates_group">\
+								<span class="rate" id="' + game.bets[1].id + '" title="' + game.bets[1].title + '">' + game.bets[1].odd + '</span>\
+								<span class="rate" id="' + game.bets[3].id + '" title="' + game.bets[3].title + '">' + game.bets[3].odd + '</span>\
+								<span class="rate" id="' + game.bets[2].id + '" title="' + game.bets[2].title + '">' + game.bets[2].odd + '</span>\
+							</div>\
+							<div class="rates_group">\
+								<span class="rate" id="' + game.bets[4].id + '" title="' + game.bets[4].title + '">' + game.bets[4].odd + '</span>\
+								<span class="rate" id="' + game.bets[18].id + '" title="' + game.bets[18].title + '">' + game.bets[18].odd + '</span>\
+								<span class="rate" id="' + game.bets[5].id + '" title="' + game.bets[5].title + '">' + game.bets[5].odd + '</span>\
+							</div>\
+							<div class="rates_group">\
+								<div class="rate_double">\
+									<span class="rate" id="' + game.bets[86].id + '" title="' + game.bets[86].title + '">' + game.bets[86].odd + '</span>\
+									<span class="rate" title="">?,??</span>\
+									<span class="arrow"></span>\
+								</div>\
+								<span class="rate" title="">?,??</span>\
+							</div>\
+							<div class="rates_group">\
+								<div class="rate_double">\
+									<span class="rate" id="' + game.bets[87].id + '" title="' + game.bets[87].title + '">' + game.bets[87].odd + '</span>\
+									<span class="rate" title="">?,??</span>\
+									<span class="arrow"></span>\
+								</div>\
+								<span class="rate" title="">?,??</span>\
+							</div>\
+							<div class="rates_group">\
+								<span class="rate" title="">?,??</span>\
+							</div>\
+							<div class="rates_group">\
+								<span class="rate" title="">?,??</span>\
+							</div>\
+							<div class="rates_group">\
+								<span class="rate" title="">?,??</span>\
+							</div>\
+							<div class="more_rates">+15</div>\
+						';
+						$betGameContent.append(gameRatesHtml);
+						
+						var $betMoreGameContent = $('<div class="game_more"></div>').appendTo($betGameContainer);
+						var gameMoreRatesHtml = '\
+							<div class="sub_rates">\
+								<div class="sub_rates_header">Другие ставки</div>\
+								\
+								<div class="sub_rates_list">\
+									<div class="sub_rates_row">\
+										<div class="sub_rates_title">1-й гол (минута)</div>\
+										<div class="rates_group">\
+											<span class="sub_rate_label">1-28</span><span class="rate">7.37</span>\
+											<span class="sub_rate_label">29-30</span><span class="rate">6.98</span>\
+											<span class="sub_rate_label">не будет</span><span class="rate">9.55</span>\
+										</div>\
+									</div>\
+									<div class="sub_rates_row">\
+										<div class="sub_rates_title">2-й гол (минута)</div>\
+										<div class="rates_group">\
+											<span class="sub_rate_label">1-55</span><span class="rate">1.84</span>\
+											<span class="sub_rate_label">56-90</span><span class="rate">1.57</span>\
+											<span class="sub_rate_label">не будет</span><span class="rate">3.09</span>\
+										</div>\
+									</div>\
+									<div class="sub_rates_row">\
+										<div class="sub_rates_title">Последний гол (минута)</div>\
+										<div class="rates_group">\
+											<span class="sub_rate_label">1-55</span><span class="rate">7.50</span>\
+											<span class="sub_rate_label">56-90</span><span class="rate">1.01</span>\
+											<span class="sub_rate_label">не будет</span><span class="rate">4.76</span>\
+										</div>\
+									</div>\
+									<div class="sub_rates_row">\
+										<div class="sub_rates_title">1-й гол (команда)</div>\
+										<div class="rates_group">\
+											<span class="sub_rate_label">Бавария</span><span class="rate">8.71</span>\
+											<span class="sub_rate_label">Вердер</span><span class="rate">1.25</span>\
+											<span class="sub_rate_label">не будет</span><span class="rate">0.21</span>\
+										</div>\
+									</div>\
+									<div class="sub_rates_row">\
+										<div class="sub_rates_title">Последний гол (команда)</div>\
+										<div class="rates_group">\
+											<span class="sub_rate_label">Бавария</span><span class="rate">6.16</span>\
+											<span class="sub_rate_label">Вердер</span><span class="rate">7.96</span>\
+											<span class="sub_rate_label">не будет</span><span class="rate">8.82</span>\
+										</div>\
+									</div>\
+									<div class="sub_rates_row">\
+										<div class="sub_rates_title">Индивидуальный Тотал1</div>\
+										<div class="rates_group">\
+											<span class="sub_rate_label">Бавария &gt; 1.5</span><span class="rate">2.51</span>\
+											<span class="sub_rate_label">Бавария &lt; 1.5</span><span class="rate">2.58</span>\
+										</div>\
+									</div>\
+									<div class="sub_rates_row">\
+										<div class="sub_rates_title">Индивидуальный Тотал2</div>\
+										<div class="rates_group">\
+											<span class="sub_rate_label">Вердер &gt; 1.5</span><span class="rate">1.24</span>\
+											<span class="sub_rate_label">Вердер &lt; 1.5</span><span class="rate">1.35</span>\
+										</div>\
+									</div>\
+									<div class="sub_rates_row">\
+										<div class="sub_rates_title">Тотал матча</div>\
+										<div class="rates_group">\
+											<span class="sub_rate_label">0 - 1 гола</span><span class="rate">2.72</span>\
+											<span class="sub_rate_label">2 - 3 гола</span><span class="rate">2.21</span>\
+											<span class="sub_rate_label">4 и более гола</span><span class="rate">6.95</span>\
+										</div>\
+									</div>\
+								</div>\
+							</div>\
+						';
+						$betMoreGameContent.append(gameMoreRatesHtml);
+						
+						$('<div class="breaker"></div>').appendTo($betGameContent);
+					}
+				});
+			});
+			
+			$sportBetContainer.show();
+		});
+	}
+	
+	
+	return {
+		Init : init
+	}
+}();
+
+
+
+$(function () {
+    Coupon.Init();
+    SportEvents.Init();
+
+    $('div.date h3').live('click', function () {
+        $(this).next().toggle().end().toggleClass('closed');
+    });
+
+    $('.rates_type h3').live('click', function () {
+        $(this).next().toggle().end().toggleClass('opened');
+    });
+
+    /* rates events */
+    $('.rate_double .arrow').live('click', function () {
+        var This = $(this).parent()[0];
+        $('.rate_double').each(function () {
+            if (this == This) return true;
+            $(this).removeClass('rate_double_opened');
+        });
+        $(this).parent().toggleClass('rate_double_opened');
+    });
+
+    $('.rate_f')
+        .live('click', function () {
+            $('.rate_double').removeClass('rate_double_opened');
+            var $bet = $(this);
+            var $parent = $bet.parent();
+            if ($parent.is('.rate_double')) {
+                $bet.prependTo($parent);
+            }
+            //var $f_odd = $parent.find('#f_odd').text();
+            $bet.closest('.rates_group').find('.#span_odd').text($('#f_odd_' + this.id).text());
+            //$parent[1].find('#span_f1_odd').text('aaaa');
+        });
+
+        $('.rate')
+    /*
+		.live('mouseenter', function () {
+		    //$(this).addClass('rate_hover');
+		})
+		.live('mouseleave', function () {
+		    //$(this).toggleClass('rate_hover');
+		})
+        */
+		.live('click', function () {
+		    var $bet = $(this),
+		        gameId = $bet.closest('.game').attr('id'),
+		        betId = $bet.attr('id');
+
+		    $('.rate_double').removeClass('rate_double_opened');
+
+		    if ($bet.hasClass('rate_selected')) {
+		        $bet.removeClass('rate_selected');
+
+		        Coupon.RemoveBet(gameId, betId);
+		    }
+		    else {
+		        $bet.closest('.rates_group').find('.rate').removeClass('rate_selected').removeClass('rate_hover').end().end().addClass('rate_selected');
+
+		        var $parent = $bet.parent();
+		        if ($parent.is('.rate_double')) {
+		            $bet.prependTo($parent);
+		        }
+
+		        /*
+		        var $a1 = betId;
+		        var $a2 = $bet.attr('title');
+		        var $a3 = $bet.text();
+		        var $a4 = $bet.closest('.game_main').find('.team').text();
+		        var $a5 = gameId;
+		        */
+
+		        Coupon.AddBet({
+		            id: betId,
+		            title: $bet.attr('title'),
+		            odd: $bet.text(),
+		            players: $bet.closest('.game_main').find('.team').text(),
+		            //players: 'zxczxc - asdasd',
+		            gameId: gameId
+		        });
+		    }
+		});
+
+
+    $('.more_rates').live('click', function () {
+        var $moreRatesButton = $(this);
+        var $game = $moreRatesButton.closest('.game');
+
+        if (!$game.hasClass('.game_live')) {
+            if ($moreRatesButton.hasClass('expanded')) {
+                $game.removeClass('game_opened');
+                $moreRatesButton.text('+15');
+            }
+            else {
+                $game.addClass('game_opened');
+                $moreRatesButton.text('-15');
+            }
+            $moreRatesButton.toggleClass('expanded');
+        }
+        else {
+            window.open('live_popup.php', null, 'width=480,height=580,status=0,toolbar=0,location=0,menubar=0,directories=0,resizable=1,scrollbars=1');
+        }
+    });
+
+
+    $('.sub_rates_header').live('click', function () {
+        if (!$(this).hasClass('sub_rates_opened')) {
+            $(this).addClass('sub_rates_opened').next().slideDown(100);
+        }
+        else {
+            $(this).removeClass('sub_rates_opened').next().slideUp(100);
+        }
+    });
+
+
+    /* live events */
+    $('.game_on_tv').hover(function () {
+        $('<div>').attr('id', 'tv_hover_popup').addClass('tv_hover_container').css({
+            top: $(this).offset().top - 48,
+            left: $(this).offset().left + 30
+        }).append(
+			$('<div>').html($(this).children().html())
+		).appendTo('body');
+    }, function () {
+        $('#tv_hover_popup').remove();
+    });
+
+
+    /* results events */
+    $('.view_more_active').toggle(function () {
+        $(this).parents('.game').toggleClass('game_expanded');
+        $(this).parents('.game_main').next().slideDown(100);
+    }, function () {
+        $(this).parents('.game').toggleClass('game_expanded');
+        $(this).parents('.game_main').next().slideUp(100);
+    });
+
+    if ($('#date_filter_input').length) {
+        $('#date_filter_input').datepicker({
+            firstDay: 1,
+            dateFormat: 'dd.mm.yy',
+            showAnim: 'fadeIn',
+            duration: 200
+        });
+
+        $('.date_filter').click(function () {
+            $('#date_filter_input').datepicker('show');
+        });
+    }
+
+
+
+    /* withdraw addresses */
+    $('.withdraw_action_button').toggle(function () {
+        $(this).parents('.withdraw_item_details').next().slideDown(100);
+    }, function () {
+        $(this).parents('.withdraw_item_details').next().slideUp(100);
+    });
+
+    /* addmoney */
+    $('.addmoney_action_button').toggle(function () {
+        $(this).parents('.addmoney_item_details').next().slideDown(100);
+    }, function () {
+        $(this).parents('.addmoney_item_details').next().slideUp(100);
+    });
+
+    /* account payments */
+    $('.account_payments_expand_link').toggle(function () {
+        $(this).parents('tr').next('tr.details').show();
+    }, function () {
+        $(this).parents('tr').next('tr.details').hide();
+    });
+
+    /* account history */
+    $('.account_history tr.express').toggle(function () {
+        $(this).find('.details').show();
+    }, function () {
+        $(this).find('.details').hide();
+    });
+});
+
+
+

@@ -1,0 +1,210 @@
+html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+strong, sub, sup, tt, var, legend, fieldset {
+	margin: 0;
+	padding: 0;
+}
+img, fieldset {
+	border: 0;
+}
+body, select, input, textarea {
+	font-family: Tahoma, Arial Unicode;
+	font-size: 11px; 
+}
+body {
+	color: #fff;
+}
+ul, ol {
+	list-style: none;
+}
+a {
+	outline-style: none;
+	color: #fff;
+}
+.breaker {
+	clear: both;
+	overflow: hidden;
+}
+
+body {
+	background: #192a3b;
+	padding: 5px;
+}
+
+#popup_wrapper {
+	width: 470px;
+	margin: 0 auto;
+}
+
+h1 {
+	height: 32px; 
+	background-color: #1f272e;
+	font-size: 11px; font-weight: normal; color: #fff; line-height: 32px; text-align: center;
+}
+	h1 span {
+		color: #fec826;
+	}
+
+.content {
+	padding: 2px;
+	background-color: #49535d;
+	margin-bottom: 2px;
+}
+	.content h2 {
+		height: 26px;
+		margin-bottom: 1px;
+		background: url(../images/popup_header_bg.gif) repeat-x scroll 0 0;
+		border: 1px solid #061521;
+		font-size: 11px; color: #fff; line-height: 24px; text-align: center;
+	}
+		.content h2 span {
+			margin-left: 10px;
+			font-size: 13px; color: #0dc9ff; 
+		}
+
+	.content .result_row {
+		height: 23px;
+		margin-bottom: 1px;
+		background-color: #132231;
+		line-height: 22px; text-align: center;
+	}
+	
+	.content .rates_list {
+		height: 368px;
+		overflow: auto;
+	}
+	.content .rates_type h3 {
+		height: 22px;
+		background: #171d24 url(../images/sub_rates_header_arrow.gif) no-repeat 10px top;
+		padding: 0 26px;
+		margin-bottom: 1px;
+		font-size: 11px; color: #fec826; font-weight: bold; line-height: 20px;
+		cursor: pointer;
+	}
+	.content .rates_type h3.opened {	
+		background-position: 10px bottom;
+	}
+	.content .rates_type .rates_rows {
+		display: none;
+	}
+	.content .rates_group2 {
+		float: left;
+		width: 68px;
+		margin-right: 18px;
+	}
+		.content .rate_row {
+			padding: 3px 0;
+			margin-bottom: 1px;
+			background-color: #29333d;
+		}
+		.content .rate_row_general .rate_row {
+			padding: 3px 25px;
+		}
+		.content .sub_rate_label {
+			float: left;
+			margin-right: 5px;
+		}
+		.content .rate {
+			float: left;
+			width: 30px; height: 14px;
+			margin-right: 10px;
+			background-color: #48525c;
+			border-top: 1px solid #676f79;
+			border-right: 1px solid #30363d;
+			border-bottom: 1px solid #191d21;
+			border-left: 1px solid #505962;
+			color: #fff; line-height: 13px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.content .rate_row_general .rate {
+			margin-right: 18px;
+		}
+		.content .rates_group2 .rate {
+			margin-right: 2px;
+			margin-bottom: 2px;
+		}
+		.content .rate_selected,
+		.content .rate_hover {
+			width:32px; height: 16px;
+			border: none;
+			background: #ffd457 url(../images/rate_selected.gif) repeat-x 0 bottom;
+			color: #000; line-height: 15px;
+		}
+
+		.content .rate_row .rate_title {
+			float: left;
+			width: 100px;
+			padding-left: 14px;
+			color: #fec826; 
+		}
+	
+	.coupon_content {
+		padding-bottom: 4px;
+		background: url(../images/live_popup_coupon_bg.gif) no-repeat 0 0;
+	}
+	.coupon_content .tabs {
+		height: 27px;
+	}
+	.coupon_content .tabs li {
+		float: left;
+		width: 225px; height: 26px;
+		padding-left: 10px;
+		background-color: #4b5662;
+		border-top: 1px solid #192a3b;
+		color: #d9d9d9; font-weight: bold; font-size: 11px; line-height: 25px;
+		cursor: pointer;
+	}
+	.coupon_content .tabs li.selected {
+		width: 225px;
+		background: none;
+		border: 0;
+		color: #121212;
+	}
+		.coupon_content .coupon_actions {
+			height: 24px;
+			padding: 15px;
+			color: #121212;
+		}
+		.coupon_content .coupon_actions label {
+			float: left;
+			display: block;
+			width: 200px; height: 24px;
+			margin-right: 20px;
+			line-height: 22px;
+		}
+		.coupon_content .coupon_actions .textfield {
+			float: right;
+			width: 60px;
+			padding: 2px;
+			margin-top: 2px;
+			border-top: 1px solid #7e7b76;
+			border-right: 1px solid #fff;
+			border-bottom: 1px solid #fff;
+			border-left: 1px solid #7e7b76;
+			background: #fff url(../images/login_inputs_bg.gif) repeat-x 0 0;
+		}
+		.coupon_content .coupon_actions .send_button {
+			float: left;
+			display: block;
+			width: 70px; height: 24px;
+			padding: 0px 0 5px 0;
+			border-style: none;
+			background: url(../images/coupon_action_button.gif) no-repeat 0 0;
+			font-size: 10px; color: #c9c9c9; font-weight: bold; line-height: 24px;
+			cursor: pointer;
+		}
+		.coupon_content .max_tip {
+			background-color: #101f2f;
+			padding: 3px 15px;
+		}
+	
+	
+	.coupon_content .coupon_item_express_content {
+		display: none;
+	}
+	
+	
+	
+	
