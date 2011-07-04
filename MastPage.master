@@ -119,7 +119,7 @@
 
 		<div class="coupon_container">
 			<div class="coupon_header_container">
-				<h2>В купоне <span id="coupon_counter" style="display:inline;">0</span> событий<%--Купон--%></h2>                
+				<h2>В купоне <span id="coupon_counter" style="display:inline;">0</span> <span id="coupon_word">событий</span><%--Купон--%></h2>                
 			</div>
 			<div id="coupon_content_container" class="coupon_content_container">
 				<img id="coupon_content_bg" class="coupon_content_bg" src="images/coupon_content_background.png" />

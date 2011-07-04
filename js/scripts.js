@@ -20,7 +20,37 @@ function addBet(betData)  {
             $('#coupon_item_system').css('cursor', 'pointer');            
         }
 
-        $('#coupon_counter').text(parseInt($('#coupon_item_normal_content .hidden_bet_id').length) + 1);     
+        $('#coupon_counter').text(parseInt($('#coupon_item_normal_content .hidden_bet_id').length) + 1);
+        var elements = parseInt($('#coupon_counter').text());
+        switch (elements){
+            case 0:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+                $('#coupon_word').text('событий');
+                break;
+            default:
+                switch (elements.toString().charAt(elements.length)){
+                    case '1':
+                        $('#coupon_word').text('событие');
+                        break;
+                    case '2':
+                    case '3':
+                    case '4':
+                        $('#coupon_word').text('события');
+                        break;
+                    case '5':
+                    case '6':
+                    case '7':
+                    case '8':
+                    case '9':
+                    case '0':
+                        $('#coupon_word').text('событий');
+                        break;
+                }
+                break;
+        }
         var couponItemHtml = '\
             <input type="hidden" class="hidden_bet_id" name="bet()" value="' + betData.id + '">\
 			<span class="remove"></span>\
