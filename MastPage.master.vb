@@ -79,6 +79,7 @@ Partial Class MastPage
                 lblmoney_sum.Text = user.Balance.ToString
                 lblmoney_currency.Text = user.Currency
             End If
+            lblcurrency.Text = user.Currency + "&nbsp;"
             If Session("loginErrorText") <> "" Then
                 lblmaststat.Text = Session("loginErrorText")
                 Session("loginErrorText") = ""
@@ -195,6 +196,7 @@ Partial Class MastPage
             End If
             lblfirstname.Text = respUser.User.FirstName
             lbllastname.Text = respUser.User.LastName
+            'lblcurrency.Text = respUser.User.Currency
             Session("user") = respUser.User
         Else
             lblmaststat.Text = respUser.ErrorMessage

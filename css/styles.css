@@ -1392,6 +1392,10 @@ display:none;
 				text-align: center;
 				cursor: pointer;
 			}
+			.sum
+			{
+			    padding-bottom:10px;   
+			}
 			.rate_onebet
 			{
 			    /*float: left;*/

@@ -10,6 +10,52 @@ function insertDateIndiv(sender, args) {
     $('#date_filterId').find('.divdateFilterInput').val(sender._selectedDate.format("dd/MM/yyyy"));
 }
 
+function maxWin() {
+    var activeBetSystem = ""
+    var winEventsCounter = $('#coupon_actions').find('.system_additional').find('.system_additional_radiobutton[@name=wincounts]:checked').val();    
+    itemsArray = new Array();
+    itemsStr = '';
+    var maxOdd = 0;
+    var tempMax = 0;
+    var tempmaxJ = 0;
+    systemMaxsArray=new Array();
+    $('#coupon_item_normal_content .item .selection>span').each(function () {
+        itemsArray.push($(this).text());
+    });
+    if ($('#coupon_actions').parents('.coupon_content').find('#coupon_item_express').hasClass('selected')) {
+        //activeBetSystem = "express";
+        maxOdd = itemsArray[0];
+        for ( i = 1; i < itemsArray.length; i++) {
+            maxOdd = maxOdd * itemsArray[i];
+        }
+    }
+    else {
+        if ($('#coupon_actions').parents('.coupon_content').find('#coupon_item_system').hasClass('selected')) {
+            //activeBetSystem = "system";
+            for ( i=0; i<winEventsCounter; i++){
+                for ( j=0; j < itemsArray.length; j++){
+                    if (itemsArray[j]>tempMax){
+                        tempMax = itemsArray[j];
+                        tempmaxJ = j;
+                        //itemsArray[j]=0;
+                    }
+                }
+                itemsArray[tempmaxJ] = 0;
+                systemMaxsArray[i]=tempMax;
+            }
+            maxOdd = itemsArray[0];
+            for ( i=1;i<systemMaxsArray.length;i++){
+                maxOdd = maxOdd * systemMaxsArray[i];
+            }
+        }
+    }
+    var a = parseFloat($('#coupon_actions').find('.sum').find('#betSum').val());
+    var b = $('#coupon_actions').find('.sum').find('#betSum').val();
+    $('#coupon_actions').find('.possible_winning #spansum').text();
+    if (maxOdd * parseFloat($('#coupon_actions').find('.sum').find('#betSum').val()) > 0) {
+        $('#coupon_actions').find('.possible_winning #spansum').text((maxOdd * parseFloat($('#coupon_actions').find('.sum').find('#betSum').val())).toFixed(2));
+    }
+}
 
 
 function addBet(betData)  {
@@ -64,12 +110,12 @@ function addBet(betData)  {
             if (i != 2) {
                 checked = '';
             }
-            system_additionalInnerHtml += '<label><input type="radio" name="wincounts" class="system_additional_radiobutton" value="' + i + '" ' + checked + '>' + i + '/' + coupon_counter + '</label>';
+            system_additionalInnerHtml += '<label onclick="maxWin()"><input type="radio" name="wincounts" class="system_additional_radiobutton" value="' + i + '" ' + checked + '>' + i + '/' + coupon_counter + '</label>';
         }
         $couponItem.append(couponItemHtml);
         $system_additional.html(system_additionalInnerHtml);
     }
-
+    maxWin();    
     fixCouponBackground();    
 }
 
@@ -104,6 +150,14 @@ $(function () {
         $(this).next().toggle().end().toggleClass('opened');
     });
 
+    $('#betSum').change(function () {
+        maxWin();
+    });
+
+    $('.additional_label').click(function () {
+        maxWin();
+    });
+
     /* rates events */
     $('.rate_double .arrow').click(function () {
         var This = $(this).parent()[0];
@@ -134,7 +188,9 @@ $(function () {
 
         var $parent_onebet = $(this).parents('.onebet_popup');
         var $onebet = $parent_onebet.find('.onebet');
-        var $a = $onebet.find('.onebet_id').text();
+        //var $a = $onebet.find('.onebet_id').text();
+        var $gameId = $onebet.find('.onebet_gameId').text();
+        var $odd = $onebet.find('.onebet_odd').text();
         var $aa = $('.rate#' + $onebet.find('.onebet_id').text());
         $aa.removeClass('rate_selected');
         $aa.removeClass('rate_hover');
@@ -143,8 +199,8 @@ $(function () {
         if (betSum_onebet > 0) {
             $parent_onebet.find('.onebet_text').text('Подождите, идет запрос на сервер.');
             $('#layer_bg').addClass('layer_dark');
-            $.post('make_one_bet.aspx', { eventId: $onebet.find('.onebet_id').text(), betSum: betSum_onebet }, function (data) {
-                $onebet.find('.onebet_text').text($(data).find('data').attr('message'));                
+            $.post('make_one_bet.aspx', { eventId: $onebet.find('.onebet_id').text(), betSum: betSum_onebet, gameId: $gameId, odd: $odd }, function (data) {
+                $onebet.find('.onebet_text').text($(data).find('data').attr('message'));
                 switch (parseInt($(data).find('data').attr('status'))) {
                     case 0:
                         setTimeout(function () {
@@ -237,6 +293,7 @@ $(function () {
         var positionWidth = screen.width / 2;
         var positionHeight = $(this).offset().top - 60; //document.getElementById(gameId).offsetTop;
         //window.scrollTo(0, positionHeight - 100);
+
         var $onebet = $('#onebet_popup').find('.onebet');
         //clear data
         $onebet.find('.onebet_id').text('');
@@ -274,9 +331,9 @@ $(function () {
                 $(this).parents('.game').addClass('game_opened');
                 $(this).text('-');
             }
-            else {
-                window.open('live_popup.php', null, 'width=480,height=580,status=0,toolbar=0,location=0,menubar=0,directories=0,resizable=1,scrollbars=1');
-            }
+            //            else {
+            //                window.open('live_popup.php', null, 'width=480,height=580,status=0,toolbar=0,location=0,menubar=0,directories=0,resizable=1,scrollbars=1');
+            //            }
         }
     });
 
@@ -308,8 +365,9 @@ $(function () {
 
         var itemID = $(this).attr('id');
         $('#' + itemID + '_content').show();
-
+        maxWin();
         fixCouponBackground();
+
     });
 
     $('#coupon_content #coupon_item_system').click(function () {
@@ -320,7 +378,7 @@ $(function () {
             $(this).addClass('selected');
             var itemID = $(this).attr('id');
             $('#' + itemID + '_content').show();
-
+            maxWin();
             fixCouponBackground();
         }
     });
@@ -365,7 +423,7 @@ $(function () {
                                 url: "make_combo_bet.aspx",
                                 dataType: "xml",
                                 data: "type=" + activeBetSystem + "&bet=" + itemsStr + "&betSum=" + $betSum_onebet,
-                                success: function (data) {                                    
+                                success: function (data) {
                                     switch (parseInt($(data).find('data').attr('status'))) {
                                         case 0:
                                             setTimeout(function () {
@@ -419,7 +477,7 @@ $(function () {
                         url: "make_combo_bet.aspx",
                         dataType: "xml",
                         data: "type=" + activeBetSystem + "&bet=" + itemsStr + "&betSum=" + $betSum_onebet + '&winEventsCounter=' + winEventsCounter,
-                        success: function (data) {                            
+                        success: function (data) {
                             switch (parseInt($(data).find('data').attr('status'))) {
                                 case 0:
                                     setTimeout(function () {

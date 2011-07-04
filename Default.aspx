@@ -21,7 +21,7 @@
                         <div class="cancel_word"><b>Отменить</b></div>
 					</div>
 					<div class="divtext"><span class="onebet_text"></span></div>
-					<div class="footer_onebet">Максимальная ставка 100 000 AMD</div>
+					<div class="footer_onebet">&nbsp;<%--Максимальная ставка 100 000 AMD--%></div>
 					<div class="onebet">
 						<div class="onebet_id"></div>
 						<div class="onebet_odd"></div>
