@@ -1,4 +1,11 @@
-﻿function fixCouponBackground() {
+﻿function testForEnter() {
+    if (event.keyCode == 13) {
+        event.cancelBubble = true;
+        event.returnValue = false;
+    }
+} 
+
+function fixCouponBackground() {
 	$('#coupon_content_bg').css({
 		width : $('#coupon_content_container').width(),
 		height : $('#coupon_content_container').height()
@@ -141,6 +148,16 @@ $(function () {
         $(this).children().toggleClass('opened');
         $('.coupon_content_container').slideToggle(100);
     });
+
+    $('body').keydown(function () {
+        //alert('adfasfsafasdf');
+        testForEnter();
+    });
+    //    $('.login_button').keydown(function () {
+    //        alert('adfasfsafasdf');
+    //        testForEnter();
+    //    });
+
 
     $('.date h3').click(function () {
         $(this).next().toggle().end().toggleClass('closed');
@@ -383,134 +400,159 @@ $(function () {
         }
     });
 
+    $('#next_button_cancel').click(function () {
+        $(this).parents('.coupon_actions').find('#next_button').val('Далее');
+        $(this).css('display', 'none !important');
+        $('#coupon_item_normal_content').css('display', 'block');
+        $(this).parents('.coupon_actions').find('.possible_winning').css('display', 'none');
+        fixCouponBackground();
+    });
+
     $('#next_button').click(function () {
-        var activeBetSystem = ""
-        var winEventsCounter = $(this).parents('.coupon_actions').find('.system_additional').find('.system_additional_radiobutton[@name=wincounts]:checked').val();
-        if ($(this).parents('.coupon_actions').parents('.coupon_content').find('#coupon_item_express').hasClass('selected')) {
-            activeBetSystem = "express";
+        if (!$(this).hasClass('confirm')) {
+            $(this).addClass('confirm');
+            $(this).parents('.coupon_actions').find('.possible_winning').css('display', 'block');
+            $('#coupon_item_normal_content').css('display', 'none');
+            $(this).val('Сделать');
+            $(this).parents('.coupon_actions').find('#next_button_cancel').css('display', 'block !important');
+            fixCouponBackground();
         }
         else {
-            if ($(this).parents('.coupon_actions').parents('.coupon_content').find('#coupon_item_system').hasClass('selected')) {
-                activeBetSystem = "system";
-            }
-        }
-        itemsArray = new Array();
-        itemsStr = '';
-        $('#coupon_item_normal_content .item .hidden_bet_id').each(function () {
-            itemsArray.push($(this).val());
-        });
-        itemsStr = itemsArray[0];
-        for (i = 1; i < itemsArray.length; i++) {
-            itemsStr += ',' + itemsArray[i];
-        }
-        var necessarilyCount = 2;
-        var coupon_counter = parseInt($('#coupon_counter').text());
-        var $betSum = $(this).parents('.coupon_actions').find('.sum').find('#betSum');
-        var $betSum_onebet = parseFloat($betSum.val());
-        if (activeBetSystem == "express") {
-            if (coupon_counter < necessarilyCount) {
-                jAlert('Для совершения ставки необходимо наличие в купоне не менее ' + necessarilyCount + ' ставок.', 'Недостаточно событий в купоне');
+            $(this).removeClass('confirm');
+            $(this).val('Далее');
+            $(this).parents('.coupon_actions').find('#next_button_cancel').css('display', 'none');
+            $('#coupon_item_normal_content').css('display', 'block');
+            $(this).parents('.coupon_actions').find('.possible_winning').css('display', 'none');
+            var activeBetSystem = ""
+            var winEventsCounter = $(this).parents('.coupon_actions').find('.system_additional').find('.system_additional_radiobutton[@name=wincounts]:checked').val();
+            if ($(this).parents('.coupon_actions').parents('.coupon_content').find('#coupon_item_express').hasClass('selected')) {
+                activeBetSystem = "express";
             }
             else {
-                jConfirm('Вы подтвержаете, что согласны сделать ставку?', 'Подтверждение ставки', function (r) {
-                    if (r == true) {
-                        if ($betSum_onebet > 0) {
-                            //$('#coupon_item_normal_content .item').fadeOut(300);
-                            fixCouponBackground();
-                            $('#layer_bg').addClass('layer_dark');
-                            $.ajax({
-                                type: "POST",
-                                url: "make_combo_bet.aspx",
-                                dataType: "xml",
-                                data: "type=" + activeBetSystem + "&bet=" + itemsStr + "&betSum=" + $betSum_onebet,
-                                success: function (data) {
-                                    switch (parseInt($(data).find('data').attr('status'))) {
-                                        case 0:
-                                            setTimeout(function () {
-                                                $('#coupon_item_normal_content').html('');
-                                                $('#coupon_counter').text('0');
-                                                $('#system_additional').html('');
-                                                $betSum.val('');
-                                                fixCouponBackground();
-                                                $('.coupon_header_container').children().toggleClass('opened');
-                                                $('.coupon_content_container').slideToggle(100);
-                                                $('#layer_bg').removeClass('layer_dark');
-                                                jAlert($(data).find('data').attr('message'), 'Ставка произведена успешно.');
-                                            }, 2000);
-                                            break;
-                                        case 1:
-                                            $('#coupon_item_normal_content .item').fadeIn(300);
-                                            $('#layer_bg').removeClass('layer_dark');
-                                            jAlert($(data).find('data').attr('message'), 'Ошибка!');
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                },
-                                error: function () {
-                                    $('#layer_bg').removeClass('layer_dark');
-                                    $('#coupon_item_normal_content .item').fadeIn(300);
-                                    jAlert('Извините, произошла ошибка. Попробуйте перезагрузить страницу и повторить попытку позже.', 'Ошибка!');
-                                }
-                            });
-                        }
-                        else {
-                            jAlert('Сумма ставки должна быть больше 0', 'Недостаточная сумма ставки');
-                        }
-                    }
-                });
-            }
-        }
-        else {
-            if (activeBetSystem == "system") {
-                necessarilyCount = 3;
-                if (coupon_counter <= winEventsCounter || winEventsCounter <= 0) {
-                    jAlert('Количество событий для выигрыша должно быть больше 0 и меньше количества всех элементов в купоне.', 'Неправильно введено количество событий для выигрыша.');
+                if ($(this).parents('.coupon_actions').parents('.coupon_content').find('#coupon_item_system').hasClass('selected')) {
+                    activeBetSystem = "system";
                 }
+            }
+            itemsArray = new Array();
+            itemsStr = '';
+            $('#coupon_item_normal_content .item .hidden_bet_id').each(function () {
+                itemsArray.push($(this).val());
+            });
+            itemsStr = itemsArray[0];
+            for (i = 1; i < itemsArray.length; i++) {
+                itemsStr += ',' + itemsArray[i];
+            }
+            var necessarilyCount = 2;
+            var coupon_counter = parseInt($('#coupon_counter').text());
+            var $betSum = $(this).parents('.coupon_actions').find('.sum').find('#betSum');
+            //        gameId: $gameId, odd: $odd
+            //        var $gameId=$(this).parents('.coupon_actions').find('.sum').find('#betSum');
+            //        var $odd=$(this).parents('.coupon_actions').find('.sum').find('#betSum');
+            var $betSum_onebet = parseFloat($betSum.val());
+            if (activeBetSystem == "express") {
                 if (coupon_counter < necessarilyCount) {
                     jAlert('Для совершения ставки необходимо наличие в купоне не менее ' + necessarilyCount + ' ставок.', 'Недостаточно событий в купоне');
                 }
-                if (coupon_counter > winEventsCounter && coupon_counter >= necessarilyCount && winEventsCounter > 0) {
-                    $('#layer_bg').addClass('layer_dark');
-                    $.ajax({
-                        type: "POST",
-                        url: "make_combo_bet.aspx",
-                        dataType: "xml",
-                        data: "type=" + activeBetSystem + "&bet=" + itemsStr + "&betSum=" + $betSum_onebet + '&winEventsCounter=' + winEventsCounter,
-                        success: function (data) {
-                            switch (parseInt($(data).find('data').attr('status'))) {
-                                case 0:
-                                    setTimeout(function () {
-                                        $('#coupon_item_normal_content').html('');
-                                        $('#coupon_counter').text('0');
-                                        $('#system_additional').html('');
-                                        $betSum.val('');
-                                        fixCouponBackground();
-                                        $('.coupon_header_container').children().toggleClass('opened');
-                                        $('.coupon_content_container').slideToggle(100);
+                else {
+                    jConfirm('Вы подтвержаете, что согласны сделать ставку?', 'Подтверждение ставки', function (r) {
+                        if (r == true) {
+                            if ($betSum_onebet > 0) {
+                                //$('#coupon_item_normal_content .item').fadeOut(300);
+                                fixCouponBackground();
+                                $('#layer_bg').addClass('layer_dark');
+                                $.ajax({
+                                    type: "POST",
+                                    url: "make_combo_bet.aspx",
+                                    dataType: "xml",
+                                    data: "type=" + activeBetSystem + "&bet=" + itemsStr + "&betSum=" + $betSum_onebet,
+                                    success: function (data) {
+                                        switch (parseInt($(data).find('data').attr('status'))) {
+                                            case 0:
+                                                setTimeout(function () {
+                                                    $('#coupon_item_normal_content').html('');
+                                                    $('#coupon_counter').text('0');
+                                                    $('#system_additional').html('');
+                                                    $betSum.val('');
+                                                    fixCouponBackground();
+                                                    $('.coupon_header_container').children().toggleClass('opened');
+                                                    $('.coupon_content_container').slideToggle(100);
+                                                    $('#layer_bg').removeClass('layer_dark');
+                                                    jAlert($(data).find('data').attr('message'), 'Ставка произведена успешно.');
+                                                }, 2000);
+                                                break;
+                                            case 1:
+                                                $('#coupon_item_normal_content .item').fadeIn(300);
+                                                $('#layer_bg').removeClass('layer_dark');
+                                                jAlert($(data).find('data').attr('message'), 'Ошибка!');
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    },
+                                    error: function () {
                                         $('#layer_bg').removeClass('layer_dark');
-                                        jAlert($(data).find('data').attr('message'), 'Ставка произведена успешно.');
-                                    }, 2000);
-                                    break;
-                                case 1:
-                                    $('#coupon_item_normal_content .item').fadeIn(300);
-                                    $('#layer_bg').removeClass('layer_dark');
-                                    jAlert($(data).find('data').attr('message'), 'Ошибка!');
-                                    break;
-                                default:
-                                    break;
+                                        $('#coupon_item_normal_content .item').fadeIn(300);
+                                        jAlert('Извините, произошла ошибка. Попробуйте перезагрузить страницу и повторить попытку позже.', 'Ошибка!');
+                                    }
+                                });
                             }
-                        },
-                        error: function () {
-                            $('#coupon_item_normal_content .item').fadeIn(300);
-                            $('#layer_bg').removeClass('layer_dark');
-                            jAlert('Извините, произошла ошибка. Попробуйте перезагрузить страницу и повторить попытку позже.', 'Ошибка!');
+                            else {
+                                jAlert('Сумма ставки должна быть больше 0', 'Недостаточная сумма ставки');
+                            }
                         }
                     });
                 }
             }
+            else {
+                if (activeBetSystem == "system") {
+                    necessarilyCount = 3;
+                    if (coupon_counter <= winEventsCounter || winEventsCounter <= 0) {
+                        jAlert('Количество событий для выигрыша должно быть больше 0 и меньше количества всех элементов в купоне.', 'Неправильно введено количество событий для выигрыша.');
+                    }
+                    if (coupon_counter < necessarilyCount) {
+                        jAlert('Для совершения ставки необходимо наличие в купоне не менее ' + necessarilyCount + ' ставок.', 'Недостаточно событий в купоне');
+                    }
+                    if (coupon_counter > winEventsCounter && coupon_counter >= necessarilyCount && winEventsCounter > 0) {
+                        $('#layer_bg').addClass('layer_dark');
+                        $.ajax({
+                            type: "POST",
+                            url: "make_combo_bet.aspx",
+                            dataType: "xml",
+                            data: "type=" + activeBetSystem + "&bet=" + itemsStr + "&betSum=" + $betSum_onebet + '&winEventsCounter=' + winEventsCounter,
+                            success: function (data) {
+                                switch (parseInt($(data).find('data').attr('status'))) {
+                                    case 0:
+                                        setTimeout(function () {
+                                            $('#coupon_item_normal_content').html('');
+                                            $('#coupon_counter').text('0');
+                                            $('#system_additional').html('');
+                                            $betSum.val('');
+                                            fixCouponBackground();
+                                            $('.coupon_header_container').children().toggleClass('opened');
+                                            $('.coupon_content_container').slideToggle(100);
+                                            $('#layer_bg').removeClass('layer_dark');
+                                            jAlert($(data).find('data').attr('message'), 'Ставка произведена успешно.');
+                                        }, 2000);
+                                        break;
+                                    case 1:
+                                        $('#coupon_item_normal_content .item').fadeIn(300);
+                                        $('#layer_bg').removeClass('layer_dark');
+                                        jAlert($(data).find('data').attr('message'), 'Ошибка!');
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            },
+                            error: function () {
+                                $('#coupon_item_normal_content .item').fadeIn(300);
+                                $('#layer_bg').removeClass('layer_dark');
+                                jAlert('Извините, произошла ошибка. Попробуйте перезагрузить страницу и повторить попытку позже.', 'Ошибка!');
+                            }
+                        });
+                    }
+                }
+            }
         }
-
     });
 
     $('#coupon_item_normal_content .remove').live('click', function () {
@@ -683,6 +725,7 @@ $(function () {
         timer
         */
         $counter.find('.series-time').text($timer);
+        $counter.find('#liveGameId').text($(this).attr('id'));
         $('#div_mathes_post_status').css('display', 'block');
         $('#div_mathes_post_status').find('.mathes_post_status').text('Пожалуйста, подождите');
         $.post('livegame.aspx', { id: $(this).attr('id') }, function (data) {
@@ -706,7 +749,7 @@ $(function () {
 					        <div class="content">\
                             ';
                 }
-                appendHtml += '<span class="longchar" title="' + $(this).attr('name') + '" id="' + $(this).attr('id') + '"><div class="livebet" onclick="livebetclick(' + $(this).attr('id') + ', ' + j + ')">' + $(this).attr('name').slice(0, 7) + '</div><span>' + $(this).attr('odd') + '3.65</span></span>';
+                appendHtml += '<span class="longchar" title="' + $(this).attr('name') + '" id="' + $(this).attr('id') + '"><div class="livebet" onclick="livebetclick(' + $(this).attr('id') + ', ' + j + ')">' + $(this).attr('name').slice(0, 7) + '</div><span>' + $(this).attr('odd').replace(',', '.') + '</span></span>';
                 i++;
             });
             appendHtml += '\
@@ -717,16 +760,141 @@ $(function () {
             $matches.html(appendHtml);
         }, 'xml');
     });
-    $('#live_make_onebet').click(function () {
-        alert('af');
-    });
+    //    $('#live_make_onebet').click(function () {
+    //        alert('af');
+    //    });
 });
 
 
-function livemakeonebet() {  
+function livemakeonebet(blockid) {
     $(function () {
-        var $a = this;
-        jAlert('111Для совершения ставки необходимо наличие в купоне не менее ' + $(this).val() + ' ставок.', 'Недостаточно событий в купоне');
+        //var $a = this;
+        //jAlert('111Для совершения ставки необходимо наличие в купоне не менее ' + $(this).val() + ' ставок.', 'Недостаточно событий в купоне');
+        //var $parent_onebet = $(this).parents('.onebet_popup');
+        //var $onebet = $parent_onebet.find('.onebet');
+        //var $a = $onebet.find('.onebet_id').text();
+        //var $gameId = $onebet.find('.onebet_gameId').text();
+        //var $odd = $onebet.find('.onebet_odd').text();
+        //var $aa = $('.rate#' + $onebet.find('.onebet_id').text());
+        //$aa.removeClass('rate_selected');
+        //$aa.removeClass('rate_hover');
+        //var betSum_onebet = parseFloat($parent_onebet.find('.textfield').val());
+        //var $a = "b";
+
+
+
+        var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
+        var content;
+        var contentFlag = false;
+        for (var i = 0; i < elements.length; i++) {
+
+            if (elements[i].className == 'content') {
+                content = elements[i];
+            }
+        }
+
+        var spans = content.getElementsByTagName('span');
+        var thisspan;
+        for (var i = 0; i < spans.length; i++) {
+            if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
+                //spans[i].className = 'longchar';
+                thisspan = spans[i];
+            }
+        }
+
+        var eventId = thisspan.id;
+        var oddspan = thisspan.getElementsByTagName('span');
+        var odd = oddspan[0].innerText;
+        //        for (var i=0;i<oddspan.length;i++({
+        //            span=oddspan[i]
+        //        }
+        var gameId = document.getElementById('liveGameId').innerText;
+        var divbetarr = content.getElementsByTagName('div');
+        var divbet;
+        for (var i = 0; i < divbetarr.length; i++) {
+            if (divbetarr[i].className == 'divbet') {
+                divbet = divbetarr[i];
+            }
+        }
+        var addbetarr = divbet.getElementsByTagName('div');
+        var addbet;
+        for (var i = 0; i < addbetarr.length; i++) {
+            if (addbetarr[i].className == 'addbet') {
+                addbet = addbetarr[i];
+            }
+        }
+        var spandescarr = divbet.getElementsByTagName('span');
+        var spandesc;
+        for (var i = 0; i < spandescarr.length; i++) {
+            if (spandescarr[i].className == 'desc') {
+                spandesc = spandescarr[i];
+            }
+        }
+        var divformarr = addbet.getElementsByTagName('div');
+        var divform;
+        for (var i = 0; i < divformarr.length; i++) {
+            if (divformarr[i].className == 'divform') {
+                divform = divformarr[i];
+            }
+        }
+        var divformInputs = divform.getElementsByTagName('input');
+        var betsumInput;
+        for (var i = 0; i < divformInputs.length; i++) {
+            if (divformInputs[i].className == 'text') {
+                //spans[i].className = 'longchar';
+                betsumInput = divformInputs[i];
+            }
+        }
+        var betSum_onebet = betsumInput.value;
+
+
+
+
+
+
+        //eventId
+        /////////////////////////////////////////////////////////////betSum
+        //gameId
+        //odd
+        if (betSum_onebet > 0) {
+            //$parent_onebet.find('.onebet_text').text('Подождите, идет запрос на сервер.');
+            $('#layer_bg').addClass('layer_dark');
+            $.post('make_one_bet.aspx', { eventId: eventId, betSum: betSum_onebet, gameId: gameId, odd: odd }, function (data) {
+                //$onebet.find('.onebet_text').text($(data).find('data').attr('message'));
+                switch (parseInt($(data).find('data').attr('status'))) {
+                    case 0:
+                        setTimeout(function () {
+                            //$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_selected');
+                            //$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_hover');
+                            //$parent_onebet.css('display', 'none');
+                            $('#layer_bg').removeClass('layer_dark');
+                            jAlert($(data).find('data').attr('message'), 'Ставка произведена успешно.');
+                            //addbet.style.display = 'none';
+                            //spandesc.style.display = 'none';
+                            divbet.innerHtml = '';
+                            //var spans = content.getElementsByTagName('span');
+                            for (var i = 0; i < spans.length; i++) {
+                                if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
+                                    spans[i].className = 'longchar';
+                                    //contentFlag = true;
+                                }
+                            }
+                        }, 3000);
+                        break;
+                    case 1:
+                        //$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_selected');
+                        //$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_hover');
+                        //$parent_onebet.find('.onebet_text').html($(data).find('data').attr('message') + '<br />');
+                        $('#layer_bg').removeClass('layer_dark');
+                        jAlert($(data).find('data').attr('message'), 'Ошибка!');
+                        break;
+                    default:
+                        break;
+                }
+            }, 'xml');
+        } else {
+            //$parent_onebet.find('.onebet_text').text('Введена неверная сумма. Сумма должна быть > 0');
+        }
     });
 }
 
@@ -743,7 +911,7 @@ function livebetclick(id, blockid) {
             }
         }
 
-        var spans = content.getElementsByTagName('span')
+        var spans = content.getElementsByTagName('span');
         for (var i = 0; i < spans.length; i++) {
             if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
                 spans[i].className = 'longchar';
@@ -756,7 +924,7 @@ function livebetclick(id, blockid) {
                             <div class="divbet">\
                             <br class="breaker">\
                             <div class="addbet"><div class="divform">\
-							        <input type="text" value="" class="text"><input type="button" id="live_make_onebet" onclick="livemakeonebet()" value="Сделать" class="submit"><br>\
+							        <input type="text" value="" class="text"><input type="button" id="live_make_onebet" onclick="livemakeonebet(' + blockid + ')" value="Сделать" class="submit"><br>\
 							        <div class="buttons"><input class="add_button" id="live_add_bet" type="button" value="">Добавить<input class="cancel_button" onclick="cancelbet(' + blockid + ')" id="live_cancel_bet" type="button" value="">Отменить</div>\
 						    </div></div>\
                             <span class="desc">Максимальная ставка (100.000 AMD.)</span>\

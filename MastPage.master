@@ -166,7 +166,8 @@
 							<div class="sum"><label style="margin-top: 5px;">Сумма ставки <input class="textfield" name="betSum" id="betSum" type="text" value="0.00" /></label></div>
 							<div class="possible_winning">Возможный выигрыш <span id="spansum"> 0.00</span><asp:Label ID="lblcurrency" runat="server" Text=""></asp:Label></div>                        
 							<input type="hidden" name="bet_submit" value="1" />
-							<input class="next_button" id="next_button" type="button" value="Далее" />                                                    
+							<input class="next_button " id="next_button" type="button" value="Далее" />                                                    
+                            <input class="next_button " id="next_button_cancel" type="button" value="Отменить" />
 						</div>
 					<%--bvt --%>
 					</form>

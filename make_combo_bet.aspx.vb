@@ -52,7 +52,7 @@ Partial Class make_combo_bet
                 ElseIf typeString = "system" Then
                     If Not UInt16.TryParse(postedValues("winEventsCounter"), betsWinCount) Then
                         status = "1"
-                        message = "Число событий, которые должны выиграть была введено неверно. Их количество должно быть больше нуля и меньше общего количества ставок."
+                        message = "Число событий, которые должны выиграть было введено неверно. Их количество должно быть больше нуля и меньше общего количества ставок."
                         xmldata = "<?xml version=""1.0"" encoding=""utf-8""?><data status=""" + status + """ message=""" + message + """ ></data>"
                         Response.Write(xmldata)
                         Response.End()

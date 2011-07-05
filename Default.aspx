@@ -99,7 +99,7 @@
                 
                 <span class="team"><%# CType(Eval("Player1"), WebReference.Player).Name%>  - <%# CType(Eval("Player2"), WebReference.Player).Name%></span>                
                 <%# IIf(Eval("PrintComment") <> "", "<div class=""game_print_comment""><span>" + Eval("PrintComment") + "</span></div>", "<div class=""empty_comment"">&nbsp;</div>")%>
-                <%# IIf(Eval("Comments") <> "", "<div class=""game_on_tv""><span>" + Eval("Comments") + "</span></div>", "<div class=""empty_comment"">&nbsp;</div>")%>
+                <%# IIf(Eval("Comments") <> "", "<div class=""game_on_tv""><span>" + Eval("Comments") + "</span></div>", "<div class=""empty_comment"">&nbsp;</div>")%>                
                             <asp:ListView ID="lvGamelist" runat="server" ItemPlaceholderID="gamelistiplaceholder" DataSource='<%# Eval("EventsMain") %>'>
                                 <LayoutTemplate>
                                     <span id="gamelistiplaceholder" runat="server"></span>

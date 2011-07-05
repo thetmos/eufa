@@ -437,8 +437,8 @@ Public Class Game_vt
 
         'Dim isTotalInMainTitle As Boolean = False
         Dim tempEvent As WebReference.Event
-        Dim rexp As New Regex("(.*)команда 1(.*)")
-        Dim rexp2 As New Regex("(.*)команда 2(.*)")
+        'Dim rexp As New Regex("(.*)команда 1(.*)")
+        'Dim rexp2 As New Regex("(.*)команда 2(.*)")
 
         Dim eventsArr As List(Of WebReference.Event)
         eventsArr = oneGame.Events.ToList
@@ -463,12 +463,13 @@ Public Class Game_vt
                                                     AndAlso (bet.Periodnr = 0 OrElse bet.Periodnr = oneEvent.PeriodNr) _
                                                     AndAlso (bet.Total = 0 OrElse bet.Total = oneEvent.Total) _
                                                     AndAlso bet.IsEnabledEvent = True Then
-                            If rexp.IsMatch(oneEvent.Name) Then
-                                oneEvent.Name += " (" + _player1.Name + ")"
-                            End If
-                            If rexp2.IsMatch(oneEvent.Name) Then
-                                oneEvent.Name += " (" + _player2.Name + ")"
-                            End If
+                            'If rexp.IsMatch(oneEvent.Name) Then
+                            '    oneEvent.Name += " (" + _player1.Name + ")"
+                            'End If
+                            'If rexp2.IsMatch(oneEvent.Name) Then
+                            '    oneEvent.Name += " (" + _player2.Name + ")"
+                            'End If
+                            oneEvent.Name.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
                             icount = icount + 1
                             If oneEvent.Total <> 0 Then
                                 oneEvent.Total = 0
@@ -527,12 +528,13 @@ Public Class Game_vt
                                                     AndAlso (bet.Score2 = 0 OrElse bet.Score1 = oneEvent.Score2) _
                                                     AndAlso (bet.Periodnr = 0 OrElse bet.Periodnr = oneEvent.PeriodNr) _
                                                     AndAlso (bet.Total = 0 OrElse bet.Total = oneEvent.Total) Then
-                                If rexp.IsMatch(oneEvent.Name) Then
-                                    oneEvent.Name += " (" + _player1.Name + ")"
-                                End If
-                                If rexp2.IsMatch(oneEvent.Name) Then
-                                    oneEvent.Name += " (" + _player2.Name + ")"
-                                End If
+                                'If rexp.IsMatch(oneEvent.Name) Then
+                                '    oneEvent.Name += " (" + _player1.Name + ")"
+                                'End If
+                                'If rexp2.IsMatch(oneEvent.Name) Then
+                                '    oneEvent.Name += " (" + _player2.Name + ")"
+                                'End If
+                                oneEvent.Name.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
                                 additEventsList.Add(oneEvent)
                                 eventsArr.Remove(oneEvent)
                                 addedFlag = True
@@ -547,24 +549,25 @@ Public Class Game_vt
                     Next
                     If additEventsList.Count > 0 Then
                         tempkey = kvpGroups.Key
-                        If rexp.IsMatch(tempkey) Then
-                            tempkey += " (" + _player1.Name + ")"
-                        End If
-                        If rexp2.IsMatch(tempkey) Then
-                            tempkey += " (" + _player2.Name + ")"
-                        End If
-
+                        'If rexp.IsMatch(tempkey) Then
+                        '    tempkey += " (" + _player1.Name + ")"
+                        'End If
+                        'If rexp2.IsMatch(tempkey) Then
+                        '    tempkey += " (" + _player2.Name + ")"
+                        'End If
+                        tempkey.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
                         additGroups.Add(tempkey, additEventsList)
                     End If
                 Next
                 If additGroups.Count > 0 Then
                     tempkey = kvpSection.Key
-                    If rexp.IsMatch(tempkey) Then
-                        tempkey += " (" + _player1.Name + ")"
-                    End If
-                    If rexp2.IsMatch(tempkey) Then
-                        tempkey += " (" + _player2.Name + ")"
-                    End If
+                    'If rexp.IsMatch(tempkey) Then
+                    '    tempkey += " (" + _player1.Name + ")"
+                    'End If
+                    'If rexp2.IsMatch(tempkey) Then
+                    '    tempkey += " (" + _player2.Name + ")"
+                    'End If
+                    tempkey.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
                     additgroupsUp.Add(tempkey, additGroups)
                 End If
                 '_eventsOthers.Add(kvpSection.Key, additGroups)

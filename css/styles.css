@@ -357,10 +357,11 @@ display:none;
 					display: block;
 					line-height: 28px;
 					font-weight: bold;
+					display:none;
 				}
 					#top_actions_bar .coupon_content_container .possible_winning span {
 						float: right;
-					}
+					}				
 				#top_actions_bar .coupon_content_container .next_button {
 					display: block;
 					width: 70px; height: 24px;
@@ -371,7 +372,10 @@ display:none;
 					font-size: 11px; color: #c9c9c9; font-weight: bold; line-height: 24px;
 					cursor: pointer;
 				}
-
+                #next_button_cancel
+                {
+                    display:none !important;
+                }
 				
 				
 				#top_actions_bar .coupon_content_container .coupon_content ul {
@@ -1602,10 +1606,15 @@ display:none;
 	background: url(../images/tv_popup_left_bg.png) no-repeat 0 0;
 }
 .tv_hover_container div {
-	height: 40px;
-	padding: 5px 15px;
+	height: 20px;
+	padding: 5px 5px;
+	margin-top:15px;
 	background: url(../images/tv_popup_right_bg.gif) repeat-x 0 0;
 	color: #000; line-height: 16px;
+}
+#liveGameId
+{
+    display:none;
 }
 
 
