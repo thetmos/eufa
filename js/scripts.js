@@ -701,8 +701,17 @@ $(function () {
         $(this).find('.details').hide();
     });
 
+
     /*live*/
+    $('ul#liveleft > li').click(function () {
+        $('#liveleft .cleckedli').removeClass('cleckedli');
+        $(this).addClass('cleckedli');
+    });
+
     $('.futurem').click(function () {
+        var $sportId = $(this).parents('.wrap').parent('li').attr('id');
+
+        //alert($sportId);
         var $live = $('.live');
         $live.css('display', 'block');
         var $last = $('#liveleft').find('li .active');
@@ -728,29 +737,44 @@ $(function () {
         $counter.find('#liveGameId').text($(this).attr('id'));
         $('#div_mathes_post_status').css('display', 'block');
         $('#div_mathes_post_status').find('.mathes_post_status').text('Пожалуйста, подождите');
-        $.post('livegame.aspx', { id: $(this).attr('id') }, function (data) {
+        $.post('livegame.aspx', { id: $(this).attr('id'), sportId: $sportId }, function (data) {
             var appendHtml = '';
-            var $a = $(data).find('events').find('oneevent');
+            var $a = $(data).find('events').find('group');
             i = 0;
             j = 0;
-            appendHtml += '\
-                <div class="match" id="match_0">\
-					<div class="header">Матч</div>\
-					<div class="content">\
-                    ';
-            $(data).find('events').find('oneevent').each(function () {
-                if (i % 3 == 0 && i != 0) {
-                    j++;
-                    appendHtml += '\
+            
+            //            $(data).find('events').find('oneevent').each(function () {
+            //                if (i % 3 == 0 && i != 0) {
+            //                    j++;
+            //                    appendHtml += '\
+            //					        </div>\
+            //				        </div>\
+            //                        <div class="match" id="match_' + j + '">\
+            //					        <div class="header">Матч</div>\
+            //					        <div class="content">\
+            //                            ';
+            //                }
+            //                appendHtml += '<span class="longchar" title="' + $(this).attr('name') + '" id="' + $(this).attr('id') + '"><div class="livebet" onclick="livebetclick(' + $(this).attr('id') + ', ' + j + ')" title="' + $(this).attr('name') + '">' + $(this).attr('name').slice(0, 7) + '</div><span>' + $(this).attr('odd').replace(',', '.') + '</span></span>';
+            //                i++;
+            //            });
+
+            $(data).find('events').find('group').each(function () {
+                j++;
+                appendHtml += '\
+                <div class="match" id="match_' + j + '">\
+					        <div class="header">' + $(this).attr('name') + '</div>\
+					        <div class="content">\
+                            ';                    
+                
+                
+                $(this).find('oneevent').each(function () {
+                    appendHtml += '<span class="longchar" title="' + $(this).attr('name') + '" id="' + $(this).attr('id') + '"><div class="livebet" onclick="livebetclick(' + $(this).attr('id') + ', ' + j + ')" title="' + $(this).attr('name') + '">' + $(this).attr('name').slice(0, 7) + '</div><span>' + $(this).attr('odd').replace(',', '.') + '</span></span>';
+                    i++;
+                });
+                appendHtml += '\
 					        </div>\
 				        </div>\
-                        <div class="match" id="match_' + j + '">\
-					        <div class="header">Матч</div>\
-					        <div class="content">\
-                            ';
-                }
-                appendHtml += '<span class="longchar" title="' + $(this).attr('name') + '" id="' + $(this).attr('id') + '"><div class="livebet" onclick="livebetclick(' + $(this).attr('id') + ', ' + j + ')">' + $(this).attr('name').slice(0, 7) + '</div><span>' + $(this).attr('odd').replace(',', '.') + '</span></span>';
-                i++;
+                        ';
             });
             appendHtml += '\
 					</div>\
@@ -925,13 +949,79 @@ function livebetclick(id, blockid) {
                             <br class="breaker">\
                             <div class="addbet"><div class="divform">\
 							        <input type="text" value="" class="text"><input type="button" id="live_make_onebet" onclick="livemakeonebet(' + blockid + ')" value="Сделать" class="submit"><br>\
-							        <div class="buttons"><input class="add_button" id="live_add_bet" type="button" value="">Добавить<input class="cancel_button" onclick="cancelbet(' + blockid + ')" id="live_cancel_bet" type="button" value="">Отменить</div>\
+							        <div class="buttons"><input class="add_button" id="live_add_bet" type="button" onclick="leviaddbet(' + blockid + ')" value="">Добавить<input class="cancel_button" onclick="cancelbet(' + blockid + ')" id="live_cancel_bet" type="button" value="">Отменить</div>\
 						    </div></div>\
                             <span class="desc">Максимальная ставка (100.000 AMD.)</span>\
                             </div>\
                             ';
         }
         document.getElementById(id).className += ' active';
+    }
+}
+
+function leviaddbet(blockid) {
+    var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
+    var content;
+    var contentFlag = false;
+    for (var i = 0; i < elements.length; i++) {
+
+        if (elements[i].className == 'content') {
+            content = elements[i];
+        }
+    }
+
+    var spans = content.getElementsByTagName('span');
+    var thisspan;
+    for (var i = 0; i < spans.length; i++) {
+        if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
+            //spans[i].className = 'longchar';
+            thisspan = spans[i];
+        }
+    }
+    var divbetarr = content.getElementsByTagName('div');
+    var divbet;
+    for (var i = 0; i < divbetarr.length; i++) {
+        if (divbetarr[i].className == 'divbet') {
+            divbet = divbetarr[i];
+        }
+    }
+    var eventId = thisspan.id;
+    var oddspan = thisspan.getElementsByTagName('span');
+    var odd = oddspan[0].innerText;
+    var titlearr = thisspan.getElementsByTagName('div');
+    //var title = titlearr[0].attributes('title').value;
+    //var players = document.getElementsById('series_title').innerText;
+    //var gameId = document.getElementById('liveGameId').innerText;
+    addBet({
+        id: eventId,
+        title: titlearr[0].getAttribute('title'),
+        odd: odd,
+        players: document.getElementById('series_title').innerText,
+        gameId: document.getElementById('liveGameId').innerText
+    });
+
+
+
+    var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
+    var content;
+    var contentdivs;
+    for (var i = 0; i < elements.length; i++) {
+        if (elements[i].className == 'content') {
+            content = elements[i];
+        }
+    }
+    var spans = content.getElementsByTagName('span')
+    for (var i = 0; i < spans.length; i++) {
+        if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
+            spans[i].className = 'longchar';
+            contentFlag = true;
+        }
+    }
+    contentdivs = content.getElementsByTagName('div');
+    for (var i = 0; i < contentdivs.length; i++) {
+        if (contentdivs[i].className == 'divbet') {
+            contentdivs[i].innerHTML = '';
+        }
     }
 }
 
@@ -956,7 +1046,7 @@ function cancelbet(blockid) {
         if (contentdivs[i].className == 'divbet') {
             contentdivs[i].innerHTML = '';
         }
-    }    
+    }
 }
 
 

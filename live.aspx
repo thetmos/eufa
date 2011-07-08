@@ -9,7 +9,7 @@
 					<div class="counter">
                         <div id="liveGameId"></div>
 						<div class="series-single">Серия А, Италия</div>
-						<div class="series-title">Интер - Лацио</div>
+						<div id="series_title" class="series-title">Интер - Лацио</div>
 						<div class="series-time">46:15</div>
 						<div class="series-period">2й тайм</div>
 						<div class="series-date">ПТ: 1:0</div>

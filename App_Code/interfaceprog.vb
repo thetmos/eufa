@@ -229,11 +229,11 @@ Public Class SportInterfacce
                         isEnabledEvent = True
                     End If
                     If tempDict.TryGetValue(bet.Attributes(_userLanguage).Value, tempList) Then
-                        tempList.Add(New xmlBet(tempTypecode, tempAllowance, tempTotal, tempScore1, tempScore2, tempPeriodnr, isEnabledEvent))
+                        tempList.Add(New xmlBet(tempTypecode, tempAllowance, tempTotal, tempScore1, tempScore2, tempPeriodnr, "", isEnabledEvent))
                         tempDict(bet.Attributes(_userLanguage).Value) = tempList
                     Else
                         tempList = New List(Of xmlBet)
-                        tempList.Add(New xmlBet(tempTypecode, tempAllowance, tempTotal, tempScore1, tempScore2, tempPeriodnr, isEnabledEvent))
+                        tempList.Add(New xmlBet(tempTypecode, tempAllowance, tempTotal, tempScore1, tempScore2, tempPeriodnr, "", isEnabledEvent))
                         tempDict.Add(bet.Attributes(_userLanguage).Value, tempList)
                     End If
                     'tempDict.Add(bet.Attributes(_userLanguage).Value, tempInt) 'keexist
@@ -259,6 +259,7 @@ Public Class SportInterfacce
         Dim isEnabledEvent As Boolean = True
         Dim repitionDict As New Dictionary(Of String, Integer)
         Dim tempRepitionInt As Integer = 0
+        Dim tempname As String = ""
         For Each onepart As XmlNode In data.ChildNodes
             tempPartDict = New Dictionary(Of String, Dictionary(Of String, List(Of xmlBet)))
             For Each section As XmlNode In onepart.ChildNodes
@@ -283,7 +284,13 @@ Public Class SportInterfacce
                             If Not Integer.TryParse(bet.Attributes("periodnr").Value, tempPeriodnr) Then
                                 tempPeriodnr = 0
                             End If
-                            tempList.Add(New xmlBet(tempTypecode, tempAllowance, tempTotal, tempScore1, tempScore2, tempPeriodnr))
+                            Try
+                                tempname = bet.Attributes(_userLanguage).Value.ToString()
+                            Catch ex As Exception
+                                tempname = ""
+                            End Try
+
+                            tempList.Add(New xmlBet(tempTypecode, tempAllowance, tempTotal, tempScore1, tempScore2, tempPeriodnr, tempname))
                         End If
                     Next
                     If tempDict.ContainsKey(group.Attributes(_userLanguage).Value) Then
@@ -320,7 +327,16 @@ Public Class xmlBet
     Private _score2 As Integer
     Private _periodnr As Integer
     Private _isEnabledEvent As Boolean
+    Private _name As String
 
+    Public Property Name As String
+        Get
+            Return _name
+        End Get
+        Set(ByVal value As String)
+            _name = value
+        End Set
+    End Property
     Public Property Typecode As Integer
         Get
             Return _typecode
@@ -378,7 +394,7 @@ Public Class xmlBet
         End Set
     End Property
 
-    Public Sub New(ByVal Typecodeext As Integer, ByVal Allowanceext As Single, ByVal Totalext As Single, ByVal Score1ext As Integer, ByVal Score2ext As Single, ByVal Periodnrext As Integer, Optional ByVal IsEnabledEventext As Boolean = True)
+    Public Sub New(ByVal Typecodeext As Integer, ByVal Allowanceext As Single, ByVal Totalext As Single, ByVal Score1ext As Integer, ByVal Score2ext As Single, ByVal Periodnrext As Integer, Optional ByVal Nameext As String = "", Optional ByVal IsEnabledEventext As Boolean = True)
         _typecode = Typecodeext
         _allowance = Allowanceext
         _total = Totalext
@@ -386,5 +402,88 @@ Public Class xmlBet
         _score2 = Score2ext
         _periodnr = Periodnr
         _isEnabledEvent = IsEnabledEventext
+        _name = Nameext
+    End Sub
+End Class
+
+Public Class LiveInterface
+    Private _groupList As Dictionary(Of String, List(Of xmlBet))
+    Private _userLanguage As String
+
+    Public Property GroupList() As Dictionary(Of String, List(Of xmlBet))
+        Get
+            Return _groupList
+        End Get
+        Set(ByVal value As Dictionary(Of String, List(Of xmlBet)))
+            _groupList = value
+        End Set
+    End Property
+    Property UserLanguage() As String
+        Get
+            Return _userLanguage
+        End Get
+        Set(ByVal value As String)
+            _userLanguage = value
+        End Set
+    End Property
+
+    Public Sub New(ByVal sportId As Integer)
+        _userLanguage = interfaceprog.getUserLanguage
+        _groupList = New Dictionary(Of String, List(Of xmlBet))
+        'Dim onegroup As New Dictionary(Of String, List(Of xmlBet))
+        Dim templist As List(Of xmlBet)
+
+        'Dim sportCode As Integer = -100
+        Dim tempTypecode As Integer = -100
+        Dim tempAllowance As Single = 0
+        Dim tempTotal As Single = 0
+        Dim tempScore1 As Integer = 0
+        Dim tempScore2 As Integer = 0
+        Dim tempPeriodnr As Integer = 0
+        Dim isEnabledEvent As Boolean = True
+
+        Dim doc As New XmlDocument
+
+        Dim rootPath As String = HttpContext.Current.Server.MapPath("~")        
+        If File.Exists(rootPath + "\xml\livexml\" + sportId.ToString() + ".xml") Then
+            doc.Load(rootPath + "\xml\livexml\" + sportId.ToString() + ".xml")
+        Else
+            doc.Load(rootPath + "\xml\livexml\0.xml")
+        End If
+
+        Dim groups As XmlNodeList = doc.GetElementsByTagName("group")
+        For Each groupxml As XmlNode In groups
+            'onegroup = New Dictionary(Of String, List(Of WebReference.Event))
+            templist = New List(Of xmlBet)
+            For Each bet As XmlNode In groupxml.ChildNodes
+                If Not Single.TryParse(bet.Attributes("TypeCode").Value, tempTypecode) Then
+                    tempTypecode = 0
+                End If
+                If Not Single.TryParse(bet.Attributes("allowance").Value, tempAllowance) Then
+                    tempAllowance = 0
+                End If
+                If Not Single.TryParse(bet.Attributes("total").Value, tempTotal) Then
+                    tempTotal = 0
+                End If
+                If Not Integer.TryParse(bet.Attributes("score1").Value, tempScore1) Then
+                    tempScore1 = 0
+                End If
+                If Not Integer.TryParse(bet.Attributes("score2").Value, tempScore2) Then
+                    tempScore2 = 0
+                End If
+                If Not Integer.TryParse(bet.Attributes("periodnr").Value, tempPeriodnr) Then
+                    tempPeriodnr = 0
+                End If
+                templist.Add(New xmlBet(tempTypecode, tempAllowance, tempTotal, tempScore1, tempScore2, tempPeriodnr))
+            Next
+            If _groupList.TryGetValue(groupxml.Attributes(_userLanguage).Value, templist) Then
+                templist.Add(New xmlBet(tempTypecode, tempAllowance, tempTotal, tempScore1, tempScore2, tempPeriodnr, isEnabledEvent))
+                _groupList(groupxml.Attributes(_userLanguage).Value) = templist
+            Else
+                templist = New List(Of xmlBet)
+                templist.Add(New xmlBet(tempTypecode, tempAllowance, tempTotal, tempScore1, tempScore2, tempPeriodnr, isEnabledEvent))
+                _groupList.Add(groupxml.Attributes(_userLanguage).Value, templist)
+            End If
+        Next
     End Sub
 End Class

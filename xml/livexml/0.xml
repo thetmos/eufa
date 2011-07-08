@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <group RU="Исходы" AM="111" EN="Results">
+        <bet TypeCode="1" allowance="" total="" score1="" score2="" periodnr=""/>
+        <bet TypeCode="3" allowance="" total="" score1="" score2="" periodnr=""/>
+        <bet TypeCode="2" allowance="" total="" score1="" score2="" periodnr=""/>
+    </group>       
+    <group RU="Двойной шанс" AM="112" EN="Double Chance">
+        <bet TypeCode="4" allowance="" total="" score1="" score2="" periodnr=""/>
+        <bet TypeCode="18" allowance="" total="" score1="" score2="" periodnr=""/>
+        <bet TypeCode="5" allowance="" total="" score1="" score2="" periodnr=""/>
+    </group>       
+    <group RU="Исход с учетом фор" AM="111" EN="Results with">
+        <bet TypeCode="86" allowance="" total="" score1="" score2="" periodnr=""/>
+        <bet TypeCode="87" allowance="" total="" score1="" score2="" periodnr=""/>
+    </group>       
+    <group RU="Тоталы" AM="111" EN="Totals">
+        <bet TypeCode="6" allowance="" total="" score1="" score2="" periodnr=""/>
+        <bet TypeCode="7" allowance="" total="" score1="" score2="" periodnr=""/>
+    </group>       
+    <group RU="Инд. Тоталы команд" AM="111" EN="Results">
+        <bet TypeCode="9" allowance="" total="" score1="" score2="" periodnr=""/>
+        <bet TypeCode="10" allowance="" total="" score1="" score2="" periodnr=""/>
+        <bet TypeCode="12" allowance="" total="" score1="" score2="" periodnr=""/>
+        <bet TypeCode="13" allowance="" total="" score1="" score2="" periodnr=""/>
+    </group>       
+    <group RU="Проход в следующий круг" AM="111" EN="Results">
+        <bet TypeCode="381" allowance="" total="" score1="" score2="" periodnr=""/>
+        <bet TypeCode="382" allowance="" total="" score1="" score2="" periodnr=""/>
+    </group>       
+</root>

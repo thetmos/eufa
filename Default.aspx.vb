@@ -437,8 +437,10 @@ Public Class Game_vt
 
         'Dim isTotalInMainTitle As Boolean = False
         Dim tempEvent As WebReference.Event
-        'Dim rexp As New Regex("(.*)команда 1(.*)")
-        'Dim rexp2 As New Regex("(.*)команда 2(.*)")
+        Dim rexp As New Regex("(.*)команд. 1(.*)")
+        Dim rrexp As New Regex("команд. 1")
+        Dim rexp2 As New Regex("(.*)команд. 2(.*)")
+        Dim rrexp2 As New Regex("команд. 2")
 
         Dim eventsArr As List(Of WebReference.Event)
         eventsArr = oneGame.Events.ToList
@@ -463,13 +465,16 @@ Public Class Game_vt
                                                     AndAlso (bet.Periodnr = 0 OrElse bet.Periodnr = oneEvent.PeriodNr) _
                                                     AndAlso (bet.Total = 0 OrElse bet.Total = oneEvent.Total) _
                                                     AndAlso bet.IsEnabledEvent = True Then
-                            'If rexp.IsMatch(oneEvent.Name) Then
-                            '    oneEvent.Name += " (" + _player1.Name + ")"
-                            'End If
-                            'If rexp2.IsMatch(oneEvent.Name) Then
-                            '    oneEvent.Name += " (" + _player2.Name + ")"
-                            'End If
-                            oneEvent.Name.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
+                            If rexp.IsMatch(oneEvent.Name) Then
+                                'oneEvent.Name += " (" + _player1.Name + ")"
+                                oneEvent.Name = rrexp.Replace(oneEvent.Name, _player1.Name)
+                            End If
+                            If rexp2.IsMatch(oneEvent.Name) Then
+                                'oneEvent.Name += " (" + _player2.Name + ")"
+                                oneEvent.Name = rrexp2.Replace(oneEvent.Name, _player1.Name)
+                            End If
+                            
+                            'oneEvent.Name.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
                             icount = icount + 1
                             If oneEvent.Total <> 0 Then
                                 oneEvent.Total = 0
@@ -533,8 +538,34 @@ Public Class Game_vt
                                 'End If
                                 'If rexp2.IsMatch(oneEvent.Name) Then
                                 '    oneEvent.Name += " (" + _player2.Name + ")"
-                                'End If
-                                oneEvent.Name.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
+                                'End If                                
+                                If bet.Name <> "" Then
+                                    oneEvent.Name = bet.Name
+                                    If oneEvent.PeriodNr.ToString() <> "" Then
+                                        oneEvent.Name += ". Период:" + oneEvent.PeriodNr.ToString()
+                                    End If
+                                    If oneEvent.Allowance.ToString() <> "" Then
+                                        oneEvent.Name += ". Фора:" + oneEvent.Allowance.ToString()
+                                    End If
+                                    If oneEvent.Total.ToString() <> "" Then
+                                        oneEvent.Name += ". Тотал:" + oneEvent.Total.ToString()
+                                    End If
+                                    If oneEvent.Score1.ToString() <> "" Then
+                                        oneEvent.Name += ". Счёт 1:" + oneEvent.Score1.ToString()
+                                    End If
+                                    If oneEvent.Score2.ToString() <> "" Then
+                                        oneEvent.Name += ". Счёт 2:" + oneEvent.Score2.ToString()
+                                    End If
+                                End If
+                                If rexp.IsMatch(oneEvent.Name) Then
+                                    'oneEvent.Name += " (" + _player1.Name + ")"
+                                    oneEvent.Name = rrexp.Replace(oneEvent.Name, _player1.Name)
+                                End If
+                                If rexp2.IsMatch(oneEvent.Name) Then
+                                    'oneEvent.Name += " (" + _player2.Name + ")"
+                                    oneEvent.Name = rrexp2.Replace(oneEvent.Name, _player2.Name)
+                                End If
+                                'oneEvent.Name.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
                                 additEventsList.Add(oneEvent)
                                 eventsArr.Remove(oneEvent)
                                 addedFlag = True
@@ -549,13 +580,15 @@ Public Class Game_vt
                     Next
                     If additEventsList.Count > 0 Then
                         tempkey = kvpGroups.Key
-                        'If rexp.IsMatch(tempkey) Then
-                        '    tempkey += " (" + _player1.Name + ")"
-                        'End If
-                        'If rexp2.IsMatch(tempkey) Then
-                        '    tempkey += " (" + _player2.Name + ")"
-                        'End If
-                        tempkey.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
+                        If rexp.IsMatch(tempkey) Then
+                            'tempkey += " (" + _player1.Name + ")"
+                            tempkey = rrexp.Replace(tempkey, _player1.Name)
+                        End If
+                        If rexp2.IsMatch(tempkey) Then
+                            'tempkey += " (" + _player2.Name + ")"
+                            tempkey = rrexp2.Replace(tempkey, _player2.Name)
+                        End If
+                        'tempkey.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
                         additGroups.Add(tempkey, additEventsList)
                     End If
                 Next
@@ -567,7 +600,15 @@ Public Class Game_vt
                     'If rexp2.IsMatch(tempkey) Then
                     '    tempkey += " (" + _player2.Name + ")"
                     'End If
-                    tempkey.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
+                    If rexp.IsMatch(tempkey) Then
+                        'tempkey += " (" + _player1.Name + ")"
+                        tempkey = rrexp.Replace(tempkey, _player1.Name)
+                    End If
+                    If rexp2.IsMatch(tempkey) Then
+                        'tempkey += " (" + _player2.Name + ")"
+                        tempkey = rrexp2.Replace(tempkey, _player2.Name)
+                    End If
+                    'tempkey.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
                     additgroupsUp.Add(tempkey, additGroups)
                 End If
                 '_eventsOthers.Add(kvpSection.Key, additGroups)
