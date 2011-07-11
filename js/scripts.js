@@ -1,9 +1,23 @@
-﻿function testForEnter() {
+﻿//function testForEnter() {
+//    if (event.keyCode == 13) {
+//        event.cancelBubble = true;
+//        event.returnValue = false;
+//    }
+//}
+
+document.onkeydown = function keyIsDown(event) {
+    event = event || window.event;
     if (event.keyCode == 13) {
+        return false;
         event.cancelBubble = true;
         event.returnValue = false;
+        
+        //document.getElementById('selUser').innerHTML+='|';
+        /*xmlHttp.open("GET", "controls.php?keyEnter=1", true); 
+        xmlHttp.onreadystatechange = readData;
+        xmlHttp.send(null);*/
     }
-} 
+};
 
 function fixCouponBackground() {
 	$('#coupon_content_bg').css({
@@ -149,10 +163,10 @@ $(function () {
         $('.coupon_content_container').slideToggle(100);
     });
 
-    $('body').keydown(function () {
-        //alert('adfasfsafasdf');
-        testForEnter();
-    });
+//////////    $('body').keydown(function () {
+//////////        //alert('adfasfsafasdf');
+//////////        testForEnter();
+//////////    });
     //    $('.login_button').keydown(function () {
     //        alert('adfasfsafasdf');
     //        testForEnter();

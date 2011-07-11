@@ -163,8 +163,8 @@
                                 <%--<label>Событий должно выиграть <input class="textfield" id="winEventsCounter" name="winEventsCounter" type="text" value="0" /></label>--%>
                                 <label><input type="radio" id="bbb"><div class="div_coupon_counter"></div></label>
                             </div>
-							<div class="sum"><label style="margin-top: 5px;">Сумма ставки <input class="textfield" name="betSum" id="betSum" type="text" value="0.00" /></label></div>
-							<div class="possible_winning">Возможный выигрыш <span id="spansum"> 0.00</span><asp:Label ID="lblcurrency" runat="server" Text=""></asp:Label></div>                        
+							<div class="sum"><label style="margin-top: 5px;">Сумма ставки <input class="textfield" name="betSum" id="betSum" type="text" value="" /></label></div>
+							<div class="possible_winning">Возможный выигрыш <span id="spansum"></span><asp:Label ID="lblcurrency" runat="server" Text=""></asp:Label></div>                        
 							<input type="hidden" name="bet_submit" value="1" />
 							<input class="next_button " id="next_button" type="button" value="Далее" />                                                    
                             <input class="next_button " id="next_button_cancel" type="button" value="Отменить" />
