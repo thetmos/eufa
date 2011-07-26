@@ -1,6 +1,14 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="addmoney.aspx.vb" Inherits="addmoney"  MasterPageFile="~/MastPage.master"%>
 
 <asp:content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolderMasterMain" >
+    <asp:MultiView ID="mvstatus" runat="server" ActiveViewIndex="0">
+        <asp:View runat="server" ID="default">
+        
+        </asp:View>
+        <asp:View runat="server" ID="status">
+            <asp:Label ID="lblstatus" runat="server" Text=""></asp:Label>
+        </asp:View>
+    </asp:MultiView>
 <h2>Пополнить счет</h2>
 			<div class="my_account_content add_money">
 				<div class="addmoney_item">
@@ -16,25 +24,26 @@
 						<div class="detail_item">
 							<div class="title">Серия</div>
 
-							<div class="detail"><input class="textfield" type="text" size="10" /><span class="valid_icon"></span></div>
+							<div class="detail"><%--<input class="textfield" type="text" size="10" />--%><asp:TextBox ID="ser" CssClass="textfield" runat="server"></asp:TextBox><%--<span class="valid_icon"></span>--%></div>
 							<div class="breaker"></div>
 						</div>
 						<div class="detail_item">
 							<div class="title">Номер</div>
-							<div class="detail"><input class="textfield" type="text" size="15" /><span class="valid_icon"></span></div>
+							<div class="detail"><%--<input class="textfield" type="text" size="15" />--%><asp:TextBox ID="num" CssClass="textfield" runat="server"></asp:TextBox><%--<span class="valid_icon"></span>--%></div>
 							<div class="breaker"></div>
 						</div>
 
 						<div class="detail_item">
 							<div class="title">PIN-код</div>
-							<div class="detail"><input class="textfield" type="text" size="4" /> - <input class="textfield" type="text" size="4" /> - <input class="textfield" type="text" size="4" /></div>
+							<div class="detail"><%--<input class="textfield" type="text" size="4" />--%><asp:TextBox ID="pin1" CssClass="textfield" runat="server"></asp:TextBox> - <%--<input class="textfield" type="text" size="4" />--%><asp:TextBox ID="pin2" CssClass="textfield" runat="server"></asp:TextBox> - <%--<input class="textfield" type="text" size="4" />--%><asp:TextBox ID="pin3" CssClass="textfield" runat="server"></asp:TextBox></div>
 							<div class="breaker"></div>
 						</div>
 						<div class="detail_item">
 
 							<div class="title">&nbsp;</div>
 							<div class="detail">
-								<input class="addmoney_details_action_button2" type="submit" value="OK" />
+                                <asp:Button ID="btnActivateEfuCard" CssClass="addmoney_details_action_button2" runat="server" Text="OK" />
+								<%--<input class="addmoney_details_action_button2" type="submit" value="OK" />--%>
 								<input class="addmoney_details_action_button2" type="submit" value="Отмена" />
 							</div>
 							<div class="breaker"></div>

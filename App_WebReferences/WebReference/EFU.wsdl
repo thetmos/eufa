@@ -83,6 +83,9 @@
           <s:element minOccurs="0" maxOccurs="1" name="Currencies" type="tns:ArrayOfDictEntry" />
           <s:element minOccurs="0" maxOccurs="1" name="Languages" type="tns:ArrayOfDictEntry" />
           <s:element minOccurs="0" maxOccurs="1" name="ResultNames" type="tns:ArrayOfDictEntry" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserBetStatuses" type="tns:ArrayOfDictEntry" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountOpCodes" type="tns:ArrayOfDictEntry" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountOpStatuses" type="tns:ArrayOfDictEntry" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfDictEntry">
@@ -158,6 +161,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Championships" type="tns:ArrayOfChampionship" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfChampionship">
@@ -173,6 +177,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Games" type="tns:ArrayOfGame" />
           <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="CommentDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfGame">
@@ -192,6 +197,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="LiveComment" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="PrintComment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultComment" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Flags" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Events" type="tns:ArrayOfEvent" />
           <s:element minOccurs="0" maxOccurs="1" name="Results" type="tns:ArrayOfResult" />
@@ -243,6 +249,16 @@
           <s:element minOccurs="1" maxOccurs="1" name="Score3" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ReadChangeLine">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadChangeLineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadChangeLineResult" type="tns:ResponseLine" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ReadGame">
         <s:complexType>
           <s:sequence>
@@ -325,6 +341,35 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ReadCurrentUser">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadCurrentUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCurrentUserResult" type="tns:ResponseUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentUserBalance">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCurrentUserBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentUserBalanceResult" type="tns:ResponseBalance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseBalance">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="HeldSum" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="ReadUserBets">
         <s:complexType>
           <s:sequence>
@@ -383,13 +428,13 @@
           <s:element minOccurs="0" maxOccurs="1" name="SportName" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetCurrencyRates">
+      <s:element name="ReadCurrencyRates">
         <s:complexType />
       </s:element>
-      <s:element name="GetCurrencyRatesResponse">
+      <s:element name="ReadCurrencyRatesResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCurrencyRatesResult" type="tns:ResponseCurrencyRates" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReadCurrencyRatesResult" type="tns:ResponseCurrencyRates" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -461,6 +506,8 @@
               <s:element minOccurs="1" maxOccurs="1" name="Flags" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="Limit" type="s:float" />
               <s:element minOccurs="0" maxOccurs="1" name="ReqId" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:float" />
+              <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -688,6 +735,12 @@
   <wsdl:message name="ReadFullLineSoapOut">
     <wsdl:part name="parameters" element="tns:ReadFullLineResponse" />
   </wsdl:message>
+  <wsdl:message name="ReadChangeLineSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadChangeLine" />
+  </wsdl:message>
+  <wsdl:message name="ReadChangeLineSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadChangeLineResponse" />
+  </wsdl:message>
   <wsdl:message name="ReadGameSoapIn">
     <wsdl:part name="parameters" element="tns:ReadGame" />
   </wsdl:message>
@@ -712,17 +765,29 @@
   <wsdl:message name="ChangeUserSoapOut">
     <wsdl:part name="parameters" element="tns:ChangeUserResponse" />
   </wsdl:message>
+  <wsdl:message name="ReadCurrentUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCurrentUser" />
+  </wsdl:message>
+  <wsdl:message name="ReadCurrentUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCurrentUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentUserBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentUserBalance" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentUserBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentUserBalanceResponse" />
+  </wsdl:message>
   <wsdl:message name="ReadUserBetsSoapIn">
     <wsdl:part name="parameters" element="tns:ReadUserBets" />
   </wsdl:message>
   <wsdl:message name="ReadUserBetsSoapOut">
     <wsdl:part name="parameters" element="tns:ReadUserBetsResponse" />
   </wsdl:message>
-  <wsdl:message name="GetCurrencyRatesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCurrencyRates" />
+  <wsdl:message name="ReadCurrencyRatesSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadCurrencyRates" />
   </wsdl:message>
-  <wsdl:message name="GetCurrencyRatesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCurrencyRatesResponse" />
+  <wsdl:message name="ReadCurrencyRatesSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadCurrencyRatesResponse" />
   </wsdl:message>
   <wsdl:message name="ReadResultsSoapIn">
     <wsdl:part name="parameters" element="tns:ReadResults" />
@@ -804,6 +869,11 @@
       <wsdl:input message="tns:ReadFullLineSoapIn" />
       <wsdl:output message="tns:ReadFullLineSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ReadChangeLine">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read Changes in Line</wsdl:documentation>
+      <wsdl:input message="tns:ReadChangeLineSoapIn" />
+      <wsdl:output message="tns:ReadChangeLineSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ReadGame">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read Game</wsdl:documentation>
       <wsdl:input message="tns:ReadGameSoapIn" />
@@ -824,15 +894,25 @@
       <wsdl:input message="tns:ChangeUserSoapIn" />
       <wsdl:output message="tns:ChangeUserSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ReadCurrentUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read Current User Profile</wsdl:documentation>
+      <wsdl:input message="tns:ReadCurrentUserSoapIn" />
+      <wsdl:output message="tns:ReadCurrentUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentUserBalance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read Current User Balance</wsdl:documentation>
+      <wsdl:input message="tns:GetCurrentUserBalanceSoapIn" />
+      <wsdl:output message="tns:GetCurrentUserBalanceSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ReadUserBets">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read User Bets</wsdl:documentation>
       <wsdl:input message="tns:ReadUserBetsSoapIn" />
       <wsdl:output message="tns:ReadUserBetsSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetCurrencyRates">
+    <wsdl:operation name="ReadCurrencyRates">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Currency Rates</wsdl:documentation>
-      <wsdl:input message="tns:GetCurrencyRatesSoapIn" />
-      <wsdl:output message="tns:GetCurrencyRatesSoapOut" />
+      <wsdl:input message="tns:ReadCurrencyRatesSoapIn" />
+      <wsdl:output message="tns:ReadCurrencyRatesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ReadResults">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Read Game Results</wsdl:documentation>
@@ -927,6 +1007,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReadChangeLine">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadChangeLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ReadGame">
       <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadGame" style="document" />
       <wsdl:input>
@@ -963,6 +1052,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReadCurrentUser">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadCurrentUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentUserBalance">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/GetCurrentUserBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ReadUserBets">
       <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadUserBets" style="document" />
       <wsdl:input>
@@ -972,8 +1079,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCurrencyRates">
-      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/GetCurrencyRates" style="document" />
+    <wsdl:operation name="ReadCurrencyRates">
+      <soap:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadCurrencyRates" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1110,6 +1217,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReadChangeLine">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadChangeLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ReadGame">
       <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadGame" style="document" />
       <wsdl:input>
@@ -1146,6 +1262,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReadCurrentUser">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadCurrentUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentUserBalance">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/GetCurrentUserBalance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ReadUserBets">
       <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadUserBets" style="document" />
       <wsdl:input>
@@ -1155,8 +1289,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCurrencyRates">
-      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/GetCurrencyRates" style="document" />
+    <wsdl:operation name="ReadCurrencyRates">
+      <soap12:operation soapAction="http://www.efubet.com/Service/2011/1.0/ReadCurrencyRates" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

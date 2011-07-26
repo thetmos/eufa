@@ -16,6 +16,13 @@ Partial Class _Default
         aRequest = Page.Request
         Dim postedValues As NameValueCollection = Request.Form       
         Dim rLine As ResponseLine = Master.rLine
+        Dim rchline As ResponseLine = ef.ReadChangeLine
+
+        Dim deps As New ArrayList()
+        'deps.Add(rLine.LineDate.ToString())
+        deps.Add(rchline.Sports.Count.ToString())
+
+        Response.AddCacheItemDependencies(deps)
         If rLine.ErrorCode = 0 Then
             Dim sportsWD As SportsWithDates
             Dim sportsWDlist As New List(Of SportsWithDates)
@@ -45,7 +52,19 @@ Partial Class _Default
         Else
             mvdefault.ActiveViewIndex = 1
         End If
+        'Dim b As Integer = 0
+        ''Dim c As String = "a"
+        'Dim rchline1 As ResponseLine
+
+        'While b < 100
+        '    rchline1 = ef.ReadChangeLine
+        '    b = b + 1
+        'End While
+        'b = 101
     End Sub
+
+
+
 End Class
 
 
@@ -403,6 +422,7 @@ Public Class Game_vt
     End Property
 
     Public Sub New(ByVal sportId As Integer, ByVal oneGame As Game, ByRef x2i As Xml2Interface)
+
         _id = oneGame.Id
         'Dim aa As String
         'If oneGame.Id = 239821 Then
@@ -415,7 +435,7 @@ Public Class Game_vt
         _player1 = oneGame.Player1
         _player2 = oneGame.Player2
         _comments = oneGame.Comment
-        _liveComments = oneGame.LiveComment        
+        _liveComments = oneGame.LiveComment
         _eventsMain = New List(Of Dictionary(Of List(Of WebReference.Event), String))
 
         _eventsOthers = New Dictionary(Of String, Dictionary(Of String, Dictionary(Of String, List(Of WebReference.Event))))
@@ -423,6 +443,10 @@ Public Class Game_vt
         _empty_event = New WebReference.Event
         _empty_event.Id = -1
         _isLive = "0"
+
+        Dim _empty_event_spec As New WebReference.Event
+        _empty_event_spec = _empty_event
+        _empty_event_spec.TypeCode = -101
 
         Dim gameInterface As New SportInterfacce
         If Not x2i.SportDict.TryGetValue(sportId, gameInterface) Then
@@ -437,10 +461,10 @@ Public Class Game_vt
 
         'Dim isTotalInMainTitle As Boolean = False
         Dim tempEvent As WebReference.Event
-        Dim rexp As New Regex("(.*)команд. 1(.*)")
-        Dim rrexp As New Regex("команд. 1")
-        Dim rexp2 As New Regex("(.*)команд. 2(.*)")
-        Dim rrexp2 As New Regex("команд. 2")
+        Dim rexp As New Regex("(.*)команд(.){0,2}1(.*)", RegexOptions.IgnoreCase)
+        Dim rrexp As New Regex("команд(.){0,2}1", RegexOptions.IgnoreCase)
+        Dim rexp2 As New Regex("(.*)команд(.){0,2}2(.*)", RegexOptions.IgnoreCase)
+        Dim rrexp2 As New Regex("команд(.){0,2}2", RegexOptions.IgnoreCase)
 
         Dim eventsArr As List(Of WebReference.Event)
         eventsArr = oneGame.Events.ToList
@@ -473,7 +497,7 @@ Public Class Game_vt
                                 'oneEvent.Name += " (" + _player2.Name + ")"
                                 oneEvent.Name = rrexp2.Replace(oneEvent.Name, _player1.Name)
                             End If
-                            
+
                             'oneEvent.Name.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
                             icount = icount + 1
                             If oneEvent.Total <> 0 Then
@@ -511,7 +535,7 @@ Public Class Game_vt
         Dim additGroups As Dictionary(Of String, List(Of WebReference.Event))
         Dim additgroupsUp As Dictionary(Of String, Dictionary(Of String, List(Of WebReference.Event)))
         Dim additEventsList As List(Of WebReference.Event)
-
+        Dim rrrrrrexp As New Regex("%p1", RegexOptions.IgnoreCase)
         For Each kvpup As KeyValuePair(Of String, Dictionary(Of String, Dictionary(Of String, List(Of xmlBet)))) In gameInterface.Additional
             additgroupsUp = New Dictionary(Of String, Dictionary(Of String, List(Of WebReference.Event)))
             For Each kvpSection As KeyValuePair(Of String, Dictionary(Of String, List(Of xmlBet))) In kvpup.Value
@@ -533,39 +557,14 @@ Public Class Game_vt
                                                     AndAlso (bet.Score2 = 0 OrElse bet.Score1 = oneEvent.Score2) _
                                                     AndAlso (bet.Periodnr = 0 OrElse bet.Periodnr = oneEvent.PeriodNr) _
                                                     AndAlso (bet.Total = 0 OrElse bet.Total = oneEvent.Total) Then
-                                'If rexp.IsMatch(oneEvent.Name) Then
-                                '    oneEvent.Name += " (" + _player1.Name + ")"
-                                'End If
-                                'If rexp2.IsMatch(oneEvent.Name) Then
-                                '    oneEvent.Name += " (" + _player2.Name + ")"
-                                'End If                                
+
                                 If bet.Name <> "" Then
+                                    'rrrrrrexp.Replace()
                                     oneEvent.Name = bet.Name
-                                    If oneEvent.PeriodNr.ToString() <> "" Then
-                                        oneEvent.Name += ". Период:" + oneEvent.PeriodNr.ToString()
-                                    End If
-                                    If oneEvent.Allowance.ToString() <> "" Then
-                                        oneEvent.Name += ". Фора:" + oneEvent.Allowance.ToString()
-                                    End If
-                                    If oneEvent.Total.ToString() <> "" Then
-                                        oneEvent.Name += ". Тотал:" + oneEvent.Total.ToString()
-                                    End If
-                                    If oneEvent.Score1.ToString() <> "" Then
-                                        oneEvent.Name += ". Счёт 1:" + oneEvent.Score1.ToString()
-                                    End If
-                                    If oneEvent.Score2.ToString() <> "" Then
-                                        oneEvent.Name += ". Счёт 2:" + oneEvent.Score2.ToString()
-                                    End If
+
                                 End If
-                                If rexp.IsMatch(oneEvent.Name) Then
-                                    'oneEvent.Name += " (" + _player1.Name + ")"
-                                    oneEvent.Name = rrexp.Replace(oneEvent.Name, _player1.Name)
-                                End If
-                                If rexp2.IsMatch(oneEvent.Name) Then
-                                    'oneEvent.Name += " (" + _player2.Name + ")"
-                                    oneEvent.Name = rrexp2.Replace(oneEvent.Name, _player2.Name)
-                                End If
-                                'oneEvent.Name.Replace("команда 1", _player1.Name).Replace("команда 2", _player2.Name)
+                                oneEvent.Name = oneEvent.Name.Replace("%p1", _player1.Name).Replace("%p2", _player2.Name).Replace("%a", IIf(oneEvent.Allowance > 0, "+", "") + oneEvent.Allowance.ToString("N2").Replace(",", ".")).Replace("%t", oneEvent.Total.ToString("N2").Replace(",", ".")).Replace("%s1", oneEvent.Score1.ToString()).Replace("%s2", oneEvent.Score2.ToString()).Replace("%n", oneEvent.PeriodNr.ToString()).Replace("%o", oneEvent.Odd.ToString("N2").Replace(",", "."))
+
                                 additEventsList.Add(oneEvent)
                                 eventsArr.Remove(oneEvent)
                                 addedFlag = True
@@ -579,6 +578,7 @@ Public Class Game_vt
                         'End If
                     Next
                     If additEventsList.Count > 0 Then
+                        'additEventsList.Add(_empty_event_spec)
                         tempkey = kvpGroups.Key
                         If rexp.IsMatch(tempkey) Then
                             'tempkey += " (" + _player1.Name + ")"
@@ -625,9 +625,10 @@ Public Class Game_vt
             'othersList.Add(oneEvent)
             temptypecode = oneEvent.TypeCode.ToString()
             oneEvent.TypeCode = -100
+            oneEvent.Name = oneEvent.Name.Replace("%p1", _player1.Name).Replace("%p2", _player2.Name).Replace("%a", IIf(oneEvent.Allowance > 0, "+", "") + oneEvent.Allowance.ToString("N2").Replace(",", ".")).Replace("%t", oneEvent.Total.ToString("N2").Replace(",", ".")).Replace("%s1", oneEvent.Score1.ToString()).Replace("%s2", oneEvent.Score2.ToString()).Replace("%n", oneEvent.PeriodNr.ToString()).Replace("%o", oneEvent.Odd.ToString("N2").Replace(",", "."))
             If othersGroup.TryGetValue(temptypecode, othersList) Then
                 othersList.Add(oneEvent)
-            Else                
+            Else
                 othersList = New List(Of WebReference.Event)
                 othersList.Add(oneEvent)
                 othersGroup.Add(temptypecode, othersList)

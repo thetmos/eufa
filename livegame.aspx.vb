@@ -39,7 +39,7 @@ Partial Class livegame
                 outputString.Append(""" />")
                 outputString.Append("<events>")
                 For Each oneev As WebReference.Event In respOnegame.Game.Events
-                    If (oneev.IsLive = "O" OrElse oneev.IsLive = "Y") AndAlso (oneev.Status <> "C" AndAlso oneev.Status <> "N" AndAlso oneev.Status <> "D") Then
+                    If (oneev.IsLive = "O" OrElse oneev.IsLive = "Y") AndAlso (oneev.Status = "L") Then
                         eventslist.Add(oneev)
                     End If
 

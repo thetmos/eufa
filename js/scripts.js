@@ -6,17 +6,17 @@
 //}
 
 document.onkeydown = function keyIsDown(event) {
-    event = event || window.event;
-    if (event.keyCode == 13) {
-        return false;
-        event.cancelBubble = true;
-        event.returnValue = false;
-        
-        //document.getElementById('selUser').innerHTML+='|';
-        /*xmlHttp.open("GET", "controls.php?keyEnter=1", true); 
-        xmlHttp.onreadystatechange = readData;
-        xmlHttp.send(null);*/
-    }
+	event = event || window.event;
+	if (event.keyCode == 13) {
+		return false;
+		event.cancelBubble = true;
+		event.returnValue = false;
+		
+		//document.getElementById('selUser').innerHTML+='|';
+		/*xmlHttp.open("GET", "controls.php?keyEnter=1", true); 
+		xmlHttp.onreadystatechange = readData;
+		xmlHttp.send(null);*/
+	}
 };
 
 function fixCouponBackground() {
@@ -28,133 +28,134 @@ function fixCouponBackground() {
 
 
 function insertDateIndiv(sender, args) {
-    $('#date_filterId').find('.divdateFilterInput').val(sender._selectedDate.format("dd/MM/yyyy"));
+	$('#date_filterId').find('.divdateFilterInput').val(sender._selectedDate.format("dd/MM/yyyy"));
 }
 
-function maxWin() {
-    var activeBetSystem = ""
-    var winEventsCounter = $('#coupon_actions').find('.system_additional').find('.system_additional_radiobutton[@name=wincounts]:checked').val();    
-    itemsArray = new Array();
-    itemsStr = '';
-    var maxOdd = 0;
-    var tempMax = 0;
-    var tempmaxJ = 0;
-    systemMaxsArray=new Array();
-    $('#coupon_item_normal_content .item .selection>span').each(function () {
-        itemsArray.push($(this).text());
-    });
-    if ($('#coupon_actions').parents('.coupon_content').find('#coupon_item_express').hasClass('selected')) {
-        //activeBetSystem = "express";
-        maxOdd = itemsArray[0];
-        for ( i = 1; i < itemsArray.length; i++) {
-            maxOdd = maxOdd * itemsArray[i];
-        }
-    }
-    else {
-        if ($('#coupon_actions').parents('.coupon_content').find('#coupon_item_system').hasClass('selected')) {
-            //activeBetSystem = "system";
-            for ( i=0; i<winEventsCounter; i++){
-                for ( j=0; j < itemsArray.length; j++){
-                    if (itemsArray[j]>tempMax){
-                        tempMax = itemsArray[j];
-                        tempmaxJ = j;
-                        //itemsArray[j]=0;
-                    }
-                }
-                itemsArray[tempmaxJ] = 0;
-                systemMaxsArray[i]=tempMax;
-            }
-            maxOdd = itemsArray[0];
-            for ( i=1;i<systemMaxsArray.length;i++){
-                maxOdd = maxOdd * systemMaxsArray[i];
-            }
-        }
-    }
-    var a = parseFloat($('#coupon_actions').find('.sum').find('#betSum').val());
-    var b = $('#coupon_actions').find('.sum').find('#betSum').val();
-    $('#coupon_actions').find('.possible_winning #spansum').text();
-    if (maxOdd * parseFloat($('#coupon_actions').find('.sum').find('#betSum').val()) > 0) {
-        $('#coupon_actions').find('.possible_winning #spansum').text((maxOdd * parseFloat($('#coupon_actions').find('.sum').find('#betSum').val())).toFixed(2));
-    }
-}
+//function maxWin() {
+//	var activeBetSystem = ""
+//	var winEventsCounter = $('#coupon_actions').find('.system_additional').find('.system_additional_radiobutton[@name=wincounts]:checked').val();    
+//	itemsArray = new Array();
+//	itemsStr = '';
+//	var maxOdd = 0;
+//	var tempMax = 0;
+//	var tempmaxJ = 0;
+//	systemMaxsArray=new Array();
+//	$('#coupon_item_normal_content .item .selection>span').each(function () {
+//		itemsArray.push($(this).text());
+//	});
+//	if ($('#coupon_actions').parents('.coupon_content').find('#coupon_item_express').hasClass('selected')) {
+//		//activeBetSystem = "express";
+//		maxOdd = itemsArray[0];
+//		for ( i = 1; i < itemsArray.length; i++) {
+//			maxOdd = maxOdd * itemsArray[i];
+//		}
+//	}
+//	else {
+//		if ($('#coupon_actions').parents('.coupon_content').find('#coupon_item_system').hasClass('selected')) {
+//			//activeBetSystem = "system";
+//			for ( i=0; i<winEventsCounter; i++){
+//				for ( j=0; j < itemsArray.length; j++){
+//					if (itemsArray[j]>tempMax){
+//						tempMax = itemsArray[j];
+//						tempmaxJ = j;
+//						//itemsArray[j]=0;
+//					}
+//				}
+//				itemsArray[tempmaxJ] = 0;
+//				systemMaxsArray[i]=tempMax;
+//			}
+//			maxOdd = itemsArray[0];
+//			for ( i=1;i<systemMaxsArray.length;i++){
+//				maxOdd = maxOdd * systemMaxsArray[i];
+//			}
+//		}
+//	}
+//	var a = parseFloat($('#coupon_actions').find('.sum').find('#betSum').val());
+//	var b = $('#coupon_actions').find('.sum').find('#betSum').val();
+//	$('#coupon_actions').find('.possible_winning #spansum').text();
+//	if (maxOdd * parseFloat($('#coupon_actions').find('.sum').find('#betSum').val()) > 0) {
+//		$('#coupon_actions').find('.possible_winning #spansum').text((maxOdd * parseFloat($('#coupon_actions').find('.sum').find('#betSum').val())).toFixed(2));
+//	}
+//}
 
 
 function addBet(betData)  {
-    if (!$('#' + betData.gameId + '_' + betData.id).length) {
-        var $couponItem = $('<div id="' + betData.gameId + '_' + betData.id + '" class="item"></div>').appendTo('#coupon_item_normal_content');
-        var coupon_counter = parseInt($('#coupon_counter').text())+1;        
-        if (coupon_counter > 2) {            
-            $('#coupon_item_system').css('cursor', 'pointer');            
-        }
+	if (!$('#' + betData.gameId + '_' + betData.id).length) {
+		var $couponItem = $('<div id="' + betData.gameId + '_' + betData.id + '" class="item"></div>').appendTo('#coupon_item_normal_content');
+		var coupon_counter = parseInt($('#coupon_counter').text())+1;        
+		if (coupon_counter > 2) {            
+			$('#coupon_item_system').css('cursor', 'pointer');            
+		}
 
-        $('#coupon_counter').text(parseInt($('#coupon_item_normal_content .hidden_bet_id').length) + 1);
-        var elements = parseInt($('#coupon_counter').text());
-        switch (elements){
-            case 0:
-            case 11:
-            case 12:
-            case 13:
-            case 14:
-                $('#coupon_word').text('событий');
-                break;
-            default:
-                switch (elements.toString().charAt(elements.length)){
-                    case '1':
-                        $('#coupon_word').text('событие');
-                        break;
-                    case '2':
-                    case '3':
-                    case '4':
-                        $('#coupon_word').text('события');
-                        break;
-                    case '5':
-                    case '6':
-                    case '7':
-                    case '8':
-                    case '9':
-                    case '0':
-                        $('#coupon_word').text('событий');
-                        break;
-                }
-                break;
-        }
-        var couponItemHtml = '\
-            <input type="hidden" class="hidden_bet_id" name="bet()" value="' + betData.id + '">\
+		$('#coupon_counter').text(parseInt($('#coupon_item_normal_content .hidden_bet_id').length) + 1);
+		var elements = parseInt($('#coupon_counter').text());
+		switch (elements){
+			case 0:
+			case 11:
+			case 12:
+			case 13:
+			case 14:
+				$('#coupon_word').text('событий');
+				break;
+			default:
+				switch (elements.toString().charAt(elements.length)){
+					case '1':
+						$('#coupon_word').text('событие');
+						break;
+					case '2':
+					case '3':
+					case '4':
+						$('#coupon_word').text('события');
+						break;
+					case '5':
+					case '6':
+					case '7':
+					case '8':
+					case '9':
+					case '0':
+						$('#coupon_word').text('событий');
+						break;
+				}
+				break;
+		}
+		var couponItemHtml = '\
+			<input type="hidden" class="hidden_bet_id" name="bet()" value="' + betData.id + '">\
+			<div class="hidden" id="' + betData.maxbetsum + '"></div>\
 			<span class="remove"></span>\
 			<label><input class="checkbox" type="checkbox" />' + betData.players + '</label>\
 			<div class="selection">Выбор: <strong>' + betData.title + '</strong> <span>' + betData.odd + '</span></div>\
 		';
-        var $system_additional = $('#system_additional');
-        var system_additionalInnerHtml = '';        
-        checked = 'checked';
-        for (i = 2; i < coupon_counter; i++) {
-            if (i != 2) {
-                checked = '';
-            }
-            system_additionalInnerHtml += '<label onclick="maxWin()"><input type="radio" name="wincounts" class="system_additional_radiobutton" value="' + i + '" ' + checked + '>' + i + '/' + coupon_counter + '</label>';
-        }
-        $couponItem.append(couponItemHtml);
-        $system_additional.html(system_additionalInnerHtml);
-    }
-    maxWin();    
-    fixCouponBackground();    
+		var $system_additional = $('#system_additional');
+		var system_additionalInnerHtml = '';        
+		checked = 'checked';
+		for (i = 2; i < coupon_counter; i++) {
+			if (i != 2) {
+				checked = '';
+			}
+			system_additionalInnerHtml += '<label onclick="maxWin()"><input type="radio" name="wincounts" class="system_additional_radiobutton" value="' + i + '" ' + checked + '>' + i + '/' + coupon_counter + '</label>';
+		}
+		$couponItem.append(couponItemHtml);
+		$system_additional.html(system_additionalInnerHtml);
+	}
+	//maxWin();    
+	fixCouponBackground();    
 }
 
 //Оставляет видимыми только выбранные в левом столбце игры
 function showOnlyFilteredGames(selectedChampsArray){    
-    $('.date').css('display', 'none');
-    $('.series').css('display', 'none');
-    $('.sport').css('display', 'none');
-    for (var i in selectedChampsArray) {
-        $('#sports_bet_list').find('#' + selectedChampsArray[i]).css('display', 'block');
-        $('#sports_bet_list').find('#' + selectedChampsArray[i]).closest('.sport').css('display', 'block');
-        $('#sports_bet_list').find('#' + selectedChampsArray[i]).closest('.date').css('display', 'block');
-    }
+	$('.date').css('display', 'none');
+	$('.series').css('display', 'none');
+	$('.sport').css('display', 'none');
+	for (var i in selectedChampsArray) {
+		$('#sports_bet_list').find('#' + selectedChampsArray[i]).css('display', 'block');
+		$('#sports_bet_list').find('#' + selectedChampsArray[i]).closest('.sport').css('display', 'block');
+		$('#sports_bet_list').find('#' + selectedChampsArray[i]).closest('.date').css('display', 'block');
+	}
 }
 
 
 function RemoveBet (gameId, betId) {
-    $('#' + gameId + '_' + betId).remove();
+	$('#' + gameId + '_' + betId).remove();
 }
 
 $(function () {
@@ -163,10 +164,10 @@ $(function () {
         $('.coupon_content_container').slideToggle(100);
     });
 
-//////////    $('body').keydown(function () {
-//////////        //alert('adfasfsafasdf');
-//////////        testForEnter();
-//////////    });
+    //////////    $('body').keydown(function () {
+    //////////        //alert('adfasfsafasdf');
+    //////////        testForEnter();
+    //////////    });
     //    $('.login_button').keydown(function () {
     //        alert('adfasfsafasdf');
     //        testForEnter();
@@ -181,9 +182,9 @@ $(function () {
         $(this).next().toggle().end().toggleClass('opened');
     });
 
-    $('#betSum').change(function () {
-        maxWin();
-    });
+    //    $('#betSum').change(function () {
+    //        maxWin();
+    //    });
 
     $('.additional_label').click(function () {
         maxWin();
@@ -200,16 +201,16 @@ $(function () {
     });
 
     $('.rate_f')
-        .live('click', function () {
-            $('.rate_double').removeClass('rate_double_opened');
-            var $bet = $(this);
-            var $parent = $bet.parent();
-            if ($parent.is('.rate_double')) {
-                $bet.prependTo($parent);
-            }
-            $bet.closest('.rates_group').find('.#span_odd').text($('#f_odd_' + this.id).text());
-            $bet.closest('.rates_group').find('.#span_odd').attr('title', $('#f_odd_' + this.id).attr('title'));
-        });
+		.live('click', function () {
+		    $('.rate_double').removeClass('rate_double_opened');
+		    var $bet = $(this);
+		    var $parent = $bet.parent();
+		    if ($parent.is('.rate_double')) {
+		        $bet.prependTo($parent);
+		    }
+		    $bet.closest('.rates_group').find('.#span_odd').text($('#f_odd_' + this.id).text());
+		    $bet.closest('.rates_group').find('.#span_odd').attr('title', $('#f_odd_' + this.id).attr('title'));
+		});
 
     $("#make_onebet").mouseover(function () {
         $(this).addClass('rate_hover_onebet');
@@ -270,12 +271,17 @@ $(function () {
         var $aa = $('#' + $onebet.find('.onebet_id').text());
         $aa.removeClass('rate_selected');
         $aa.removeClass('rate_hover');
+        var maxbetsum = $(this).parents('.onebet_popup').find('.footer_onebet').find('.maxbetsum').text();
+        var $a1 = $(this).parents('.onebet_popup');
+        var $a1 = $(this).parents('.onebet_popup').find('.footer_onebet');
+        var $a1 = $(this).parents('.onebet_popup').find('.footer_onebet').find('.maxbetsum');
         addBet({
             id: parseInt($onebet.find('.onebet_id').text()),
             title: $onebet.find('.onebet_title').text(),
             odd: $onebet.find('.onebet_odd').text(),
             players: $onebet.find('.onebet_players').text(),
-            gameId: $onebet.find('.onebet_gameId').text()
+            gameId: $onebet.find('.onebet_gameId').text(),
+            maxbetsum: $(this).parents('.onebet_popup').find('.footer_onebet').find('.maxbetsum').text()
         });
         $(this).parents('.onebet_popup').css('display', 'none');
     });
@@ -289,7 +295,8 @@ $(function () {
             title: $onebet.find('.onebet_title').text(),
             odd: $onebet.find('.onebet_odd').text(),
             players: $onebet.find('.onebet_players').text(),
-            gameId: $onebet.find('.onebet_gameId').text()
+            gameId: $onebet.find('.onebet_gameId').text(),
+            maxbetsum: $(this).parents('.onebet_popup').find('.footer_onebet').find('#maxbetsum').text()
         });
         $(this).parents('.onebet_popup').css('display', 'none');
     });
@@ -310,7 +317,7 @@ $(function () {
         $('#content').find('.rate_selected').removeClass('rate_selected').removeClass('rate_hover');
         $('.rate_double').removeClass('rate_double_opened');
         var gameId = $(this).closest('.game').attr('id'),
-		        betId = $(this).attr('id');
+				betId = $(this).attr('id');
         if ($(this).hasClass('rate_selected')) {
             RemoveBet(gameId, betId);
             return;
@@ -325,6 +332,8 @@ $(function () {
         var positionHeight = $(this).offset().top - 60; //document.getElementById(gameId).offsetTop;
         //window.scrollTo(0, positionHeight - 100);
 
+        var $footer_onebet = $('#onebet_popup').find('.footer_onebet');
+
         var $onebet = $('#onebet_popup').find('.onebet');
         //clear data
         $onebet.find('.onebet_id').text('');
@@ -336,8 +345,38 @@ $(function () {
         $('#onebet_popup').find('.header_onebet').text();
         $('#onebet_popup').find('#bet_sum').val('');
         $('#onebet_popup').find('.divtext').find('.onebet_text').text('');
+        $footer_onebet.find('.maxbetsum').text('');
+        $footer_onebet.find('.betcurrency').text('');
 
         //add data
+        $('#layer_bg').addClass('layer_dark');
+        $('#onebet_popup').find('.divtext').find('.onebet_text').text('');
+        var $odd = $(this).text();
+        $.post('get_bet_restriction.aspx', { gameId: gameId, num_games: 1, num_win_games: 1, odd: $(this).text() }, function (data) {
+            //$footer_onebet.text('aaa');
+            switch (parseInt($(data).find('root').find('data').attr('status'))) {
+                case 0:
+                    $('#layer_bg').removeClass('layer_dark');
+                    //jAlert($(data).find('data').attr('message'), 'Ставка произведена успешно.');           
+                    $footer_onebet.find('.maxbetsum').text($(data).find('root').find('betRestriction').attr('maxbet'));
+                    //$footer_onebet.find('.maxbetsum').text('aaa');
+                    //var $asdf = $(data).find('root').find('betRestriction').attr('maxbet');
+                    $footer_onebet.find('.betcurrency').text($(data).find('root').find('betRestriction').attr('userCurrency'));
+
+
+                    break;
+                case 1:
+                    $('#layer_bg').removeClass('layer_dark');
+                    jAlert($(data).find('data').attr('message'), 'Ошибка!');
+                    break;
+                default:
+                    break;
+            }
+        }, 'xml');
+
+
+
+
         $onebet.find('.onebet_id').text(betId);
         $onebet.find('.onebet_odd').text($(this).text());
         $onebet.find('.onebet_text').text($(this).attr('title') + ' ' + $(this).text());
@@ -416,22 +455,36 @@ $(function () {
 
     $('#next_button_cancel').click(function () {
         $(this).parents('.coupon_actions').find('#next_button').val('Далее');
-        $(this).css('display', 'none !important');
+        $(this).css('display', 'none');
         $('#coupon_item_normal_content').css('display', 'block');
         $(this).parents('.coupon_actions').find('.possible_winning').css('display', 'none');
+        $('#next_button').removeClass('confirm');
+        $('.sum').css('display', 'none');
         fixCouponBackground();
     });
 
     $('#next_button').click(function () {
         if (!$(this).hasClass('confirm')) {
+            $('.sum').css('display', 'block');
             $(this).addClass('confirm');
             $(this).parents('.coupon_actions').find('.possible_winning').css('display', 'block');
             $('#coupon_item_normal_content').css('display', 'none');
             $(this).val('Сделать');
-            $(this).parents('.coupon_actions').find('#next_button_cancel').css('display', 'block !important');
+            $(this).parents('.coupon_actions').find('#next_button_cancel').css('display', 'block');
+            //var winEventsCounter = $(this).parents('.coupon_actions').find('.system_additional').find('.system_additional_radiobutton[@name=wincounts]:checked').val();
+            masxBetsArray = new Array();
+            $('#coupon_item_normal_content .item .hidden').each(function () {
+                masxBetsArray.push(this.id);
+            });
+            var $minMaxBet = masxBetsArray[0];
+            for (i = 1; i < masxBetsArray.length; i++) {
+                $minMaxBet = Math.min($minMaxBet, masxBetsArray[i]);
+            }
+            $(this).parents('.coupon_actions').find('.possible_winning').find('#spansum').text($minMaxBet);
             fixCouponBackground();
         }
         else {
+            $('.sum').css('display', 'none');
             $(this).removeClass('confirm');
             $(this).val('Далее');
             $(this).parents('.coupon_actions').find('#next_button_cancel').css('display', 'none');
@@ -688,10 +741,20 @@ $(function () {
     });
 
     $('#allEventsToSHow').click(function () {
-        $('.date').css('display', 'block');
-        $('.series').css('display', 'block');
-        $('.sport').css('display', 'block');
-        $('#startMessage').css('display', 'none');
+        if ($(this).hasClass('openall')) {
+            $(this).removeClass('openall');
+            $('.date').css('display', 'none');
+            $('.series').css('display', 'none');
+            $('.sport').css('display', 'none');
+            $('#startMessage').css('display', 'block');
+        }
+        else {
+            $(this).addClass('openall');
+            $('.date').css('display', 'block');
+            $('.series').css('display', 'block');
+            $('.sport').css('display', 'block');
+            $('#startMessage').css('display', 'none');
+        }
     });
 
     /* addmoney */
@@ -756,7 +819,7 @@ $(function () {
             var $a = $(data).find('events').find('group');
             i = 0;
             j = 0;
-            
+
             //            $(data).find('events').find('oneevent').each(function () {
             //                if (i % 3 == 0 && i != 0) {
             //                    j++;
@@ -775,25 +838,25 @@ $(function () {
             $(data).find('events').find('group').each(function () {
                 j++;
                 appendHtml += '\
-                <div class="match" id="match_' + j + '">\
-					        <div class="header">' + $(this).attr('name') + '</div>\
-					        <div class="content">\
-                            ';                    
-                
-                
+				<div class="match" id="match_' + j + '">\
+							<div class="header">' + $(this).attr('name') + '</div>\
+							<div class="content">\
+							';
+
+
                 $(this).find('oneevent').each(function () {
                     appendHtml += '<span class="longchar" title="' + $(this).attr('name') + '" id="' + $(this).attr('id') + '"><div class="livebet" onclick="livebetclick(' + $(this).attr('id') + ', ' + j + ')" title="' + $(this).attr('name') + '">' + $(this).attr('name').slice(0, 7) + '</div><span>' + $(this).attr('odd').replace(',', '.') + '</span></span>';
                     i++;
                 });
                 appendHtml += '\
-					        </div>\
-				        </div>\
-                        ';
+							</div>\
+						</div>\
+						';
             });
             appendHtml += '\
 					</div>\
 				</div>\
-                ';
+				';
             $('#div_mathes_post_status').css('display', 'none');
             $matches.html(appendHtml);
         }, 'xml');
@@ -805,262 +868,262 @@ $(function () {
 
 
 function livemakeonebet(blockid) {
-    $(function () {
-        //var $a = this;
-        //jAlert('111Для совершения ставки необходимо наличие в купоне не менее ' + $(this).val() + ' ставок.', 'Недостаточно событий в купоне');
-        //var $parent_onebet = $(this).parents('.onebet_popup');
-        //var $onebet = $parent_onebet.find('.onebet');
-        //var $a = $onebet.find('.onebet_id').text();
-        //var $gameId = $onebet.find('.onebet_gameId').text();
-        //var $odd = $onebet.find('.onebet_odd').text();
-        //var $aa = $('.rate#' + $onebet.find('.onebet_id').text());
-        //$aa.removeClass('rate_selected');
-        //$aa.removeClass('rate_hover');
-        //var betSum_onebet = parseFloat($parent_onebet.find('.textfield').val());
-        //var $a = "b";
+	$(function () {
+		//var $a = this;
+		//jAlert('111Для совершения ставки необходимо наличие в купоне не менее ' + $(this).val() + ' ставок.', 'Недостаточно событий в купоне');
+		//var $parent_onebet = $(this).parents('.onebet_popup');
+		//var $onebet = $parent_onebet.find('.onebet');
+		//var $a = $onebet.find('.onebet_id').text();
+		//var $gameId = $onebet.find('.onebet_gameId').text();
+		//var $odd = $onebet.find('.onebet_odd').text();
+		//var $aa = $('.rate#' + $onebet.find('.onebet_id').text());
+		//$aa.removeClass('rate_selected');
+		//$aa.removeClass('rate_hover');
+		//var betSum_onebet = parseFloat($parent_onebet.find('.textfield').val());
+		//var $a = "b";
 
 
 
-        var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
-        var content;
-        var contentFlag = false;
-        for (var i = 0; i < elements.length; i++) {
+		var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
+		var content;
+		var contentFlag = false;
+		for (var i = 0; i < elements.length; i++) {
 
-            if (elements[i].className == 'content') {
-                content = elements[i];
-            }
-        }
+			if (elements[i].className == 'content') {
+				content = elements[i];
+			}
+		}
 
-        var spans = content.getElementsByTagName('span');
-        var thisspan;
-        for (var i = 0; i < spans.length; i++) {
-            if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
-                //spans[i].className = 'longchar';
-                thisspan = spans[i];
-            }
-        }
+		var spans = content.getElementsByTagName('span');
+		var thisspan;
+		for (var i = 0; i < spans.length; i++) {
+			if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
+				//spans[i].className = 'longchar';
+				thisspan = spans[i];
+			}
+		}
 
-        var eventId = thisspan.id;
-        var oddspan = thisspan.getElementsByTagName('span');
-        var odd = oddspan[0].innerText;
-        //        for (var i=0;i<oddspan.length;i++({
-        //            span=oddspan[i]
-        //        }
-        var gameId = document.getElementById('liveGameId').innerText;
-        var divbetarr = content.getElementsByTagName('div');
-        var divbet;
-        for (var i = 0; i < divbetarr.length; i++) {
-            if (divbetarr[i].className == 'divbet') {
-                divbet = divbetarr[i];
-            }
-        }
-        var addbetarr = divbet.getElementsByTagName('div');
-        var addbet;
-        for (var i = 0; i < addbetarr.length; i++) {
-            if (addbetarr[i].className == 'addbet') {
-                addbet = addbetarr[i];
-            }
-        }
-        var spandescarr = divbet.getElementsByTagName('span');
-        var spandesc;
-        for (var i = 0; i < spandescarr.length; i++) {
-            if (spandescarr[i].className == 'desc') {
-                spandesc = spandescarr[i];
-            }
-        }
-        var divformarr = addbet.getElementsByTagName('div');
-        var divform;
-        for (var i = 0; i < divformarr.length; i++) {
-            if (divformarr[i].className == 'divform') {
-                divform = divformarr[i];
-            }
-        }
-        var divformInputs = divform.getElementsByTagName('input');
-        var betsumInput;
-        for (var i = 0; i < divformInputs.length; i++) {
-            if (divformInputs[i].className == 'text') {
-                //spans[i].className = 'longchar';
-                betsumInput = divformInputs[i];
-            }
-        }
-        var betSum_onebet = betsumInput.value;
-
-
+		var eventId = thisspan.id;
+		var oddspan = thisspan.getElementsByTagName('span');
+		var odd = oddspan[0].innerText;
+		//        for (var i=0;i<oddspan.length;i++({
+		//            span=oddspan[i]
+		//        }
+		var gameId = document.getElementById('liveGameId').innerText;
+		var divbetarr = content.getElementsByTagName('div');
+		var divbet;
+		for (var i = 0; i < divbetarr.length; i++) {
+			if (divbetarr[i].className == 'divbet') {
+				divbet = divbetarr[i];
+			}
+		}
+		var addbetarr = divbet.getElementsByTagName('div');
+		var addbet;
+		for (var i = 0; i < addbetarr.length; i++) {
+			if (addbetarr[i].className == 'addbet') {
+				addbet = addbetarr[i];
+			}
+		}
+		var spandescarr = divbet.getElementsByTagName('span');
+		var spandesc;
+		for (var i = 0; i < spandescarr.length; i++) {
+			if (spandescarr[i].className == 'desc') {
+				spandesc = spandescarr[i];
+			}
+		}
+		var divformarr = addbet.getElementsByTagName('div');
+		var divform;
+		for (var i = 0; i < divformarr.length; i++) {
+			if (divformarr[i].className == 'divform') {
+				divform = divformarr[i];
+			}
+		}
+		var divformInputs = divform.getElementsByTagName('input');
+		var betsumInput;
+		for (var i = 0; i < divformInputs.length; i++) {
+			if (divformInputs[i].className == 'text') {
+				//spans[i].className = 'longchar';
+				betsumInput = divformInputs[i];
+			}
+		}
+		var betSum_onebet = betsumInput.value;
 
 
 
 
-        //eventId
-        /////////////////////////////////////////////////////////////betSum
-        //gameId
-        //odd
-        if (betSum_onebet > 0) {
-            //$parent_onebet.find('.onebet_text').text('Подождите, идет запрос на сервер.');
-            $('#layer_bg').addClass('layer_dark');
-            $.post('make_one_bet.aspx', { eventId: eventId, betSum: betSum_onebet, gameId: gameId, odd: odd }, function (data) {
-                //$onebet.find('.onebet_text').text($(data).find('data').attr('message'));
-                switch (parseInt($(data).find('data').attr('status'))) {
-                    case 0:
-                        setTimeout(function () {
-                            //$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_selected');
-                            //$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_hover');
-                            //$parent_onebet.css('display', 'none');
-                            $('#layer_bg').removeClass('layer_dark');
-                            jAlert($(data).find('data').attr('message'), 'Ставка произведена успешно.');
-                            //addbet.style.display = 'none';
-                            //spandesc.style.display = 'none';
-                            divbet.innerHtml = '';
-                            //var spans = content.getElementsByTagName('span');
-                            for (var i = 0; i < spans.length; i++) {
-                                if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
-                                    spans[i].className = 'longchar';
-                                    //contentFlag = true;
-                                }
-                            }
-                        }, 3000);
-                        break;
-                    case 1:
-                        //$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_selected');
-                        //$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_hover');
-                        //$parent_onebet.find('.onebet_text').html($(data).find('data').attr('message') + '<br />');
-                        $('#layer_bg').removeClass('layer_dark');
-                        jAlert($(data).find('data').attr('message'), 'Ошибка!');
-                        break;
-                    default:
-                        break;
-                }
-            }, 'xml');
-        } else {
-            //$parent_onebet.find('.onebet_text').text('Введена неверная сумма. Сумма должна быть > 0');
-        }
-    });
+
+
+		//eventId
+		/////////////////////////////////////////////////////////////betSum
+		//gameId
+		//odd
+		if (betSum_onebet > 0) {
+			//$parent_onebet.find('.onebet_text').text('Подождите, идет запрос на сервер.');
+			$('#layer_bg').addClass('layer_dark');
+			$.post('make_one_bet.aspx', { eventId: eventId, betSum: betSum_onebet, gameId: gameId, odd: odd }, function (data) {
+				//$onebet.find('.onebet_text').text($(data).find('data').attr('message'));
+				switch (parseInt($(data).find('data').attr('status'))) {
+					case 0:
+						setTimeout(function () {
+							//$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_selected');
+							//$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_hover');
+							//$parent_onebet.css('display', 'none');
+							$('#layer_bg').removeClass('layer_dark');
+							jAlert($(data).find('data').attr('message'), 'Ставка произведена успешно.');
+							//addbet.style.display = 'none';
+							//spandesc.style.display = 'none';
+							divbet.innerHtml = '';
+							//var spans = content.getElementsByTagName('span');
+							for (var i = 0; i < spans.length; i++) {
+								if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
+									spans[i].className = 'longchar';
+									//contentFlag = true;
+								}
+							}
+						}, 3000);
+						break;
+					case 1:
+						//$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_selected');
+						//$('#' + $onebet.find('.onebet_id').text()).removeClass('rate_hover');
+						//$parent_onebet.find('.onebet_text').html($(data).find('data').attr('message') + '<br />');
+						$('#layer_bg').removeClass('layer_dark');
+						jAlert($(data).find('data').attr('message'), 'Ошибка!');
+						break;
+					default:
+						break;
+				}
+			}, 'xml');
+		} else {
+			//$parent_onebet.find('.onebet_text').text('Введена неверная сумма. Сумма должна быть > 0');
+		}
+	});
 }
 
 function livebetclick(id, blockid) {
-    if(!document.getElementById(id).className.match(new RegExp('(\\s|^)active(\\s|$)'))){
-        
-        var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
-        var content;
-        var contentFlag = false;
-        for (var i = 0; i < elements.length; i++) {
-            
-            if ( elements[i].className=='content') {
-                content=elements[i];
-            }
-        }
+	if(!document.getElementById(id).className.match(new RegExp('(\\s|^)active(\\s|$)'))){
+		
+		var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
+		var content;
+		var contentFlag = false;
+		for (var i = 0; i < elements.length; i++) {
+			
+			if ( elements[i].className=='content') {
+				content=elements[i];
+			}
+		}
 
-        var spans = content.getElementsByTagName('span');
-        for (var i = 0; i < spans.length; i++) {
-            if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
-                spans[i].className = 'longchar';
-                contentFlag = true;
-            }
-        }
+		var spans = content.getElementsByTagName('span');
+		for (var i = 0; i < spans.length; i++) {
+			if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
+				spans[i].className = 'longchar';
+				contentFlag = true;
+			}
+		}
 
-        if (contentFlag == false) {
-            content.innerHTML += '\
-                            <div class="divbet">\
-                            <br class="breaker">\
-                            <div class="addbet"><div class="divform">\
-							        <input type="text" value="" class="text"><input type="button" id="live_make_onebet" onclick="livemakeonebet(' + blockid + ')" value="Сделать" class="submit"><br>\
-							        <div class="buttons"><input class="add_button" id="live_add_bet" type="button" onclick="leviaddbet(' + blockid + ')" value="">Добавить<input class="cancel_button" onclick="cancelbet(' + blockid + ')" id="live_cancel_bet" type="button" value="">Отменить</div>\
-						    </div></div>\
-                            <span class="desc">Максимальная ставка (100.000 AMD.)</span>\
-                            </div>\
-                            ';
-        }
-        document.getElementById(id).className += ' active';
-    }
+		if (contentFlag == false) {
+			content.innerHTML += '\
+							<div class="divbet">\
+							<br class="breaker">\
+							<div class="addbet"><div class="divform">\
+									<input type="text" value="" class="text"><input type="button" id="live_make_onebet" onclick="livemakeonebet(' + blockid + ')" value="Сделать" class="submit"><br>\
+									<div class="buttons"><input class="add_button" id="live_add_bet" type="button" onclick="leviaddbet(' + blockid + ')" value="">Добавить<input class="cancel_button" onclick="cancelbet(' + blockid + ')" id="live_cancel_bet" type="button" value="">Отменить</div>\
+							</div></div>\
+							<span class="desc">Максимальная ставка (100.000 AMD.)</span>\
+							</div>\
+							';
+		}
+		document.getElementById(id).className += ' active';
+	}
 }
 
 function leviaddbet(blockid) {
-    var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
-    var content;
-    var contentFlag = false;
-    for (var i = 0; i < elements.length; i++) {
+	var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
+	var content;
+	var contentFlag = false;
+	for (var i = 0; i < elements.length; i++) {
 
-        if (elements[i].className == 'content') {
-            content = elements[i];
-        }
-    }
+		if (elements[i].className == 'content') {
+			content = elements[i];
+		}
+	}
 
-    var spans = content.getElementsByTagName('span');
-    var thisspan;
-    for (var i = 0; i < spans.length; i++) {
-        if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
-            //spans[i].className = 'longchar';
-            thisspan = spans[i];
-        }
-    }
-    var divbetarr = content.getElementsByTagName('div');
-    var divbet;
-    for (var i = 0; i < divbetarr.length; i++) {
-        if (divbetarr[i].className == 'divbet') {
-            divbet = divbetarr[i];
-        }
-    }
-    var eventId = thisspan.id;
-    var oddspan = thisspan.getElementsByTagName('span');
-    var odd = oddspan[0].innerText;
-    var titlearr = thisspan.getElementsByTagName('div');
-    //var title = titlearr[0].attributes('title').value;
-    //var players = document.getElementsById('series_title').innerText;
-    //var gameId = document.getElementById('liveGameId').innerText;
-    addBet({
-        id: eventId,
-        title: titlearr[0].getAttribute('title'),
-        odd: odd,
-        players: document.getElementById('series_title').innerText,
-        gameId: document.getElementById('liveGameId').innerText
-    });
+	var spans = content.getElementsByTagName('span');
+	var thisspan;
+	for (var i = 0; i < spans.length; i++) {
+		if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
+			//spans[i].className = 'longchar';
+			thisspan = spans[i];
+		}
+	}
+	var divbetarr = content.getElementsByTagName('div');
+	var divbet;
+	for (var i = 0; i < divbetarr.length; i++) {
+		if (divbetarr[i].className == 'divbet') {
+			divbet = divbetarr[i];
+		}
+	}
+	var eventId = thisspan.id;
+	var oddspan = thisspan.getElementsByTagName('span');
+	var odd = oddspan[0].innerText;
+	var titlearr = thisspan.getElementsByTagName('div');
+	//var title = titlearr[0].attributes('title').value;
+	//var players = document.getElementsById('series_title').innerText;
+	//var gameId = document.getElementById('liveGameId').innerText;
+	addBet({
+		id: eventId,
+		title: titlearr[0].getAttribute('title'),
+		odd: odd,
+		players: document.getElementById('series_title').innerText,
+		gameId: document.getElementById('liveGameId').innerText
+	});
 
 
 
-    var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
-    var content;
-    var contentdivs;
-    for (var i = 0; i < elements.length; i++) {
-        if (elements[i].className == 'content') {
-            content = elements[i];
-        }
-    }
-    var spans = content.getElementsByTagName('span')
-    for (var i = 0; i < spans.length; i++) {
-        if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
-            spans[i].className = 'longchar';
-            contentFlag = true;
-        }
-    }
-    contentdivs = content.getElementsByTagName('div');
-    for (var i = 0; i < contentdivs.length; i++) {
-        if (contentdivs[i].className == 'divbet') {
-            contentdivs[i].innerHTML = '';
-        }
-    }
+	var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
+	var content;
+	var contentdivs;
+	for (var i = 0; i < elements.length; i++) {
+		if (elements[i].className == 'content') {
+			content = elements[i];
+		}
+	}
+	var spans = content.getElementsByTagName('span')
+	for (var i = 0; i < spans.length; i++) {
+		if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
+			spans[i].className = 'longchar';
+			contentFlag = true;
+		}
+	}
+	contentdivs = content.getElementsByTagName('div');
+	for (var i = 0; i < contentdivs.length; i++) {
+		if (contentdivs[i].className == 'divbet') {
+			contentdivs[i].innerHTML = '';
+		}
+	}
 }
 
 function cancelbet(blockid) {
-    var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
-    var content;
-    var contentdivs;
-    for (var i = 0; i < elements.length; i++) {
-        if (elements[i].className == 'content') {
-            content = elements[i];
-        }
-    }
-    var spans = content.getElementsByTagName('span')
-    for (var i = 0; i < spans.length; i++) {
-        if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
-            spans[i].className = 'longchar';
-            contentFlag = true;
-        }
-    }
-    contentdivs = content.getElementsByTagName('div');
-    for (var i = 0; i < contentdivs.length; i++) {
-        if (contentdivs[i].className == 'divbet') {
-            contentdivs[i].innerHTML = '';
-        }
-    }
+	var elements = document.getElementById('match_' + blockid).getElementsByTagName('div');
+	var content;
+	var contentdivs;
+	for (var i = 0; i < elements.length; i++) {
+		if (elements[i].className == 'content') {
+			content = elements[i];
+		}
+	}
+	var spans = content.getElementsByTagName('span')
+	for (var i = 0; i < spans.length; i++) {
+		if (spans[i].className.match(new RegExp('(\\s|^)active(\\s|$)'))) {
+			spans[i].className = 'longchar';
+			contentFlag = true;
+		}
+	}
+	contentdivs = content.getElementsByTagName('div');
+	for (var i = 0; i < contentdivs.length; i++) {
+		if (contentdivs[i].className == 'divbet') {
+			contentdivs[i].innerHTML = '';
+		}
+	}
 }
 
 

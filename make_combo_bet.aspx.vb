@@ -64,9 +64,15 @@ Partial Class make_combo_bet
                     Dim respmbCombobet As ResponseMakeBet
                     Try                        
                         respmbCombobet = ef.MakeComboBet(betsEventsArr, betsWinCount, betSum, user.Currency)
-                        If respmbCombobet.ErrorCode = 0 Then
+                        If respmbCombobet.ErrorCode = 0 Then                        
                             status = "0"
-                            message = "Ставка успешно произведена. Остаток на счете " + user.Balance.ToString() + " " + user.Currency.ToString()
+                            Dim rBalance As ResponseBalance
+                            rBalance = ef.GetCurrentUserBalance()
+                            If rBalance.ErrorCode = 0 Then
+                                message = "Ставка успешно произведена. Остаток на счете " + rBalance.Balance.ToString() + " " + user.Currency.ToString()
+                            Else
+                                message = "Ставка успешно произведена. Остаток на счете, к сожалению прочитать не удалось."
+                            End If
                         Else
                             status = "1"
                             message = "Ставка не сделана, произошла ошибка: " + respmbCombobet.ErrorMessage

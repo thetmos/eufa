@@ -64,8 +64,8 @@
 							<div class="my_account_links">
 								<a class="account_link" href="account_details.aspx">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Мой счет</a>
 
-								<%--<a class="add_money_link" href="addmoney.aspx">Пополнить счет</a>
-								<a class="remove_money_link" href="withdraw.aspx">Снять деньги</a>--%>
+								<a class="add_money_link" href="addmoney.aspx">Пополнить счет</a>
+								<a class="remove_money_link" href="withdraw.aspx">Снять деньги</a>
 							</div>
 						</div>
 				
@@ -83,12 +83,12 @@
 
 		<div id="header_bottom">
 			<ul class="top_menu">
-				<li runat="server" id="lidefault"><a href="default.aspx">Ставки</a></li>
-				<li class="live" runat="server" id="lilivebetting"><a href="live.aspx"><strong>LIVE</strong> ставки</a></li>
-				<li runat="server" id="liresults"><a href="results.aspx">Результаты</a></li>
-				<li runat="server" id="lirules"><a href="rules.aspx">Правила</a></li>
+				<li runat="server" id="lidefault"><a href="default.aspx"><strong class="strong_all">&nbsp;</strong>ставки</a></li>
+				<li runat="server" id="lilivebetting"><a href="live.aspx"><strong>LIVE</strong> ставки</a></li>
+				<li runat="server" id="liresults"><a href="results.aspx"><strong class="strong_all">&nbsp;</strong>результаты</a></li>
+				<li runat="server" id="lirules"><a href="rules.aspx"><strong class="strong_our">&nbsp;</strong>правила</a></li>
 
-				<li runat="server" id="lihelp"><a href="help.aspx">Помощь</a></li>
+				<li runat="server" id="lihelp"><a href="help.aspx"><strong>&nbsp;</strong>Помощь</a></li>
 			</ul>
 			<ul class="language_bar">
 				<li class="selected"><a href="#">РУС</a></li>
@@ -164,10 +164,11 @@
                                 <label><input type="radio" id="bbb"><div class="div_coupon_counter"></div></label>
                             </div>
 							<div class="sum"><label style="margin-top: 5px;">Сумма ставки <input class="textfield" name="betSum" id="betSum" type="text" value="" /></label></div>
-							<div class="possible_winning">Возможный выигрыш <span id="spansum"></span><asp:Label ID="lblcurrency" runat="server" Text=""></asp:Label></div>                        
+							<div class="possible_winning">Максимальная ставка <span id="spansum"></span><asp:Label ID="lblcurrency" runat="server" Text=""></asp:Label></div>
+                            <%--<div class="possible_winning">Максимальный выигрыш <asp:Label ID="lblmaxwin" runat="server" Text=""> </asp:Label><asp:Label ID="lblcurrency1" runat="server" Text=""></asp:Label></div>--%>
 							<input type="hidden" name="bet_submit" value="1" />
 							<input class="next_button " id="next_button" type="button" value="Далее" />                                                    
-                            <input class="next_button " id="next_button_cancel" type="button" value="Отменить" />
+                            <input class="next_button_cancel " id="next_button_cancel" type="button" value="Отменить" />
 						</div>
 					<%--bvt --%>
 					</form>
@@ -510,7 +511,14 @@
 			
 		</div>
 		<div class="breaker"></div>
-		<div id="content_footer"></div>
+		<div id="content_footer">
+            <img src="images/addmoney_icon_banktransfer.jpg" class="footer_img" title="">
+            <img src="images/addmoney_icon_mastercard.jpg" class="footer_img" title="">
+            <img src="images/addmoney_icon_webmoney.jpg" class="footer_img" title="">
+            <img src="images/addmoney_icon_varca.jpg" class="footer_img" title="">
+            <img src="images/addmoney_icon_edram.jpg" class="footer_img" title="">
+            <img src="images/addmoney_icon_eurofootball.jpg" class="footer_img" title="">
+        </div>
 	</div>
 </div>
 <div id="page_footer">

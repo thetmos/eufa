@@ -1,0 +1,1 @@
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="get_bet_restriction.aspx.vb" Inherits="get_bet_restriction" %>

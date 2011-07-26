@@ -79,6 +79,18 @@ Partial Class MastPage
                 lblmoney_sum.Text = user.Balance.ToString
                 lblmoney_currency.Text = user.Currency
             End If
+            'Dim currRate As Currency
+            'Dim rCurrRates As ResponseCurrencyRates = ef.ReadCurrencyRates()
+            'If rCurrRates.ErrorCode = 0 Then
+            '    For Each curr As Currency In rCurrRates.Rates
+            '        If curr.Code = user.Currency Then
+            '            currRate = curr
+            '            lblmaxwin.Text = " " + (1000000 / currRate.Rate).ToString().Replace(",", ".") + " "
+            '            lblcurrency1.Text = user.Currency
+            '        End If
+            '    Next
+            'End If
+
             lblcurrency.Text = user.Currency + "&nbsp;"
             If Session("loginErrorText") <> "" Then
                 lblmaststat.Text = Session("loginErrorText")
@@ -107,7 +119,7 @@ Partial Class MastPage
                 lvSports_leftActions.DataSource = sportArr
                 lvSports_leftActions.DataBind()
             Case "live"
-                lilivebetting.Attributes.Add("class", "selected")
+                lilivebetting.Attributes.Add("class", "live selected")
                 mvleft_actions.ActiveViewIndex = 3
                 Dim liveSportsGamesList As New List(Of LiveSportLeftActions)
                 Dim livesportLA As LiveSportLeftActions
@@ -116,7 +128,7 @@ Partial Class MastPage
                     For Each onechamp As Championship In onesport.Championships
                         For Each onegame As Game In onechamp.Games
                             For Each onevent As WebReference.Event In onegame.Events
-                                If (onevent.IsLive = "Y" OrElse onevent.IsLive = "O") AndAlso (onevent.Status <> "C" AndAlso onevent.Status <> "N" AndAlso onevent.Status <> "D") Then
+                                If (onevent.IsLive = "Y" OrElse onevent.IsLive = "O") AndAlso (onevent.Status = "L") Then
                                     'liveSportsGamesList.Add(New LiveSportLeftActions(onesport.name))
                                     livesportLA.insertGame(onesport.Name, onechamp.Name, onegame.Id, onegame.Player1.Name, onegame.Player2.Name, onegame.Id, onegame.GameDate, onechamp.Country)
                                     Exit For

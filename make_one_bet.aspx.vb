@@ -36,19 +36,25 @@ Partial Class make_one_bet
                         If rBetRestr.MaxBet < rBetRestr.MinBet Then
                             status = "1"
                             message = "К сожалению, прием ставки запрещен."
-                        ElseIf Math.Min(rBetRestr.MaxBet, rBetRestr.MaxGain / odd) >= betSum AndAlso betSum > rBetRestr.MinBet Then
+                        ElseIf Math.Min(rBetRestr.MaxBet, rBetRestr.MaxGain / odd) >= betSum AndAlso betSum >= rBetRestr.MinBet Then
                             Dim rMakeBet As ResponseMakeBet
                             rMakeBet = ef.MakeSimpleBet(ef.ReadEvent(eventId).Event, betSum, user.Currency)
                             If rMakeBet.ErrorCode = 0 Then
                                 status = "0"
-                                message = "Ставка успешно произведена. Остаток на счете " + user.Balance.ToString() + " " + user.Currency.ToString()
+                                Dim rBalance As ResponseBalance
+                                rBalance = ef.GetCurrentUserBalance()
+                                If rBalance.ErrorCode = 0 Then
+                                    message = "Ставка успешно произведена. Остаток на счете " + rBalance.Balance.ToString() + " " + user.Currency.ToString()
+                                Else
+                                    message = "Ставка успешно произведена. Остаток на счете, к сожалению прочитать не удалось."
+                                End If
                             Else
                                 status = "1"
                                 message = "Ставка не сделана, произошла ошибка: " + rMakeBet.ErrorMessage
                             End If
                         Else
                             status = "1"
-                            message = "Ставка не сделана, сумма ставки не соответствует разрешенной для этой игры. Максимальная ставка: " + Math.Min(rBetRestr.MaxBet, rBetRestr.MaxGain / odd).ToString() + " " + user.Currency.ToString() + ". Минимальная ставка: " + rBetRestr.MinBet.ToString() + " " + user.Currency.ToString() + ". "
+                            message = "Ставка не сделана, сумма ставки не соответствует разрешенной для этой игры. Максимальная ставка: " + CInt(Math.Min(rBetRestr.MaxBet, rBetRestr.MaxGain / odd)).ToString() + " " + user.Currency.ToString() + ". Минимальная ставка: " + CInt(rBetRestr.MinBet).ToString() + " " + user.Currency.ToString() + ". "
                         End If
                     Else
                         status = "1"
